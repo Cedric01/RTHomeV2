@@ -1,0 +1,206 @@
+<app-sidenav></app-sidenav>
+<app-navbar-3></app-navbar-3>
+<div class="inner-banner-three inner-banner text-center z-1 position-relative">
+    <div class="bg-wrapper overflow-hidden position-relative z-1" style="background-image: url(assets/images/media/img_51.jpg);">
+        <div class="container position-relative z-2">
+            <h2 class="mb-35 xl-mb-20 md-mb-10 pt-15 font-garamond text-white">About Agency</h2>
+            <ul class="theme-breadcrumb style-none d-inline-flex align-items-center justify-content-center position-relative z-1 bottom-line">
+                <li><a href="javascript:void(0);">Home</a></li>
+                <li>/</li>
+                <li> About us</li>
+            </ul>
+        </div>
+        <img src="assets/images/shape/shape_35.svg" alt="" class="lazy-img shapes shape_01">
+        <img src="assets/images/shape/shape_36.svg" alt="" class="lazy-img shapes shape_02">
+    </div>
+</div>
+<div class="block-feature-fifteen mt-150 xl-mt-100 mb-140 xl-mb-80">
+    <div class="container">
+        <div class="row gx-xl-5">
+            <div class="col-xl-6 col-lg-7 order-lg-last fadeInRight" data-aos="fade-right">
+                <div class="ms-xxl-5 ps-xl-4 ps-lg-5 md-mb-50">
+                    <div class="title-one mb-45 lg-mb-20">
+                        <h2 class="font-garamond star-shape">Find Your Preferable Match Easily. <span class="star-shape"><img src="assets/images/shape/shape_37.svg" alt="" class="lazy-img"></span></h2>
+                    </div>
+                    <div class="accordion-style-three">
+                        <div class="accordion" id="accordionThree">
+                            <div *ngFor="let item of accordionItems; let i = index" class="accordion-item">
+                                <h2 class="accordion-header">
+                                    <button class="accordion-button" type="button" [attr.data-bs-toggle]="'collapse'" [attr.data-bs-target]="'#collapse' + item.id" [attr.aria-expanded]="i === 0 ? 'true' : 'false'" [attr.aria-controls]="'collapse' + item.id">
+                                        {{ item.title }}
+                                    </button>
+                                </h2>
+                                <div [id]="'collapse' + item.id" class="accordion-collapse collapse" [ngClass]="{ show: i === 0 }" data-bs-parent="#accordionThree">
+                                    <div class="accordion-body">
+                                        <p class="fs-22">{{ item.content }}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <a routerLink="/contact" class="btn-five mt-75 lg-mt-50">Contact us</a>
+                </div>
+            </div>
+            <div class="col-xl-6 col-lg-5 d-lg-flex fadeInLeft" data-aos="fade-left">
+                <div class="media-block h-100 w-100 pe-xl-5">
+                    <div class="bg-img position-relative" style="background-image: url(assets/images/media/img_52.jpg);">
+                        <img src="assets/images/assets/screen_10.png" alt="" class="lazy-img shapes screen_01">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="wrapper mt-90 lg-mt-40">
+            <div class="row justify-content-center">
+                <div class="col-md-4 col-sm-6">
+                    <div class="counter-block-two text-center dark mt-30">
+                        <div class="main-count sm font-garamond fw-500"><span class="counter">720</span>k+</div>
+                        <p class="fs-20 mt-15 md-mt-10">Project handover</p>
+                    </div>
+                </div>
+                <div class="col-md-4 col-sm-6">
+                    <div class="counter-block-two text-center dark mt-30">
+                        <div class="main-count sm font-garamond fw-500"><span class="counter">1.3</span>%</div>
+                        <p class="fs-20 mt-15 md-mt-10">Low Interest</p>
+                    </div>
+                </div>
+                <div class="col-md-4 col-sm-6">
+                    <div class="counter-block-two text-center dark mt-30">
+                        <div class="main-count sm font-garamond fw-500"><span class="counter">1.9</span>mil+</div>
+                        <p class="fs-20 mt-15 md-mt-10">Happy customers</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+<div class="block-feature-sixteen">
+    <div class="bg-pink-two position-relative z-1 pt-140 xl-pt-100 lg-pt-80 pb-150 xl-pb-120 lg-pb-100">
+        <div class="container">
+            <div class="title-one text-center mb-70 xl-mb-40 lg-mb-20">
+                <h2 class="font-garamond star-shape"><span class="star-shape"><img src="assets/images/shape/shape_37.svg" alt="" class="lazy-img"></span> Buy, Rend & Sell</h2>
+                <p class="fs-22 mt-xs color-dark">Over 745K listings of apartments, lots, plots - available today.</p>
+            </div>
+            <div class="row justify-content-center gx-xxl-5">
+                <div class="col-lg-4 col-md-6 mt-30 d-flex fadeInUp" data-aos="fade-up">
+                    <div class="card-style-five text-center d-inline-flex flex-column align-items-center tran3s h-100 w-100">
+                        <img src="assets/images/icon/icon_23.svg" alt="" class="lazy-img icon">
+                        <h5 class="mt-35 mb-20">Buy a home</h5>
+                        <p class="fs-22 mb-50">Explore homy’s 2 million+ homes and uncover your ideal living space.</p>
+                        <a routerLink="/listing_10" class="btn-twelve mt-auto">Find Home</a>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 mt-30 d-flex fadeInUp" data-aos="fade-up" data-aos-delay="100">
+                    <div class="card-style-five text-center d-inline-flex flex-column align-items-center tran3s h-100 w-100">
+                        <img src="assets/images/icon/icon_24.svg" alt="" class="lazy-img icon">
+                        <h5 class="mt-35 mb-20">Rent a home</h5>
+                        <p class="fs-22 mb-50">Discover a rental you'll love on homy, thanks to 35+ filters and tailored keywords.</p>
+                        <a routerLink="/listing_10" class="btn-twelve mt-auto">Rent Home</a>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 mt-30 d-flex fadeInUp" data-aos="fade-up" data-aos-delay="200">
+                    <div class="card-style-five text-center d-inline-flex flex-column align-items-center tran3s h-100 w-100">
+                        <img src="assets/images/icon/icon_25.svg" alt="" class="lazy-img icon">
+                        <h5 class="mt-35 mb-20">Sell property</h5>
+                        <p class="fs-22 mb-50">List, sell, thrive – with our top-notch real estate agency. It’s super easy & fun.</p>
+                        <a routerLink="/listing_10" class="btn-twelve mt-auto">Sell Property</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <img src="assets/images/shape/shape_71.svg" alt="" class="lazy-img shapes shape_01 fadeInDown" data-aos="fade-down">
+        <img src="assets/images/shape/shape_39.svg" alt="" class="lazy-img shapes shape_02 fadeInUp" data-aos="fade-up">
+    </div>
+    <div class="block-feature-fourteen pt-150 xl-pt-120 lg-pt-100 pb-150 xl-pb-120 lg-pb-80">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="title-one md-mb-30 pe-xxl-4 fadeInLeft" data-aos="fade-left">
+                        <h2 class="font-garamond text-white star-shape">Easily Purchase, Sell, or Lease listings. <span class="star-shape"><img src="assets/images/shape/shape_37.svg" alt="" class="lazy-img"></span></h2>
+                    </div>
+                </div>
+                <div class="col-xxl-5 col-lg-6 ms-auto">
+                    <p class="text-white fs-24 m0 lh-lg fadeInRight" data-aos="fade-right">Your leading real estate advocate, transforming houses into dreams. Trust us to expertly guide you home</p>
+                </div>
+            </div>
+
+            <div class="fadeInUp mt-70 xl-mt-50" data-aos="fade-up">
+                <div class="row">
+                    <div class="col-lg-4">
+                        <div class="card-style-eight mt-45 fadeInUp" data-aos="fade-up">
+                            <div class="d-flex pe-xxl-5">
+                                <img src="assets/images/icon/icon_40.svg" alt="" class="lazy-img icon">
+                                <div class="text">
+                                    <h5 class="text-white">Property Insurance</h5>
+                                    <p>Elit esse cillum dol fug nulla tur nos ullamo.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="card-style-eight mt-45 fadeInUp" data-aos="fade-up">
+                            <div class="d-flex pe-xxl-2 ps-xxl-2">
+                                <img src="assets/images/icon/icon_41.svg" alt="" class="lazy-img icon">
+                                <div class="text">
+                                    <h5 class="text-white">Easy Payments</h5>
+                                    <p>quis nostrud exerct ulla security finibus ne derived.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="card-style-eight mt-45 fadeInUp" data-aos="fade-up">
+                            <div class="d-flex ps-xxl-5">
+                                <img src="assets/images/icon/icon_42.svg" alt="" class="lazy-img icon">
+                                <div class="text">
+                                    <h5 class="text-white">Quick Process</h5>
+                                    <p>Duis aute irure do reprehe de Cicero's voluptat velit.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<app-feedback-section-seven></app-feedback-section-seven>
+<div class="partner-section-two mt-90 lg-mt-50">
+    <div class="container container-large">
+        <div class="swiper-container swiper" id="carousel1">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide" *ngFor="let image of logoImages">
+                    <img [src]="image" alt="">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="fancy-banner-eight fadeInUp mt-160 xl-mt-100 mb-120 xl-mb-100 lg-mb-80" data-aos="fade-up">
+    <div class="container container-large">
+        <div class="bg-wrapper border-30 bg-pink-two overflow-hidden position-relative z-1">
+            <div class="row align-items-end">
+                <div class="col-xl-6 col-lg-7 col-md-7">
+                    <div class="pb-80 lg-pb-40">
+                        <h3>Start your Journey as <span class="fw-normal fst-italic">A Retailer.</span></h3>
+                        <div class="d-inline-flex flex-wrap align-items-center position-relative mt-15">
+                            <a routerLink="/agent" class="btn-eight mt-10 me-4"><span>Become an Agent</span></a>
+                            <a routerLink="/contact" class="btn-two rounded-0 border-0 mt-10"><span>Contact us</span></a>
+                            <img src="assets/images/shape/shape_51.svg" alt="" class="lazy-img shapes shape_02 fadeInRight" data-aos="fade-right">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-6 col-lg-5 col-md-5 text-center text-md-end">
+                    <div class="media-wrapper position-relative z-1 d-inline-block">
+                        <img src="assets/images/media/img_44.png" alt="" class="lazy-img">
+                        <img src="assets/images/shape/shape_50.svg" alt="" class="lazy-img shapes shape_01">
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<app-footer-2></app-footer-2>

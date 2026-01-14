@@ -1,0 +1,199 @@
+<app-dashboard-navbar [Title]="'Add New Property'"></app-dashboard-navbar>
+
+<h2 class="main-title d-block d-lg-none">Add New Property</h2>
+
+<div class="bg-white card-box border-20">
+    <h4 class="dash-title-three">Overview</h4>
+    <div class="dash-input-wrapper mb-30">
+        <label for="">Property Title*</label>
+        <input type="text" placeholder="Your Property Name">
+    </div>
+
+    <div class="dash-input-wrapper mb-30">
+        <label for="">Description*</label>
+        <textarea class="size-lg" placeholder="Write about property..."></textarea>
+    </div>
+
+    <div class="row align-items-end">
+        <div class="col-md-6">
+            <div class="dash-input-wrapper mb-30">
+                <label for="">Category*</label>
+                <ng-select [items]="options" bindLabel="label" bindValue="value" [placeholder]="'Apartments'" class="dashboard-ng-select">
+                    <ng-option *ngFor="let option of options" [value]="option.value">{{ option.label }}</ng-option>
+                </ng-select>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="dash-input-wrapper mb-30">
+                <label for="">Listed in*</label>
+                <ng-select [items]="listed" bindLabel="label" bindValue="value" [placeholder]="'All Listing'" [(ngModel)]="selectedOption" class="dashboard-ng-select">
+                </ng-select>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="dash-input-wrapper mb-30">
+                <label for="">Price*</label>
+                <input type="text" placeholder="Your Price">
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="dash-input-wrapper mb-30">
+                <label for="">Yearly Tax Rate*</label>
+                <input type="text" placeholder="Tax Rate">
+            </div>
+        </div>
+    </div>
+</div>
+<div class="bg-white card-box border-20 mt-40">
+    <h4 class="dash-title-three">Listing Details</h4>
+    <div class="row align-items-end">
+        <div class="col-md-6">
+            <div class="dash-input-wrapper mb-30">
+                <label for="">Size in ft*</label>
+                <input type="text" placeholder="Ex: 3,210 sqft">
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="dash-input-wrapper mb-30">
+                <label for="">Bedrooms*</label>
+                <select class="nice-select">
+                    <option value="0">0</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                </select>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="dash-input-wrapper mb-30">
+                <label for="">Bathrooms*</label>
+                <ng-select [items]="bathroomOptions" bindLabel="label" bindValue="value" [(ngModel)]="selectedBathrooms" class="dashboard-ng-select">
+                </ng-select>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="dash-input-wrapper mb-30">
+                <label for="">Kitchens*</label>
+                <ng-select [items]="kitchenOptions" bindLabel="label" bindValue="value" [(ngModel)]="selectedKitchens" class="dashboard-ng-select">
+                </ng-select>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="dash-input-wrapper mb-30">
+                <label for="">Garages</label>
+                <ng-select [items]="garageOptions" bindLabel="label" bindValue="value" [(ngModel)]="selectedGarage" class="dashboard-ng-select">
+                </ng-select>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="dash-input-wrapper mb-30">
+                <label for="">Garage Size</label>
+                <input type="text" placeholder="Ex: 1,230 sqft">
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="dash-input-wrapper mb-30">
+                <label for="">Year Built*</label>
+                <input type="text" placeholder="Type Year">
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="dash-input-wrapper mb-30">
+                <label for="">Floors No*</label>
+                <ng-select [items]="floorsOptions" bindLabel="label" bindValue="value" [(ngModel)]="selectedFloor" class="dashboard-ng-select">
+                </ng-select>
+            </div>
+        </div>
+        <div class="col-12">
+            <div class="dash-input-wrapper">
+                <label for="">Description*</label>
+                <textarea class="size-lg" placeholder="Write about property..."></textarea>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="bg-white card-box border-20 mt-40">
+    <h4 class="dash-title-three">Photo & Video Attachment</h4>
+    <div class="dash-input-wrapper mb-20">
+        <label for="">File Attachment*</label>
+
+
+        <div *ngFor="let file of uploadedFiles" class="attached-file d-flex align-items-center justify-content-between mb-15">
+            <span>{{ file.name }}</span>
+            <a href="javascript:void(0);" class="remove-btn" (click)="removeFile(file)">
+                <i class="bi bi-x"></i>
+            </a>
+        </div>
+    </div>
+
+    <div class="dash-btn-one d-inline-block position-relative me-3">
+        <i class="bi bi-plus"></i>
+        Upload File
+        <input type="file" id="uploadCV" name="uploadCV" (change)="onFileChange($event)" multiple />
+    </div>
+    <small>Upload file .jpg, .png, .mp4</small>
+</div>
+
+<div class="bg-white card-box border-20 mt-40">
+    <h4 class="dash-title-three m0 pb-5">Select Amenities</h4>
+    <ul class="style-none d-flex flex-wrap filter-input">
+        <li *ngFor="let amenity of amenities">
+            <input type="checkbox" name="Amenities" [value]="amenity.value" [(ngModel)]="amenity.selected">
+            <label>{{ amenity.label }}</label>
+        </li>
+    </ul>
+</div>
+
+<div class="bg-white card-box border-20 mt-40">
+    <h4 class="dash-title-three">Address & Location</h4>
+    <div class="row">
+        <div class="col-12">
+            <div class="dash-input-wrapper mb-25">
+                <label for="">Address*</label>
+                <input type="text" placeholder="145/A, Ranchview">
+            </div>
+        </div>
+        <div class="col-lg-4">
+            <div class="dash-input-wrapper mb-25">
+                <label for="">Country*</label>
+                <ng-select [items]="countries" bindLabel="label" bindValue="value" [(ngModel)]="selectedCuntry" placeholder="Select Country" class="dashboard-ng-select">
+                </ng-select>
+
+            </div>
+        </div>
+        <div class="col-lg-4">
+            <div class="dash-input-wrapper mb-25">
+                <label for="">City*</label>
+                <ng-select [items]="cities" bindLabel="name" bindValue="value" [(ngModel)]="selectedCty" placeholder="Select City" class="dashboard-ng-select">
+                </ng-select>
+
+            </div>
+        </div>
+        <div class="col-lg-4">
+            <div class="dash-input-wrapper mb-25">
+                <label for="">State*</label>
+                <ng-select [items]="states" bindLabel="name" bindValue="value" [(ngModel)]="selectedState" placeholder="Select State" class="dashboard-ng-select">
+                </ng-select>
+            </div>
+        </div>
+        <div class="col-12">
+            <div class="dash-input-wrapper mb-25">
+                <label for="">Map Location*</label>
+                <div class="position-relative">
+                    <input type="text" placeholder="XC23+6XC, Moiran, N105">
+                    <button class="location-pin tran3s"><img src="assets/dashboard-images/icon/icon_16.svg" alt="" class="lazy-img m-auto"></button>
+                </div>
+                <div class="map-frame mt-30">
+                    <div class="gmap_canvas h-100 w-100">
+                        <iframe class="gmap_iframe h-100 w-100" src="https://maps.google.com/maps?width=600&amp;height=400&amp;hl=en&amp;q=dhaka collage&amp;t=&amp;z=12&amp;ie=UTF8&amp;iwloc=B&amp;output=embed"></iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="button-group d-inline-flex align-items-center mt-30">
+    <a href="javascript:void(0);" class="dash-btn-two tran3s me-3">Submit Property</a>
+    <a href="javascript:void(0);" class="dash-cancel-btn tran3s">Cancel</a>
+</div>

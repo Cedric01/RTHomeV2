@@ -1,0 +1,162 @@
+<app-navbar-1></app-navbar-1>
+<div class="inner-banner-one inner-banner bg-pink text-center z-1 pt-160 lg-pt-130 pb-160 xl-pb-120 md-pb-80 position-relative">
+    <div class="container">
+        <h3 class="mb-35 xl-mb-20 pt-15">About Agency</h3>
+        <ul class="theme-breadcrumb style-none d-inline-flex align-items-center justify-content-center position-relative z-1 bottom-line">
+            <li><a routerLink="/">Home</a></li>
+            <li>/</li>
+            <li> About us</li>
+        </ul>
+    </div>
+    <img src="assets/images/assets/ils_07.svg" alt="" class="lazy-img shapes w-100 illustration">
+</div>
+<div class="block-feature-two mt-150 xl-mt-100">
+    <div class="container">
+        <div class="row gx-xl-5">
+            <div class="col-lg-6 fadeInLeft" data-aos="fade-left">
+                <div class="me-xxl-4">
+                    <div class="title-one mb-60 lg-mb-40">
+                        <div class="upper-title">{{ aboutUs.title }}</div>
+                        <h3>
+                            Secure your <span>family's <img src="assets/images/shape/title_shape_06.svg" alt="" class="lazy-img"></span> Dream home.
+                        </h3>
+                        <p class="fs-22">{{ aboutUs.description }}</p>
+                    </div>
+                    <a routerLink="/contact" class="btn-two">Contact Us</a>
+                    <div class="counter-wrapper border-top pt-40 md-pt-10 mt-65 md-mt-40">
+                        <div class="row">
+                            <div class="col-xxl-6 col-sm-6" *ngFor="let counter of counters; let i = index">
+                                <div class="counter-block-one mt-20">
+                                    <div class="main-count fw-500 color-dark">{{ counter.value }}</div>
+                                    <span>{{ counter.label }}</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6 fadeInRight" data-aos="fade-right">
+                <div class="block-two md-mt-40">
+                    <div class="bg-wrapper">
+                        <h5>Who we are?</h5>
+                        <p class="fs-22 lh-lg mt-20">{{ aboutUs.whoWeAre }}</p>
+                        <h5 class="top-line">Our Mission</h5>
+                        <p class="fs-22 lh-lg mt-20">{{ aboutUs.mission }}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="video-banner-one mt-150 xl-mt-120 md-mt-80">
+    <div class="container">
+        <div class="bg-wrapper position-relative z-1 overflow-hidden d-flex align-items-center justify-content-center" style="background-image: url('assets/images/media/img_50.jpg');">
+            <a class="fancybox video-icon d-flex align-items-center justify-content-center rounded-circle tran3s" data-fancybox href="https://www.youtube.com/embed/aXFSJTjVjw0" tabindex="-1">
+                <i class="fa-solid fa-play"></i>
+            </a>
+        </div>
+    </div>
+</div>
+<div class="block-feature-five position-relative z-1 pt-170 xl-pt-120 pb-130 xl-pb-100 lg-pb-80">
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-8 m-auto">
+                <div class="title-one text-center mb-35 lg-mb-20">
+                    <h3>We’r here to help <br> you get your <span>dream home<img src="assets/images/shape/title_shape_07.svg" alt="" class="lazy-img"></span></h3>
+                    <p class="fs-24 color-dark">It’s easy to start with us with these simple steps</p>
+                </div>
+            </div>
+        </div>
+        <div class="row justify-content-between">
+            <div class="col-xxl-11 m-auto">
+                <div class="row gx-xl-5 justify-content-center">
+                    <div class="col-lg-4 col-sm-6" *ngFor="let card of cards; let i = index">
+                        <div class="card-style-one text-center fadeInUp mt-40" data-aos="fade-up" [class.arrow]="card.hasArrow" [attr.data-aos-delay]="card.delay">
+                            <img [src]="card.icon" alt="" class="lazy-img m-auto icon" />
+                            <h5 class="mt-50 lg-mt-30 mb-15">{{ card.title }}</h5>
+                            <p class="pe-xxl-4 ps-xxl-4">{{ card.description }}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <img src="assets/images/shape/shape_07.svg" alt="" class="lazy-img shapes shape_01">
+    <img src="assets/images/shape/shape_08.svg" alt="" class="lazy-img shapes shape_02">
+</div>
+<div class="feedback-section-six bg-pink-two position-relative z-1 pt-110 xl-pt-80 pb-100 xl-pb-80">
+    <div class="container">
+        <div class="title-one text-center mb-80 xl-mb-50 md-mb-30">
+            <h3>Client Feedback</h3>
+            <p class="fs-20 mt-xs">Client satisfaction speaks louder than our words. Hear from them.</p>
+        </div>
+        <div class="swiper-container swiper" id="feedback-slider">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide" *ngFor="let feedback of feedbacks">
+                    <div class="feedback-block-six rounded-4">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <ul class="rating style-none d-flex">
+                                <li *ngFor="let star of [].constructor(feedback.rating); let i = index">
+                                    <i class="fa-sharp fa-solid fa-star"></i>
+                                </li>
+                            </ul>
+                            <img [src]="feedback.icon" alt="" class="icon">
+                        </div>
+                        <blockquote>{{ feedback.feedback }}</blockquote>
+                        <div class="d-flex align-items-center justify-content-between">
+                            <h6 class="fs-20 m0">{{ feedback.name }}, <span class="fw-normal opacity-50">{{ feedback.location }}</span></h6>
+                            <img [src]="feedback.avatar" alt="" class="rounded-circle avatar">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="agent-section-one position-relative z-1 mt-150 xl-mt-120">
+    <div class="container">
+        <div class="position-relative">
+            <div class="title-one mb-85 lg-mb-50 fadeInLeft" data-aos="fade-left">
+                <h3>Our <span>Agents<img src="assets/images/shape/title_shape_05.svg" alt="" class="lazy-img"></span></h3>
+                <p class="fs-22 mt-xs">Lorem is placeholder text commonly used graphic </p>
+            </div>
+            <div class="swiper-container agent-slider-one swiper">
+                <div class="swiper-wrapper">
+                    <div *ngFor="let agent of agents" class="swiper-slide">
+                        <div class="agent-card-one position-relative">
+                            <div class="img border-20">
+                                <img [src]="agent.imageUrl" alt="" class="w-100 tran5s">
+                            </div>
+                            <div class="text-center">
+                                <h6>{{ agent.name }}</h6>
+                                <a [routerLink]="agent.link" class="stretched-link">{{ agent.designation }}</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-pagination"></div>
+                <div class="swiper-button-next"></div>
+                <div class="swiper-button-prev"></div>
+            </div>
+            <div class="section-btn text-center md-mt-60">
+                <a routerLink="/agent" class="btn-five">Meet Entire Team</a>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="partner-section-one mt-150 xl-mt-120 lg-mt-100 mb-130 xl-mb-100 lg-mb-60">
+    <div class="container">
+        <h6 class="text-center fs-20 mb-50 lg-mb-20">100+ Company trusted by us.</h6>
+    </div>
+    <div class="bg-wrapper bg-white">
+        <div class="swiper-container swiper" id="carousel1">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide" *ngFor="let image of logoImages">
+                    <img [src]="image" alt="">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<app-fancy-banner-two></app-fancy-banner-two>
+<app-footer-5></app-footer-5>

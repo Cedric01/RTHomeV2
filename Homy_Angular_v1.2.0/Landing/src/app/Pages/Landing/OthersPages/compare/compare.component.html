@@ -1,0 +1,105 @@
+<app-navbar-6></app-navbar-6>
+<div class="inner-banner-two inner-banner z-1 pt-170 xl-pt-150 md-pt-130 pb-140 xl-pb-100 md-pb-80 position-relative" style="background-image: url(assets/images/media/img_49.jpg);">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6">
+                <h3 class="mb-45 xl-mb-30 md-mb-20">Compare</h3>
+                <ul class="theme-breadcrumb style-none d-inline-flex align-items-center justify-content-center position-relative z-1 bottom-line">
+                    <li><a routerLink="/">Home</a></li>
+                    <li>/</li>
+                    <li><a href="javascript:void(0);">Pages</a></li>
+                    <li>/</li>
+                    <li>Compare</li>
+                </ul>
+            </div>
+            <div class="col-lg-6">
+                <p class="sub-heading">Over 745,000 listings, apartments, lots and plots available now!</p>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="compare-section mt-150 xl-mt-100 mb-150 xl-mb-100">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-md-6">
+                <div class="title-one">
+                    <h3>Compare Listing</h3>
+                </div>
+            </div>
+            <div class="col-xl-3 col-lg-4 col-md-5 ms-auto">
+                <ul class="style-none d-flex align-items-center action-btns sm-mt-40">
+                    <li class="me-auto fw-500 color-dark"><i class="fa-sharp fa-regular fa-share-nodes me-2"></i> Share</li>
+                    <li><a href="javascript:void(0);" class="d-flex align-items-center justify-content-center tran3s"><i class="fa-light fa-heart"></i></a></li>
+                    <li><a href="javascript:void(0);" class="d-flex align-items-center justify-content-center tran3s"><i class="fa-light fa-bookmark"></i></a></li>
+                    <li><a href="javascript:void(0);" class="d-flex align-items-center justify-content-center tran3s"><i class="fa-light fa-circle-plus"></i></a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="compare-table mt-60 lg-mt-40">
+            <div class="table-responsive table-bg bg-white">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <td><img src="assets/images/logo/logo_08.svg" alt="" class="lazy-img mt-50"></td>
+                            <td *ngFor="let property of properties">
+                                <div class="listing-card-one style-two shadow-none">
+                                    <div class="img-gallery">
+                                        <div class="position-relative overflow-hidden">
+                                            <div class="tag fw-500">FOR SELL</div>
+                                            <a href="javascript:void(0);" class="fav-btn tran3s"><i class="fa-light fa-heart"></i></a>
+                                            <a href="javascript:void(0);" class="d-block"><img [src]="property.image" class="w-100" alt="..."></a>
+                                        </div>
+                                    </div>
+                                    <div class="property-info pt-10">
+                                        <a href="javascript:void(0);" class="title tran3s">{{ property.title }}</a>
+                                        <div class="address">{{ property.address }}</div>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th>Bedrooms</th>
+                            <td *ngFor="let property of properties">{{ property.bedrooms }}</td>
+                        </tr>
+                        <tr>
+                            <th>Bath</th>
+                            <td *ngFor="let property of properties">{{ property.bath }}</td>
+                        </tr>
+                        <tr>
+                            <th>Price</th>
+                            <td *ngFor="let property of properties">{{ property.price }}</td>
+                        </tr>
+                        <tr>
+                            <th>Property Type</th>
+                            <td *ngFor="let property of properties">{{ property.propertyType }}</td>
+                        </tr>
+                        <tr>
+                            <th>Property ID</th>
+                            <td *ngFor="let property of properties">{{ property.propertyId }}</td>
+                        </tr>
+                        <tr>
+                            <th>Parking</th>
+                            <td *ngFor="let property of properties">{{ property.parking }}</td>
+                        </tr>
+                        <tr>
+                            <th>Lot Size</th>
+                            <td *ngFor="let property of properties">{{ property.lotSize }}</td>
+                        </tr>
+                        <tr>
+                            <th>Features</th>
+                            <td *ngFor="let property of properties">{{ property.features }}</td>
+                        </tr>
+                        <tr>
+                            <th>Zoning</th>
+                            <td *ngFor="let property of properties">{{ property.zoning }}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+<app-fancy-banner-two></app-fancy-banner-two>
+<app-footer-5></app-footer-5>

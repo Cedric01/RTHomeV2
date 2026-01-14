@@ -1,0 +1,58 @@
+<app-navbar-7></app-navbar-7>
+<div class="inner-banner-one inner-banner bg-pink text-center z-1 pt-160 lg-pt-130 pb-160 xl-pb-120 md-pb-80 position-relative">
+    <div class="container">
+        <h3 class="mb-35 xl-mb-20 pt-15">Blog Full Width</h3>
+        <ul class="theme-breadcrumb style-none d-inline-flex align-items-center justify-content-center position-relative z-1 bottom-line">
+            <li><a routerLink="/">Home</a></li>
+            <li>/</li>
+            <li><a href="javascript:void(0);">Pages</a></li>
+            <li>/</li>
+            <li>Blog</li>
+        </ul>
+    </div>
+    <img src="assets/images/assets/ils_07.svg" alt="" class="lazy-img shapes w-100 illustration">
+</div>
+<div class="blog-section-three mt-130 xl-mt-100 mb-150 xl-mb-100">
+    <div class="container">
+        <div class="blog-filter-nav">
+            <ul class="style-none d-flex justify-content-center flex-wrap isotop-menu-wrapper">
+                <li *ngFor="let category of categories" class="rounded-0" [ngClass]="{'is-checked': currentFilter === category.value}" (click)="applyFilter(category.value)">
+                    {{ category.label }}
+                </li>
+            </ul>
+        </div>
+        <div id="isotop-gallery-wrapper" class="row g-lg-5 pt-60 lg-pt-40">
+            <div class="grid-sizer"></div>
+            <div class="isotop-item col-md-6 col-lg-6" *ngFor="let item of filteredItems" [ngClass]="item.type">
+                <article class="blog-meta-one mb-70 lg-mb-40">
+                    <figure class="post-img border-25 position-relative m0" [style.background-image]="'url(' + item.img + ')'">
+                        <a href="blog_details.html" class="stretched-link date tran3s">{{item.date}}</a>
+                    </figure>
+                    <div class="post-data">
+                        <div class="post-info"><a href="blog_details.html">{{item.name}}</a> {{item.min}}</div>
+                        <div class="d-flex justify-content-between align-items-sm-center flex-wrap">
+                            <a href="blog_details.html" class="blog-title">
+                                <h4>{{item.dec}}</h4>
+                            </a>
+                            <a href="blog_details.html" class="read-btn rounded-circle d-flex align-items-center justify-content-center tran3s"><i class="bi bi-arrow-up-right"></i></a>
+                        </div>
+                    </div>
+                </article>
+                <!-- /.blog-meta-one -->
+            </div>
+        </div>
+        <div class="pt-20 text-center">
+            <ul class="pagination-two d-inline-flex align-items-center justify-content-center style-none">
+                <li><a href="javascript:void(0);"><i class="fa-regular fa-chevron-left"></i></a></li>
+                <li class="active"><a href="javascript:void(0);">1</a></li>
+                <li><a href="javascript:void(0);">2</a></li>
+                <li><a href="javascript:void(0);">3</a></li>
+                <li><span>...</span></li>
+                <li><a href="javascript:void(0);">13</a></li>
+                <li><a href="javascript:void(0);"><i class="fa-regular fa-chevron-right"></i></a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+<app-fancy-banner-two></app-fancy-banner-two>
+<app-footer-5></app-footer-5>

@@ -1,0 +1,446 @@
+<app-sidenav></app-sidenav>
+<app-navbar-5></app-navbar-5>
+<div class="hero-banner-five bg-pink z-2 position-relative pt-200 md-pt-150">
+    <div class="container container-large">
+        <div class="position-relative">
+            <div class="row">
+                <div class="col-lg-7">
+                    <div class="position-relative z-1">
+                        <h1 class="hero-heading font-garamond fadeInUp mb-50" data-aos="fade-up">Don’t Trust us, Trust Our Client.</h1>
+                        <img src="assets/images/shape/shape_54.svg" alt="" class="lazy-img shape_01 shapes d-none d-lg-block">
+                        <div class="row">
+                            <div class="col-xl-7 col-lg-12 col-md-7">
+                                <p class="fs-24 color-dark m0 lg-pb-20 fadeInUp" data-aos="fade-up" data-aos-delay="100">Over 745,000 listings, apartments, lots & plots available now</p>
+                            </div>
+                            <div class="col-xl-5 col-lg-12 col-md-5">
+                                <div class="d-flex flex-column justify-content-center align-items-start">
+                                    <img src="assets/images/assets/screen_06.png" alt="" class="lazy-img">
+                                    <p class="m0 pt-10 rating"><span class="fw-500 color-dark">13k rating</span> (4.7 Rating)</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xxl-9 col-xl-11">
+                    <div class="search-wrapper-one layout-one mt-60 lg-mt-40 position-relative">
+                        <nav class="search-filter-nav-one d-flex">
+                            <div class="nav nav-tabs border-0" role="tablist">
+                                <button class="nav-link active" id="buy-tab" data-bs-toggle="tab" data-bs-target="#buy" type="button" role="tab" aria-controls="buy" aria-selected="true">Buy</button>
+                                <button class="nav-link" id="rent-tab" data-bs-toggle="tab" data-bs-target="#rent" type="button" role="tab" aria-controls="rent" aria-selected="false">Rent</button>
+                            </div>
+                        </nav>
+                        <div class="bg-wrapper p0 border-0 rounded-0">
+                            <div class="tab-content">
+                                <div class="tab-pane show active" id="buy" role="tabpanel" aria-labelledby="buy-tab" tabindex="0">
+                                    <form action="javascript:void(0);" class="md-pt-20">
+                                        <div class="row gx-0 align-items-center">
+                                            <div class="col-lg-3">
+                                                <div class="input-box-one border-left">
+                                                    <div class="label">I’m looking to...</div>
+                                                    <ng-select [items]="options" bindLabel="label" bindValue="value" [placeholder]="'Buy Apartments'">
+                                                        <ng-option *ngFor="let option of options" [value]="option.value">{{ option.label }}</ng-option>
+                                                    </ng-select>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-4">
+                                                <div class="input-box-one border-left">
+                                                    <div class="label">Location</div>
+                                                    <ng-select class="" [items]="locations" bindLabel="label" bindValue="value" [placeholder]="'Dhanmondi, Dhaka'">
+                                                        <ng-option *ngFor="let location of locations" [value]="location.value">{{ location.label }}</ng-option>
+                                                    </ng-select>
+                                                </div>
+                                            </div>
+                                            <div class="col-xl-3 col-lg-4">
+                                                <div class="input-box-one">
+                                                    <div class="label">Price Range</div>
+                                                    <ng-select [items]="priceRanges" bindLabel="label" bindValue="value" [placeholder]="'$10,000 - $200,000'">
+                                                        <ng-option *ngFor="let range of priceRanges" [value]="range.value">{{ range.label }}</ng-option>
+                                                    </ng-select>
+                                                </div>
+                                            </div>
+                                            <div class="col-xl-2 col-lg-1">
+                                                <div class="input-box-one p0 ms-xl-5 md-mt-20">
+                                                    <button class="fw-500 text-uppercase tran3s search-btn-two w-100 h-100 pt-45 lg-pt-30 md-pt-20 pb-45 lg-pb-30 md-pb-20 fs-2"><i class="fa-light fa-magnifying-glass"></i></button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                                <div class="tab-pane" id="rent" role="tabpanel" aria-labelledby="rent-tab" tabindex="0">
+                                    <form action="javascript:void(0);" class="md-pt-20">
+                                        <div class="row gx-0 align-items-center">
+                                            <div class="col-lg-3">
+                                                <div class="input-box-one border-left">
+                                                    <div class="label">I’m looking to...</div>
+                                                    <ng-select [items]="renthome" bindLabel="label" bindValue="value" [placeholder]="'Rent Apartments'">
+                                                        <ng-option *ngFor="let option of renthome" [value]="option.value">{{ option.label }}</ng-option>
+                                                    </ng-select>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-4">
+                                                <div class="input-box-one border-left">
+                                                    <div class="label">Location</div>
+                                                    <ng-select [items]="rentLocation" bindLabel="label" bindValue="value" [placeholder]="'Acapulco, Mexico'">
+                                                        <ng-option *ngFor="let option of rentLocation" [value]="option.value">{{ option.label }}</ng-option>
+                                                    </ng-select>
+                                                </div>
+                                            </div>
+                                            <div class="col-xl-3 col-lg-4">
+                                                <div class="input-box-one">
+                                                    <div class="label">Price Range</div>
+                                                    <ng-select [items]="rentPrice" bindLabel="label" bindValue="value" [placeholder]="'$10,000 - $200,000'">
+                                                        <ng-option *ngFor="let option of rentPrice" [value]="option.value">{{ option.label }}</ng-option>
+                                                    </ng-select>
+                                                </div>
+                                            </div>
+                                            <div class="col-xl-2 col-lg-1">
+                                                <div class="input-box-one p0 ms-xl-5 md-mt-20">
+                                                    <button class="fw-500 text-uppercase tran3s search-btn-two w-100 h-100 pt-45 lg-pt-30 md-pt-20 pb-45 lg-pb-30 md-pb-20 fs-2"><i class="fa-light fa-magnifying-glass"></i></button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <img src="assets/images/assets/ils_05.svg" alt="" class="lazy-img shapes illustration">
+    <div class="media-wrapper">
+        <div class="bg"></div>
+    </div>
+</div>
+<div class="block-feature-eleven mt-300 xl-mt-200 md-mt-100">
+    <div class="container container-large">
+        <div class="row">
+            <div class="col-lg-5">
+                <div class="title-one md-mb-40">
+                    <h3>1,230+ Companies Trust by us.</h3>
+                </div>
+            </div>
+            <div class="col-xxl-6 col-lg-7 ms-auto">
+                <p class="fs-24 lh-lg mb-30 color-dark">Your leading real estate advocate, transforming houses into dreams. Trust us to expertly guide you home. 745,000 apartments & home for sell, rent & mortgage.</p>
+                <div class="d-inline-flex flex-wrap align-items-center">
+                    <a routerLink="/about_us_02" class="btn-five md rounded-0 mt-20 me-5"><span>More Details</span></a>
+                    <a routerLink="/contact" class="btn-three mt-20"><span>Request a Callback</span> <i class="fa-light fa-arrow-right-long"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="partner-section-two mt-100 lg-mt-80">
+    <div class="container container-large">
+        <div class="swiper-container swiper bottom-border pb-55 lg-pb-40" id="carousel1">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide" *ngFor="let image of logoImages">
+                    <img [src]="image" alt="" class="d-block mx-auto">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="property-listing-five mt-170">
+    <div class="container container-large">
+        <div class="position-relative">
+            <div class="title-one mb-25 lg-mb-10 fadeInUp" data-aos="fade-up">
+                <h3>Popular Listings</h3>
+                <p class="fs-22">Explore latest and featured properties for sale, rent & mortgage.</p>
+            </div>
+            <div class="row gx-xxl-5">
+                <div *ngFor="let property of listings; let i = index" class="col-lg-4 col-md-6 d-flex mt-40 fadeInUp" data-aos="fade-up" [attr.data-aos-delay]="i % 2 === 0 ? '0' : '100'">
+                    <div class="listing-card-one style-two shadow-none h-100 w-100">
+                        <div class="img-gallery">
+                            <div class="position-relative overflow-hidden">
+                                <div class="tag fw-500">{{ property.tag }}</div>
+                                <div [id]="property.id" class="carousel slide">
+                                    <div class="carousel-indicators">
+                                        <button *ngFor="let image of property.images; let j = index" type="button" [attr.data-bs-target]="'#' + property.id" [attr.data-bs-slide-to]="j" [class.active]="j === 0" [attr.aria-label]="'Slide ' + (j + 1)"></button>
+                                    </div>
+                                    <div class="carousel-inner">
+                                        <div *ngFor="let image of property.images; let j = index" class="carousel-item" [class.active]="j === 0" data-bs-interval="1000000">
+                                            <a href="javascript:void(0);" class="d-block"><img [src]="image" class="w-100" alt="..."></a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="property-info pt-20">
+                            <a routerLink="/listing_details_04" class="title tran3s">{{ property.title }}</a>
+                            <div class="address">{{ property.address }}</div>
+                            <ul class="style-none feature d-flex flex-wrap align-items-center justify-content-between pb-15 pt-5">
+                                <li *ngFor="let feature of property.features" class="d-flex align-items-center">
+                                    <img [attr.src]="'assets/images/icon/' + feature.icon" alt="" class="lazy-img icon me-2">
+                                    <span class="fs-16">{{ feature.label }}</span>
+                                </li>
+                            </ul>
+                            <div class="pl-footer top-border bottom-border d-flex align-items-center justify-content-between">
+                                <strong class="price fw-500 color-dark" [innerHTML]="property.price"></strong>
+                                <a routerLink="/listing_details_04" class="btn-four"><i class="bi bi-arrow-up-right"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="section-btn text-center md-mt-60">
+                <a routerLink="/listing_03" class="btn-eight"><span>Explore All</span> <i class="bi bi-arrow-up-right"></i></a>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="block-feature-twelve mt-170 xl-mt-120">
+    <div class="container container-large">
+        <div class="position-relative">
+            <div class="title-one text-center text-lg-start mb-60 xl-mb-40 lg-mb-20 fadeInUp" data-aos="fade-up">
+                <h3>Popular Cities</h3>
+            </div>
+            <div class="wrapper flex-wrap d-flex justify-content-center justify-content-md-between align-items-center">
+                <div class="location-card-three text-center fadeInUp" *ngFor="let location of cities; let i = index" [attr.data-aos-delay]="(i + 1) * 100" data-aos="fade-up">
+                    <div class="image-bg position-relative z-1 rounded-circle overflow-hidden mb-30" [style.background-image]="'url(' + location.imageUrl + ')'">
+                        <a [routerLink]="location.link" class="stretched-link"></a>
+                    </div>
+                    <a [routerLink]="location.link" class="title">
+                        <h5>{{ location.name }}</h5>
+                    </a>
+                    <p>{{ location.listings }} Listing</p>
+                </div>
+            </div>
+
+            <div class="section-btn text-center md-mt-50">
+                <a routerLink="/listing_04" class="btn-eight"><span>Explore All</span> <i class="bi bi-arrow-up-right"></i></a>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="block-feature-nine bg-pink-two position-relative z-1 mt-170 xl-mt-100 pt-120 xl-pt-80 pb-150 xl-pb-80">
+    <div class="container container-large">
+        <div class="position-relative">
+            <div class="row">
+                <div class="title-one text-center mb-50 lg-mb-20 fadeInUp" data-aos="fade-up">
+                    <h3>Buy, Rent & Sell</h3>
+                    <p class="fs-22">Over 745K listings of apartments, lots, plots - available today.</p>
+                </div>
+            </div>
+            <div class="row gx-xxl-5">
+                <div class="col-lg-4 col-md-6 mt-30 d-flex fadeInUp" *ngFor="let action of homeActions; let i = index" data-aos="fade-up" [attr.data-aos-delay]="i * 100">
+                    <div class="card-style-six d-inline-flex flex-column align-items-start tran3s h-100 w-100">
+                        <div class="icon d-flex align-items-center justify-content-center rounded-circle tran3s">
+                            <img [src]="action.icon" alt="{{ action.title }}" class="lazy-img">
+                        </div>
+                        <h5 class="mt-35 mb-20">{{ action.title }}</h5>
+                        <p class="mb-40">{{ action.description }}</p>
+                        <a [routerLink]="action.buttonLink" class="btn-twelve rounded-0 sm mt-auto">{{ action.buttonText }}</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <img src="assets/images/shape/shape_55.svg" alt="" class="lazy-img shapes shape_01">
+    <img src="assets/images/shape/shape_56.svg" alt="" class="lazy-img shapes shape_02">
+</div>
+<div class="block-feature-ten mt-200 xl-mt-150 lg-mt-110">
+    <div class="container container-large">
+        <div class="row">
+            <div class="col-lg-6 ms-auto order-lg-last fadeInRight" data-aos="fade-right">
+                <div class="pb-50 ps-xxl-5 position-relative z-1">
+                    <div class="feedback-block-two">
+                        <blockquote class="font-garamond">"Extraordinary <span>service!</span> Quick solutions. Highly recommended."</blockquote>
+                        <div class="d-flex align-items-center mt-75 md-mt-50">
+                            <img src="assets/images/media/img_03.jpg" alt="" class="rounded-circle avatar">
+                            <div class="ps-4">
+                                <h6 class="fs-22 mb-5">James Bond.</h6>
+                                <span class="opacity-75">CEO & Head of Homy Inc</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="wrapper mt-70 xl-mt-50 md-mt-20">
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <div class="counter-block-two dark mt-30">
+                                    <div class="main-count sm font-garamond fw-500"><span class="counter">1200</span>+</div>
+                                    <p class="fs-20 m0">Project handover</p>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="counter-block-two dark mt-30">
+                                    <div class="main-count sm font-garamond fw-500"><span class="counter">1.9</span>mil+</div>
+                                    <p class="fs-20 m0">Happy customers</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <img src="assets/images/shape/shape_57.svg" alt="" class="lazy-img shapes shape_01 d-none d-lg-block">
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="media-gallery position-relative z-1 h-100 fadeInLeft" data-aos="fade-left">
+                    <div class="bg" style="background-image: url(assets/images/media/img_46.jpg);">
+                        <img src="assets/images/assets/screen_08.png" alt="" class="lazy-img screen_03">
+                        <img src="assets/images/assets/screen_07.png" alt="" class="lazy-img screen_02">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="fancy-banner-one position-relative z-1 mt-200 xl-mt-150 lg-mt-120 pt-160 xl-pt-140 lg-pt-80 pb-140 xl-pb-120 lg-pb-100">
+    <div class="container container-large">
+        <div class="row">
+            <div class="col-xxl-5 col-lg-6 fadeInLeft" data-aos="fade-left">
+                <div class="title-one mb-45 lg-mb-30">
+                    <h3 class="text-white">Exclusive Monthly Deal for you.</h3>
+                    <p class="fs-24 text-white pe-xl-5 me-xxl-5">Don't miss out on this personalized monthly exclusive offer for you.</p>
+                </div>
+                <a routerLink="/listing_details_02" class="btn-six rounded-0">More Details</a>
+            </div>
+            <div class="col-lg-6 ms-auto fadeInRight" data-aos="fade-right">
+                <div class="property-item md-mt-60 rounded-0 position-relative z-1">
+                    <div class="row gx-0">
+                        <div class="col-md-5 d-flex">
+                            <div class="gutter border-right w-100 h-100">
+                                <div class="tag mb-20">FOR SELL</div>
+                                <h4 class="mb-70 sm-mb-40">Luxury Duplex orkit villa.</h4>
+                                <ul class="style-none d-flex action-icons">
+                                    <li><a href="javascript:void(0);"><i class="fa-light fa-heart"></i></a></li>
+                                    <li><a href="javascript:void(0);"><i class="fa-light fa-bookmark"></i></a></li>
+                                    <li><a href="javascript:void(0);"><i class="fa-light fa-circle-plus"></i></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-md-7 d-flex">
+                            <div class="gutter w-100 h-100">
+                                <p>Mirpur 10, National Stadium, 1210, Dhaka, BD</p>
+                                <h2 class="price text-center">$28,100.00</h2>
+                                <ul class="style-none d-flex feature">
+                                    <li>
+                                        <strong class="d-block color-dark fw-500 fs-20">2137</strong>
+                                        <span class="fs-16">sqft</span>
+                                    </li>
+                                    <li class="text-center">
+                                        <strong class="d-block color-dark fw-500 fs-20">03</strong>
+                                        <span class="fs-16">bed</span>
+                                    </li>
+                                    <li class="text-end">
+                                        <strong class="d-block color-dark fw-500 fs-20">02</strong>
+                                        <span class="fs-16">bath</span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="button-group gutter d-flex justify-content-between align-items-center">
+                        <a routerLink="/listing_details_02" class="btn-three"><span>Check Full Details</span></a>
+                        <a routerLink="/listing_details_02" class="btn-four rounded-circle"><i class="bi bi-arrow-up-right"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="agent-section-one position-relative z-1 mt-170 xl-mt-120">
+    <div class="container container-large">
+        <div class="position-relative">
+            <div class="title-one mb-85 lg-mb-50 fadeInLeft" data-aos="fade-left">
+                <h3>Our Agents</h3>
+                <p class="fs-22 mt-xs">Lorem is placeholder text commonly used graphic </p>
+            </div>
+            <div class="swiper-container agent-slider-one swiper pb-80 md-pb-60" id="agent">
+                <div class="swiper-wrapper">
+                    <div *ngFor="let agent of agents" class="swiper-slide">
+                        <div class="agent-card-one position-relative">
+                            <div class="img border-20">
+                                <img [src]="agent.imageUrl" alt="" class="w-100 tran5s">
+                            </div>
+                            <div class="text-center">
+                                <h6>{{ agent.name }}</h6>
+                                <a [routerLink]="agent.link" class="stretched-link">{{ agent.designation }}</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-pagination pb-5"></div>
+                <div class="swiper-button-prev">
+                    <i class="fa-sharp fa-light fa-angle-left"></i>
+                </div>
+                <div class="swiper-button-next">
+                    <i class="fa-sharp fa-light fa-angle-right"></i>
+                </div>
+            </div>
+            <div class="section-btn text-center md-mt-60">
+                <a routerLink="/agent" class="btn-eight"><span>Meet Entire Team</span></a>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="feedback-section-six bg-pink-two position-relative z-1 mt-170 xl-mt-120 pt-110 xl-pt-80 pb-100 xl-pb-80">
+    <div class="container container-large">
+        <div class="title-one text-center mb-80 xl-mb-50 md-mb-30">
+            <h3>Client Feedback</h3>
+            <p class="fs-20 mt-xs">Client satisfaction speaks louder than our words. Hear from them.</p>
+        </div>
+        <div class="swiper-container swiper" id="feedback-slider">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide" *ngFor="let feedback of feedbacks">
+                    <div class="feedback-block-six rounded-4">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <ul class="rating style-none d-flex">
+                                <li *ngFor="let star of [].constructor(feedback.rating); let i = index">
+                                    <i class="fa-sharp fa-solid fa-star"></i>
+                                </li>
+                            </ul>
+                            <img [src]="feedback.icon" alt="" class="icon">
+                        </div>
+                        <blockquote>{{ feedback.feedback }}</blockquote>
+                        <div class="d-flex align-items-center justify-content-between">
+                            <h6 class="fs-20 m0">{{ feedback.name }}, <span class="fw-normal opacity-50">{{ feedback.location }}</span></h6>
+                            <img [src]="feedback.avatar" alt="" class="rounded-circle avatar">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <img src="assets/images/shape/shape_55.svg" alt="" class="lazy-img shapes shape_01">
+        <img src="assets/images/shape/shape_56.svg" alt="" class="lazy-img shapes shape_02">
+    </div>
+</div>
+<div class="address-banner fadeInUp mt-120 xl-mt-80 mb-140 xl-mb-80" data-aos="fade-up">
+    <div class="container container-large">
+        <div class="d-flex flex-wrap justify-content-center justify-content-lg-between">
+            <div class="block position-relative z-1 mt-25">
+                <div class="d-xl-flex align-items-center">
+                    <div class="icon rounded-circle d-flex align-items-center justify-content-center"><img src="assets/images/icon/icon_39.svg" alt="" class="lazy-img"></div>
+                    <div class="text">
+                        <p class="fs-22">We’r always happy to help.</p>
+                        <a href="javascript:void(0);" class="tran3s">ask&#64;homy.com</a>
+                    </div>
+                </div>
+            </div>
+            <div class="block position-relative skew-line z-1 mt-25">
+                <div class="d-xl-flex align-items-center">
+                    <div class="icon rounded-circle d-flex align-items-center justify-content-center"><img src="assets/images/icon/icon_39.svg" alt="" class="lazy-img"></div>
+                    <div class="text">
+                        <p class="fs-22">Our hotline number</p>
+                        <a href="javascript:void(0);" class="tran3s">+757 699 4478,</a>
+                        <a href="javascript:void(0);" class="tran3s">&nbsp; +991 377 9731</a>
+                    </div>
+                </div>
+            </div>
+            <div class="block position-relative z-1 mt-25">
+                <div class="d-xl-flex align-items-center">
+                    <div class="icon rounded-circle d-flex align-items-center justify-content-center"><img src="assets/images/icon/icon_39.svg" alt="" class="lazy-img"></div>
+                    <div class="text">
+                        <p class="fs-22">Live chat</p>
+                        <a href="javascript:void(0);" class="tran3s">www.homylivechat.com</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<app-fancy-banner-two></app-fancy-banner-two>
+<app-footer-5></app-footer-5>

@@ -1,0 +1,214 @@
+<app-navbar-7></app-navbar-7>
+<div class="inner-banner-one inner-banner bg-pink z-1 pt-160 lg-pt-140 pb-140 xl-pb-100 md-pb-80 position-relative">
+    <div class="container">
+        <div class="title-one text-center mb-55 xl-mb-30 lg-mb-20 fadeInUp" data-aos="fade-up">
+            <h3>Find Your <span>Home <img src="assets/images/shape/title_shape_02.svg" alt="" class="lazy-img"></span></h3>
+            <p class="fs-24 mt-xs">We’ve more than 745,000 apartments, place & plot.</p>
+        </div>
+        <div class="row">
+            <div class="col-xxl-10 m-auto">
+                <div class="search-wrapper-one layout-one bg position-relative">
+                    <div class="bg-wrapper border-0">
+                        <form action="javascript:void(0);">
+                            <div class="row gx-0 align-items-center">
+                                <div class="col-lg-4">
+                                    <div class="input-box-one border-left">
+                                        <div class="label">I’m looking to...</div>
+                                        <ng-select [items]="options" bindLabel="label" bindValue="value" [placeholder]="'Buy Apartments'">
+                                            <ng-option *ngFor="let option of options" [value]="option.value">{{ option.label }}</ng-option>
+                                        </ng-select>
+                                    </div>
+                                </div>
+                                <div class="col-xl-5 col-lg-4">
+                                    <div class="input-box-one border-left">
+                                        <div class="label">Location</div>
+                                        <ng-select class="" [items]="locations" bindLabel="label" bindValue="value" [placeholder]="'Dhanmondi, Dhaka'">
+                                            <ng-option *ngFor="let location of locations" [value]="location.value">{{ location.label }}</ng-option>
+                                        </ng-select>
+                                    </div>
+                                </div>
+                                <div class="col-xl-3 col-lg-4">
+                                    <div class="input-box-one md-mt-10">
+                                        <div class="d-flex align-items-center justify-content-center justify-content-lg-end">
+                                            <a href="javascript:void(0);" data-bs-toggle="modal" data-bs-target="#advanceFilterModal" class="search-modal-btn sm rounded-circle tran3s text-uppercase fw-500 d-inline-flex align-items-center justify-content-center me-3">
+                                                <i class="fa-light fa-sliders-up"></i>
+                                            </a>
+                                            <button class="fw-500 text-uppercase tran3s search-btn w-auto m0">Search</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <img src="assets/images/assets/ils_07.svg" alt="" class="lazy-img shapes w-100 illustration">
+</div>
+<div class="property-listing-six pt-150 xl-pt-100 pb-170 xl-pb-120">
+    <div class="container container-large">
+        <div class="row">
+            <div class="col-lg-8">
+                <div class="ps-xxl-5">
+                    <div class="listing-header-filter d-sm-flex justify-content-between align-items-center mb-40 lg-mb-30">
+                        <div>Showing <span class="color-dark fw-500">1–5</span> of <span class="color-dark fw-500">1,230</span> results</div>
+                        <div class="d-flex align-items-center xs-mt-20">
+                            <div class="short-filter d-flex align-items-center">
+                                <div class="fs-16 me-2">Short by:</div>
+                                <ng-select [items]="short" bindLabel="label" bindValue="value" [placeholder]="'Newest'">
+                                    <ng-option *ngFor="let range of short" [value]="range.value">{{ range.label }}</ng-option>
+                                </ng-select>
+                            </div>
+                            <a routerLink="/listing_11" class="tran3s layout-change rounded-circle ms-auto ms-sm-3" data-bs-toggle="tooltip" title="Switch To Grid View"><i class="fa-regular fa-grid-2"></i></a>
+                        </div>
+                    </div>
+                    <div *ngFor="let listing of listings" class="listing-card-seven border-20 p-20 grey-bg mb-50 fadeInUp" data-aos="fade-up">
+                        <div class="d-flex flex-wrap layout-one">
+                            <div class="img-gallery position-relative z-1 border-20 overflow-hidden" [style.background-image]="'url(' + listing.imgUrl + ')'">
+                                <div class="tag bg-white rounded-0 text-dark fw-500">{{ listing.type }}</div>
+                                <div class="img-slider-btn">
+                                    {{listing.images.length}} <i class="fa-regular fa-image"></i>
+                                    <a *ngFor="let img of listing.images" [href]="img" class="d-block" data-fancybox="img" [attr.data-caption]="listing.title"></a>
+                                </div>
+                            </div>
+                            <div class="property-info">
+                                <a href="javascript:void(0);" class="title tran3s mb-15">{{ listing.title }}</a>
+                                <div class="address">{{ listing.address }}</div>
+                                <div class="feature mt-30 mb-30 pt-30 pb-5">
+                                    <ul class="style-none d-flex flex-wrap align-items-center justify-content-between">
+                                        <li><strong>{{ listing.features.sqft }}</strong> sqft</li>
+                                        <li><strong>{{ listing.features.beds }}</strong> bed</li>
+                                        <li><strong>{{ listing.features.baths }}</strong> bath</li>
+                                        <li><strong>{{ listing.features.kitchen }}</strong> Kitchen</li>
+                                    </ul>
+                                </div>
+                                <div class="pl-footer d-flex flex-wrap align-items-center justify-content-between">
+                                    <strong class="price fw-500 color-dark me-auto" [innerHTML]="listing.price"></strong>
+                                    <ul class="style-none d-flex action-icons me-4">
+                                        <li><a href="javascript:void(0);"><i class="fa-light fa-heart"></i></a></li>
+                                        <li><a href="javascript:void(0);"><i class="fa-light fa-bookmark"></i></a></li>
+                                        <li><a href="javascript:void(0);"><i class="fa-light fa-circle-plus"></i></a></li>
+                                    </ul>
+                                    <a href="javascript:void(0);" class="btn-four rounded-circle"><i class="bi bi-arrow-up-right"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <ul class="pagination-one d-flex align-items-center justify-content-center justify-content-sm-start style-none pt-60 lg-pt-20">
+                        <li><a href="javascript:void(0);">1</a></li>
+                        <li class="active"><a href="javascript:void(0);">2</a></li>
+                        <li><a href="javascript:void(0);">3</a></li>
+                        <li><a href="javascript:void(0);">4</a></li>
+                        <li>....</li>
+                        <li class="ms-2"><a href="javascript:void(0);" class="d-flex align-items-center">Last <img src="assets/images/icon/icon_46.svg" alt="" class="ms-2"></a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-lg-4 order-lg-first">
+                <div class="advance-search-panel dot-bg md-mt-80">
+                    <div class="main-bg border-layout">
+                        <form action="javascript:void(0);">
+                            <div class="row gx-lg-5">
+                                <div class="col-12">
+                                    <div class="input-box-one mb-35">
+                                        <div class="label">I’m looking to...</div>
+                                        <ng-select [items]="options" bindLabel="label" bindValue="value" [placeholder]="'Buy Apartments'">
+                                            <ng-option *ngFor="let option of options" [value]="option.value">{{ option.label }}</ng-option>
+                                        </ng-select>
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <div class="input-box-one mb-35">
+                                        <div class="label">Keyword</div>
+                                        <input type="text" placeholder="buy, home, loft, apartment" class="type-input">
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <div class="input-box-one mb-50">
+                                        <div class="label">Location</div>
+                                        <ng-select class="" [items]="locations" bindLabel="label" bindValue="value" [placeholder]="'Dhanmondi, Dhaka'">
+                                            <ng-option *ngFor="let location of locations" [value]="location.value">{{ location.label }}</ng-option>
+                                        </ng-select>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="input-box-one mb-40">
+                                        <div class="label">Bedroom</div>
+                                        <ng-select [items]="priceRanges" bindLabel="label" bindValue="value" [placeholder]="'3+'">
+                                            <ng-option *ngFor="let range of priceRanges" [value]="range.value">{{ range.label }}</ng-option>
+                                        </ng-select>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="input-box-one mb-40">
+                                        <div class="label">Bath</div>
+                                        <ng-select [items]="bathRanges" bindLabel="label" bindValue="value" [placeholder]="'4+'">
+                                            <ng-option *ngFor="let range of bathRanges" [value]="range.value">{{ range.label }}</ng-option>
+                                        </ng-select>
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <h6 class="block-title fw-bold mb-30">Amenities</h6>
+                                    <ul class="style-none d-flex flex-wrap justify-content-between filter-input">
+                                        <li *ngFor="let amenity of amenities">
+                                            <input type="checkbox" name="Amenities" [value]="amenity.id">
+                                            <label>{{ amenity.name }}</label>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="col-12">
+                                    <h6 class="block-title fw-bold mt-25 mb-15">Price range</h6>
+                                    <div class="price-ranger">
+                                        <div class="price-input d-flex align-items-center justify-content-between pt-5">
+                                            <div class="field d-flex align-items-center">
+                                                <input type="number" class="input-min" [value]="minValue" readonly />
+                                            </div>
+                                            <div class="divider-line"></div>
+                                            <div class="field d-flex align-items-center">
+                                                <input type="number" class="input-max" [value]="maxValue" readonly />
+                                            </div>
+                                            <div class="currency ps-1">USD</div>
+                                        </div>
+                                        <div class="range-slider">
+                                            <ngx-slider [(value)]="minValue" [(highValue)]="maxValue" [options]="sliderOptions" (userChangeEnd)="onSliderChange()"></ngx-slider>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <h6 class="block-title fw-bold mt-45 mb-20">SQFT</h6>
+                                    <div class="d-flex align-items-center sqf-ranger">
+                                        <input type="text" placeholder="Min">
+                                        <div class="divider"></div>
+                                        <input type="text" placeholder="Max">
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <button class="fw-500 text-uppercase tran3s apply-search w-100 mt-40 mb-25">
+                                        <i class="fa-light fa-magnifying-glass"></i>
+                                        <span>Search</span>
+                                    </button>
+                                </div>
+                                <div class="col-12">
+                                    <div class="d-flex justify-content-between form-widget">
+                                        <a href="javascript:void(0);" class="tran3s">
+                                            <i class="fa-regular fa-arrows-rotate"></i>
+                                            <span>Reset Filter</span>
+                                        </a>
+                                        <a href="javascript:void(0);" class="tran3s">
+                                            <i class="fa-regular fa-star"></i>
+                                            <span>Save Search</span>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<app-fancy-banner-two></app-fancy-banner-two>
+<app-footer-5></app-footer-5>
+<app-advance-filter-modal></app-advance-filter-modal>

@@ -1,0 +1,146 @@
+<app-dashboard-navbar [Title]="'Profile'"></app-dashboard-navbar>
+
+<h2 class="main-title d-block d-lg-none">Profile</h2>
+
+<div class="bg-white card-box border-20">
+    <div class="user-avatar-setting d-flex align-items-center mb-30">
+        <img [src]="imageSrc || 'assets/dashboard-images/avatar_02.jpg'" alt="" class="lazy-img user-img">
+        <div class="upload-btn position-relative tran3s ms-4 me-3">
+            Upload new photo
+            <input type="file" id="uploadImg" name="uploadImg" (change)="onFileChange($event)">
+        </div>
+        <button type="button" class="delete-btn tran3s" (click)="clearForm()">Delete</button>
+    </div>
+    <div class="row">
+        <div class="col-12">
+            <div class="dash-input-wrapper mb-30">
+                <label for="">Username*</label>
+                <input type="text" [(ngModel)]="user.username" placeholder="JonyRio" name="username" />
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <div class="dash-input-wrapper mb-30">
+                <label for="">First Name*</label>
+                <input type="text" [(ngModel)]="user.firstName" placeholder="Mr Johny" name="firstName" />
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <div class="dash-input-wrapper mb-30">
+                <label for="">Last Name*</label>
+                <input type="text" [(ngModel)]="user.lastName" placeholder="Riolek" name="lastName" />
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <div class="dash-input-wrapper mb-30">
+                <label for="">Email*</label>
+                <input type="email" [(ngModel)]="user.email" placeholder="companyinc@mail.com" name="email" />
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <div class="dash-input-wrapper mb-30">
+                <label for="">Position*</label>
+                <ng-select [(ngModel)]="user.position" [items]="positions" bindLabel="name" [placeholder]="'Select a position'" name="position" class="dashboard-ng-select">
+                </ng-select>
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <div class="dash-input-wrapper mb-30">
+                <label for="">Phone Number*</label>
+                <input type="tel" [(ngModel)]="user.phoneNumber" placeholder="+880 01723801729" name="phoneNumber" />
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <div class="dash-input-wrapper mb-30">
+                <label for="">Website*</label>
+                <input type="text" [(ngModel)]="user.website" placeholder="http://somename.com" name="website" />
+            </div>
+        </div>
+        <div class="col-12">
+            <div class="dash-input-wrapper">
+                <label for="">About*</label>
+                <textarea [(ngModel)]="user.about" class="size-lg" placeholder="I am working for the last 4 years as a web designer, graphics designer and well as UI/UX designer............." name="about"></textarea>
+                <div class="alert-text">Brief description for your profile. URLs are hyperlinked.</div>
+            </div>
+        </div>
+    </div>
+
+
+</div>
+<div class="bg-white card-box border-20 mt-40">
+    <h4 class="dash-title-three">Social Media</h4>
+
+
+    <div class="col-12" *ngFor="let network of networks; let i = index">
+        <div class="dash-input-wrapper mb-20">
+            <label for="">Network {{ i + 1 }}</label>
+            <input type="text" [(ngModel)]="network.link" [placeholder]="'https://link' + (i + 1)" name="network{{i}}">
+        </div>
+    </div>
+
+
+    <a href="javascript:void(0);" class="dash-btn-one" (click)="addNetwork()">
+        <i class="bi bi-plus"></i> Add more link
+    </a>
+</div>
+
+<div class="bg-white card-box border-20 mt-40">
+    <h4 class="dash-title-three">Address & Location</h4>
+    <div class="row">
+        <div class="col-12">
+            <div class="dash-input-wrapper mb-25">
+                <label for="">Address*</label>
+                <input type="text" placeholder="19 Yawkey Way">
+            </div>
+        </div>
+        <div class="col-lg-3">
+            <div class="dash-input-wrapper mb-25">
+                <label for="">Country*</label>
+                <ng-select [items]="countries" bindLabel="name" bindValue="value" [placeholder]="'Select a country'">
+                </ng-select>
+            </div>
+        </div>
+        <div class="col-lg-3">
+            <div class="dash-input-wrapper mb-25">
+                <label for="">City*</label>
+                <ng-select [items]="cities" bindLabel="name" placeholder="Select a city">
+                </ng-select>
+            </div>
+        </div>
+        <div class="col-lg-3">
+            <div class="dash-input-wrapper mb-25">
+                <label for="">Zip Code*</label>
+                <input type="number" placeholder="1708">
+            </div>
+        </div>
+        <div class="col-lg-3">
+            <div class="dash-input-wrapper mb-25">
+                <label for="">State*</label>
+                <ng-select [items]="onthercities" bindLabel="name" placeholder="Select a city">
+                </ng-select>
+
+            </div>
+
+        </div>
+        <div class="col-12">
+            <div class="dash-input-wrapper mb-25">
+                <label for="">Map Location*</label>
+                <div class="position-relative">
+                    <input type="text" placeholder="XC23+6XC, Moiran, N105">
+                    <button class="location-pin tran3s"><img src="assets/dashboard-images/icon/icon_16.svg" alt="" class="lazy-img m-auto"></button>
+                </div>
+                <div class="map-frame mt-30">
+                    <div class="gmap_canvas h-100 w-100">
+                        <iframe class="gmap_iframe h-100 w-100" src="https://maps.google.com/maps?width=600&amp;height=400&amp;hl=en&amp;q=dhaka collage&amp;t=&amp;z=12&amp;ie=UTF8&amp;iwloc=B&amp;output=embed"></iframe>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+<div class="button-group d-inline-flex align-items-center mt-30">
+    <a href="javascript:void(0);" class="dash-btn-two tran3s me-3">Save</a>
+    <a href="javascript:void(0);" class="dash-cancel-btn tran3s">Cancel</a>
+</div>

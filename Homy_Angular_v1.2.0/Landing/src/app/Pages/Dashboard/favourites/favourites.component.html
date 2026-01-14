@@ -1,0 +1,55 @@
+<app-dashboard-navbar [Title]="'Favourites'"></app-dashboard-navbar>
+
+<h2 class="main-title d-block d-lg-none">Favourites</h2>
+
+<div class="row gx-xxl-5">
+    <div *ngFor="let listing of listings" class="col-lg-4 col-md-6 d-flex mt-40 fadeInUp" data-aos="fade-up" [attr.data-aos-delay]="listing.id * 100">
+        <div class="listing-card-one border-25 h-100 w-100">
+            <div class="img-gallery p-15">
+                <div class="position-relative border-25 overflow-hidden">
+                    <div class="tag border-25">{{ listing.tag }}</div>
+                    <div class="swiper-container swiper" id="carousel{{listing.id}}">
+                        <div class="swiper-wrapper">
+                            <div *ngFor="let imageUrl of listing.imageUrls" class="swiper-slide">
+                                <a routerLink="/listing_details_01" class="d-block">
+                                    <img [src]="imageUrl" class="w-100" alt="...">
+                                </a>
+                            </div>
+                        </div>
+                        <div class="swiper-pagination"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="property-info p-25">
+                <a routerLink="/listing_details_01" class="title tran3s">{{ listing.title }}</a>
+                <div class="address">{{ listing.address }}</div>
+                <ul class="style-none feature d-flex flex-wrap align-items-center justify-content-between">
+                    <li class="d-flex align-items-center">
+                        <img src="assets/images/icon/icon_04.svg" alt="" class="lazy-img icon me-2">
+                        <span class="fs-16">{{ listing.sqft }}</span>
+                    </li>
+                    <li class="d-flex align-items-center">
+                        <img src="assets/images/icon/icon_05.svg" alt="" class="lazy-img icon me-2">
+                        <span class="fs-16">{{ listing.bed }}</span>
+                    </li>
+                    <li class="d-flex align-items-center">
+                        <img src="assets/images/icon/icon_06.svg" alt="" class="lazy-img icon me-2">
+                        <span class="fs-16">{{ listing.bath }}</span>
+                    </li>
+                </ul>
+                <div class="pl-footer top-border d-flex align-items-center justify-content-between">
+                    <strong class="price fw-500 color-dark">{{ listing.price }}</strong>
+                    <a routerLink="/listing_details_01" class="btn-four rounded-circle"><i class="bi bi-arrow-up-right"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<ul class="pagination-one d-flex align-items-center style-none pt-20">
+    <li><a href="javascript:void(0);">1</a></li>
+    <li class="active"><a href="javascript:void(0);">2</a></li>
+    <li><a href="javascript:void(0);">3</a></li>
+    <li><a href="javascript:void(0);">4</a></li>
+    <li>....</li>
+    <li class="ms-2"><a href="javascript:void(0);" class="d-flex align-items-center">Last <img src="assets/images/icon/icon_46.svg" alt="" class="ms-2"></a></li>
+</ul>

@@ -1,0 +1,53 @@
+<app-dashboard-navbar [Title]="'Membership'"></app-dashboard-navbar>
+
+<h2 class="main-title d-block d-lg-none">Membership</h2>
+
+<div class="membership-plan-wrapper mb-20">
+    <div class="row gx-0">
+        <div class="col-xxl-7 col-lg-6 d-flex flex-column">
+            <div class="column w-100 h-100">
+                <h4>Current Plan (Standard)</h4>
+                <p>Unlimited access to our legal document library and online rental application tool, billed monthly.</p>
+            </div>
+        </div>
+        <div class="col-xxl-5 col-lg-6 d-flex flex-column">
+            <div class="column border-left w-100 h-100">
+                <div class="d-flex">
+                    <h3 class="price m0">$29</h3>
+                    <div class="ps-4 flex-fill">
+                        <h6>Monthly Plan</h6>
+                        <span class="text1 d-block">Your subscription renews <span class="fw-500">July 12th, 2023</span></span>
+                        <a href="javascript:void(0);" class="cancel-plan tran3s">Cancel Current Plan</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="pricing-section-two">
+    <div class="wrapper">
+        <div class="row gx-xxl-5">
+            <div class="col-xl-4 col-lg-6" *ngFor="let plan of plans">
+                <div [class.pr-column-wrapper]="true" [class.bg-white]="true" [class.rounded-5]="true" [class.border-0]="plan.name !== 'Standard'" [class.mt-30]="true" [class.active]="plan.active">
+                    <div class="pr-header text-center mb-55">
+                        <div class="plan fw-500 text-uppercase color-dark">{{ plan.name }}</div>
+                        <strong class="price fw-500">{{ plan.price | currency:'USD' }}</strong>
+                        <p class="fs-24">{{ plan.period }}</p>
+                    </div>
+                    <ul class="style-none text-center">
+                        <li *ngFor="let feature of plan.features" [class.disable]="feature.includes('Disabled')">
+                            {{ feature }}
+                        </li>
+                    </ul>
+                    <div class="pr-footer text-center mt-60">
+                        <a href="javascript:void(0);" class="btn-twelve w-100 sm" [class.current]="plan.active">
+                            {{ plan.active ? 'Current Plan' : 'Choose Plan' }}
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>

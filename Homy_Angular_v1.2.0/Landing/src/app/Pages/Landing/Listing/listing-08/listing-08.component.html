@@ -1,0 +1,108 @@
+<app-navbar-6></app-navbar-6>
+<div class="property-listing-six pt-200 xl-pt-150 pb-200 xl-pb-120">
+    <div class="container container-large">
+        <div class="search-wrapper-one layout-one bg position-relative mb-75 md-mb-50">
+            <div class="bg-wrapper rounded-0 border-0">
+                <form action="javascript:void(0);">
+                    <div class="row gx-0 align-items-center">
+                        <div class="col-xxl-2 col-xl-3 col-lg-4">
+                            <div class="input-box-one border-left">
+                                <div class="label">I’m looking to...</div>
+                                <ng-select [items]="options" bindLabel="label" bindValue="value" [placeholder]="'Buy Apartments'">
+                                    <ng-option *ngFor="let option of options" [value]="option.value">{{ option.label }}</ng-option>
+                                </ng-select>
+                            </div>
+                        </div>
+                        <div class="col-xl-3 col-lg-4">
+                            <div class="input-box-one border-left">
+                                <div class="label">Location</div>
+                                <ng-select class="" [items]="locations" bindLabel="label" bindValue="value" [placeholder]="'Dhanmondi, Dhaka'">
+                                    <ng-option *ngFor="let location of locations" [value]="location.value">{{ location.label }}</ng-option>
+                                </ng-select>
+                            </div>
+                        </div>
+                        <div class="col-xl-3 col-lg-4">
+                            <div class="input-box-one border-left border-lg-0">
+                                <div class="label">Price Range</div>
+                                <ng-select [items]="priceRanges" bindLabel="label" bindValue="value" [placeholder]="'$10,000 - $200,000'">
+                                    <ng-option *ngFor="let range of priceRanges" [value]="range.value">{{ range.label }}</ng-option>
+                                </ng-select>
+                            </div>
+                        </div>
+                        <div class="col-xxl-4 col-xl-3">
+                            <div class="input-box-one lg-mt-20">
+                                <div class="d-flex align-items-center justify-content-center">
+                                    <a href="javascript:void(0);" data-bs-toggle="modal" data-bs-target="#advanceFilterModal" class="search-modal-btn tran3s text-uppercase fw-500 d-inline-flex align-items-center me-3">
+                                        <span class="d-xl-none d-xxl-block">ADVANCE Search</span>
+                                        <i class="fa-light fa-sliders-up"></i>
+                                    </a>
+                                    <button class="fw-500 text-uppercase tran3s search-btn-four">
+                                        <span>Search</span>
+                                        <i class="fa-light fa-magnifying-glass"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="listing-header-filter d-sm-flex justify-content-between align-items-center mb-40 lg-mb-30">
+            <div>Showing <span class="color-dark fw-500">1–6</span> of <span class="color-dark fw-500">1,230</span> results</div>
+            <div class="d-flex align-items-center xs-mt-20">
+                <div class="short-filter d-flex align-items-center">
+                    <div class="fs-16 me-2">Short by:</div>
+                    <ng-select [items]="short" bindLabel="label" bindValue="value" [placeholder]="'Newest'">
+                        <ng-option *ngFor="let range of short" [value]="range.value">{{ range.label }}</ng-option>
+                    </ng-select>
+                </div>
+                <a routerLink="/listing_07" class="tran3s layout-change rounded-circle ms-auto ms-sm-3" data-bs-toggle="tooltip" title="Switch To Grid View"><i class="fa-regular fa-grid-2"></i></a>
+            </div>
+        </div>
+        <div *ngFor="let listing of listings" class="listing-card-seven grey-bg mb-50 fadeInUp" data-aos="fade-up">
+            <div class="d-flex flex-wrap layout-two">
+                <div class="img-gallery position-relative z-1 overflow-hidden" [ngStyle]="{'background-image': 'url(' + listing.imgUrl + ')'}">
+                    <div class="tag bg-white rounded-0 text-dark fw-500">{{listing.type}}</div>
+                    <div class="img-slider-btn">
+                        {{listing.images.length}} <i class="fa-regular fa-image"></i>
+                        <a *ngFor="let img of listing.images" [href]="img" class="d-block" data-fancybox="img" [attr.data-caption]="listing.title"></a>
+                    </div>
+                </div>
+                <div class="property-info">
+                    <a routerLink="/listing_details_01" class="title tran3s mb-15">{{listing.title}}</a>
+                    <div class="address">{{listing.address}}</div>
+                    <div class="feature border-0 mt-55 md-mt-40 mb-35 md-mb-20">
+                        <ul class="style-none d-flex flex-wrap align-items-center justify-content-between">
+                            <li><strong>{{listing.features.sqft}}</strong> sqft</li>
+                            <li><strong>{{listing.features.beds}}</strong> bed</li>
+                            <li><strong>{{listing.features.baths}}</strong> bath</li>
+                            <li><strong>{{listing.features.kitchen}}</strong> Kitchen</li>
+                            <li><strong>{{listing.features.parking}}</strong> Parking Lot</li>
+                            <li><strong>{{listing.features.garden}}</strong> Garden</li>
+                        </ul>
+                    </div>
+                    <div class="pl-footer pb-15 d-flex flex-wrap align-items-center justify-content-between">
+                        <strong class="price fw-500 color-dark me-auto">{{listing.price}}</strong>
+                        <ul class="style-none d-flex action-icons on-top">
+                            <li><a href="javascript:void(0);"><i class="fa-light fa-heart"></i></a></li>
+                            <li><a href="javascript:void(0);"><i class="fa-light fa-bookmark"></i></a></li>
+                            <li><a href="javascript:void(0);"><i class="fa-light fa-circle-plus"></i></a></li>
+                        </ul>
+                        <a routerLink="/listing_details_01" class="btn-four"><i class="bi bi-arrow-up-right"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <ul class="pagination-one square d-flex align-items-center justify-content-center style-none pt-60 lg-pt-20">
+            <li><a href="javascript:void(0);">1</a></li>
+            <li class="active"><a href="javascript:void(0);">2</a></li>
+            <li><a href="javascript:void(0);">3</a></li>
+            <li><a href="javascript:void(0);">4</a></li>
+            <li>....</li>
+            <li class="ms-2"><a href="javascript:void(0);" class="d-flex align-items-center">Last <img src="assets/images/icon/icon_46.svg" alt="" class="ms-2"></a></li>
+        </ul>
+    </div>
+</div>
+<app-fancy-banner-two></app-fancy-banner-two>
+<app-footer-5></app-footer-5>
+<app-advance-filter-modal></app-advance-filter-modal>

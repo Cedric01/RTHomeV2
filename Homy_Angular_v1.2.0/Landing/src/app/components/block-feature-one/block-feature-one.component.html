@@ -1,0 +1,20 @@
+<div class="block-feature-one mt-150 xl-mt-120">
+    <div class="container">
+        <div class="title-one text-center mb-50 xl-mb-30 lg-mb-20 fadeInUp" data-aos="fade-up">
+            <h3>Unlock Homy's <span>advantages <img src="assets/images/shape/title_shape_01.svg" alt="" class="lazy-img"></span></h3>
+            <p class="fs-24">Your trusted real estate partner in every transaction.</p>
+        </div>
+
+
+        <div class="row gx-xl-5">
+            <div class="col-md-4" *ngFor="let feature of features; let i = index">
+                <div class="card-style-one text-center fadeInUp mt-40" data-aos="fade-up" [attr.data-aos-delay]="feature.delay">
+                    <img [src]="feature.icon" alt="" class="lazy-img m-auto icon">
+                    <div class="fs-16 text-uppercase fw-500 fs-text mt-35 md-mt-30 mb-20">{{ feature.title }}</div>
+                    <p class="fs-24 ps-xxl-4 pe-xxl-4">{{ feature.description }}</p>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>

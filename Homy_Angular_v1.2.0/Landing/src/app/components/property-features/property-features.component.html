@@ -1,0 +1,27 @@
+<div class="property-feature-accordion bg-white shadow4 border-20 p-40 mb-50">
+    <h4 class="mb-20">Property Features</h4>
+    <p class="fs-20 lh-lg">Risk management and compliance, when approached strategically, have the potential to go beyond mitigating threats.</p>
+    <div class="accordion-style-two mt-45">
+        <div class="accordion" id="accordionTwo">
+            <div class="accordion-item" *ngFor="let section of accordionSections; let i = index">
+                <h2 class="accordion-header">
+                    <button class="accordion-button" [ngClass]="{'collapsed': !section.isExpanded}" type="button" data-bs-toggle="collapse" [attr.data-bs-target]="'#' + section.id" [attr.aria-expanded]="section.isExpanded" [attr.aria-controls]="section.id">
+                        {{ section.title }}
+                    </button>
+                </h2>
+                <div [id]="section.id" class="accordion-collapse collapse" [ngClass]="{'show': section.isExpanded}" data-bs-parent="#accordionTwo">
+                    <div class="accordion-body">
+                        <div class="feature-list-two">
+                            <ul class="style-none d-flex flex-wrap justify-content-between">
+                                <li *ngFor="let item of section.items">
+                                    <span>{{ item.label }}: </span>
+                                    <span class="fw-500 color-dark">{{ item.value }}</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

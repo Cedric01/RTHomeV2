@@ -1,0 +1,97 @@
+<app-navbar-6></app-navbar-6>
+<div class="inner-banner-two inner-banner z-1 pt-170 xl-pt-150 md-pt-130 pb-100 xl-pb-80 md-pb-50 position-relative" style="background-image: url(assets/images/media/img_49.jpg);">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6">
+                <h3 class="mb-35 xl-mb-30 md-mb-20">Agency</h3>
+                <ul class="theme-breadcrumb style-none d-inline-flex align-items-center justify-content-center position-relative z-1 bottom-line">
+                    <li><a routerLink="/">Home</a></li>
+                    <li>/</li>
+                    <li><a href="javascript:void(0);">Pages</a></li>
+                    <li>/</li>
+                    <li>Agency</li>
+                </ul>
+            </div>
+            <div class="col-lg-6">
+                <p class="sub-heading">Over 745,000 listings, apartments, lots and plots available now!</p>
+            </div>
+        </div>
+        <div class="search-wrapper-one layout-one position-relative mt-80 xl-mt-50">
+            <div class="bg-wrapper rounded-0 border-0">
+                <form action="javascript:void(0);">
+                    <div class="row gx-0 align-items-center">
+                        <div class="col-xl-5 col-lg-4">
+                            <div class="input-box-one border-left">
+                                <div class="label">Categories</div>
+                                <ng-select [items]="categories" bindLabel="label" bindValue="value" [placeholder]="'Select Categories'">
+                                    <ng-option *ngFor="let option of categories" [value]="option.value">{{ option.label }}</ng-option>
+                                </ng-select>
+                            </div>
+                        </div>
+                        <div class="col-xl-5 col-lg-5">
+                            <div class="input-box-one border-left">
+                                <div class="label">Location</div>
+                                <ng-select [items]="location" bindLabel="label" bindValue="value" [placeholder]="'Select Location'">
+                                    <ng-option *ngFor="let option of location" [value]="option.value">{{ option.label }}</ng-option>
+                                </ng-select>
+                            </div>
+                        </div>
+                        <div class="col-xl-2 col-lg-3">
+                            <div class="input-box-one text-center lg-mt-10">
+                                <button class="fw-500 text-uppercase tran3s search-btn-four">
+                                    <span>Search</span>
+                                    <i class="fa-light fa-magnifying-glass"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="agency-section mt-130 xl-mt-100 mb-150 xl-mb-100">
+    <div class="container">
+        <div class="listing-header-filter d-sm-flex justify-content-between align-items-center mb-35">
+            <div>Showing <span class="color-dark fw-500">1–12</span> of <span class="color-dark fw-500">1,230</span> results</div>
+            <div class="d-flex align-items-center xs-mt-20">
+                <div class="short-filter d-flex align-items-center">
+                    <div class="fs-16 me-2">Short by:</div>
+                    <ng-select [items]="options" bindLabel="label" bindValue="value" [placeholder]="'Popular'">
+                        <ng-option *ngFor="let option of options" [value]="option.value">{{ option.label }}</ng-option>
+                    </ng-select>
+                </div>
+            </div>
+        </div>
+        <div class="row gx-xxl-5">
+            <div *ngFor="let agency of agencies; let i = index" class="col-lg-4 col-sm-6">
+                <div class="card-style-nine position-relative z-1 mb-50 lg-mb-30 fadeInUp" [attr.data-aos]="'fade-up'" [attr.data-aos-delay]="i * 100">
+                    <div class="tag bg-white position-absolute text-uppercase">{{ agency.listingCount }} Listing</div>
+                    <div class="logo-wrapper d-flex align-items-center justify-content-center">
+                        <img [src]="agency.logo" alt="" class="lazy-img">
+                    </div>
+                    <div class="text-center pt-35">
+                        <h6 class="agency-name">{{ agency.name }}</h6>
+                        <ul class="rating style-none d-flex justify-content-center align-items-center">
+                            <li *ngFor="let star of [].constructor(agency.rating)" class="fa-sharp fa-solid fa-star"></li>
+                            <li><span>{{ agency.rating }}</span></li>
+                        </ul>
+                        <p>{{ agency.address }}</p>
+                        <a [href]="agency.detailsUrl" class="btn-eight w-100 rounded-0 tran3s">View Listing</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <ul class="pagination-one square d-flex align-items-center justify-content-center style-none pt-40">
+            <li><a href="javascript:void(0);">1</a></li>
+            <li class="active"><a href="javascript:void(0);">2</a></li>
+            <li><a href="javascript:void(0);">3</a></li>
+            <li><a href="javascript:void(0);">4</a></li>
+            <li>....</li>
+            <li class="ms-2"><a href="javascript:void(0);" class="d-flex align-items-center">Last <img src="assets/images/icon/icon_46.svg" alt="" class="ms-2"></a></li>
+        </ul>
+    </div>
+</div>
+<app-fancy-banner-two></app-fancy-banner-two>
+<app-footer-5></app-footer-5>

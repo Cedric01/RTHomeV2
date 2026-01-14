@@ -1,0 +1,194 @@
+/* You can add global styles to this file, and also import other style files */
+
+.dropdown-menu-end {
+    right: 0;
+}
+
+.dashboard-ng-select {
+    &.ng-select.ng-select-single .ng-select-container {
+        height: 55px;
+    }
+
+    &.ng-select .ng-select-container {
+        border: 1px solid #e5e5e5;
+        border-radius: 8px;
+    }
+
+    &.ng-select.ng-select-single .ng-select-container .ng-value-container .ng-input {
+        padding-left: 20px;
+    }
+
+    &.ng-select .ng-select-container .ng-value-container {
+        padding-left: 20px;
+        padding-top: 3px;
+        font-size: 16px;
+    }
+
+    &.ng-select .ng-select-container .ng-value-container .ng-input>input {
+        height: 44px;
+    }
+
+    .ng-dropdown-panel.ng-select-bottom {
+        border: 1px solid rgba(0, 0, 0, .05);
+        box-shadow: 0 13px 35px -12px rgba(35, 35, 35, .1);
+        background-color: #fff;
+    }
+
+    .ng-dropdown-panel .ng-dropdown-panel-items .ng-option.ng-option-marked {
+        color: #ff6725;
+        background: rgba(255, 103, 37, .03);
+    }
+
+    .ng-dropdown-panel .ng-dropdown-panel-items .ng-option {
+        font-size: .95em;
+        padding: 6px 10px;
+        line-height: 38px;
+        margin-top: 5px;
+    }
+
+    .ng-dropdown-panel .ng-dropdown-panel-items .ng-option.ng-option-selected,
+    .ng-dropdown-panel .ng-dropdown-panel-items .ng-option.ng-option-selected.ng-option-marked {
+        color: #ff6725;
+        background: rgba(255, 103, 37, .03);
+    }
+}
+
+//swiper pagination
+
+.swiper-pagination {
+    .swiper-pagination-bullet {
+        background: #282828;
+        opacity: 100;
+
+        &.swiper-pagination-bullet-active {
+            background: #ff6725;
+        }
+    }
+}
+
+.swiper-horizontal>.swiper-pagination-bullets,
+.swiper-pagination-bullets.swiper-pagination-horizontal,
+.swiper-pagination-custom,
+.swiper-pagination-fraction {
+    bottom: -9px;
+}
+
+:is(.swiper-button-prev, .swiper-button-next) {
+    width: 55px;
+    height: 55px;
+    line-height: 55px;
+    border-radius: 50%;
+    text-align: center;
+    background: #fff;
+    cursor: pointer;
+    color: #000;
+    font-size: 1.35em;
+    transition: all .3s ease-in-out 0s;
+    box-shadow: 5px 10px 20px rgba(0, 0, 0, .06);
+
+    &::after {
+        display: none;
+    }
+
+    &:hover {
+        background: #ff6725;
+        color: #fff;
+    }
+}
+
+.feedback-bg-wrapper {
+    .swiper-pagination {
+        text-align: left;
+        bottom: 60px;
+
+        .swiper-pagination-bullet {
+            width: 10px;
+            height: 10px;
+            background: rgba(0, 0, 0, 0);
+            border: 1px solid #fff;
+
+            &.swiper-pagination-bullet-active {
+                background: #fff;
+            }
+        }
+    }
+}
+
+.custom-ng-select {
+    &.ng-select.ng-select-single .ng-select-container {
+        height: 50px;
+    }
+
+    &.ng-select .ng-select-container {
+        border: 1px solid #000;
+        border-radius: 0;
+    }
+
+    &.ng-select.ng-select-single .ng-select-container .ng-value-container .ng-input {
+        padding-left: 20px;
+    }
+
+    &.ng-select .ng-select-container .ng-value-container {
+        padding-left: 20px;
+        padding-top: 3px;
+        font-size: 16px;
+    }
+
+    &.ng-select .ng-select-container .ng-value-container .ng-input>input {
+        height: 44px;
+    }
+
+    .ng-dropdown-panel.ng-select-bottom {
+        border: 1px solid #000;
+        box-shadow: 0 13px 35px -12px rgba(35, 35, 35, .1);
+        background-color: #fff;
+    }
+
+    .ng-dropdown-panel .ng-dropdown-panel-items .ng-option.ng-option-marked {
+        color: #ff6725;
+        background: rgba(255, 103, 37, .03);
+    }
+
+    .ng-dropdown-panel .ng-dropdown-panel-items .ng-option {
+        font-size: .95em;
+        padding: 6px 10px;
+        line-height: 38px;
+        margin-top: 5px;
+    }
+
+    .ng-dropdown-panel .ng-dropdown-panel-items .ng-option.ng-option-selected,
+    .ng-dropdown-panel .ng-dropdown-panel-items .ng-option.ng-option-selected.ng-option-marked {
+        color: #ff6725;
+        background: rgba(255, 103, 37, .03);
+    }
+}
+
+//range slider custom
+.range-slider {
+    .ngx-slider {
+
+        .ngx-slider-bar {
+            background: #efefef;
+        }
+
+        .ngx-slider-selection {
+            background: #000 !important;
+        }
+
+        .ngx-slider-pointer {
+            background: #fff;
+            border: 2px solid #000;
+        }
+
+        .ngx-slider-pointer {
+            height: 20px;
+            width: 20px;
+            top: -9px;
+
+            &::after {
+                display: none;
+            }
+        }
+
+    }
+}

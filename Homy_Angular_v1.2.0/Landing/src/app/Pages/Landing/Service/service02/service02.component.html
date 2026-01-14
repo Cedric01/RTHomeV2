@@ -1,0 +1,167 @@
+<app-navbar-6></app-navbar-6>
+<div class="inner-banner-two inner-banner z-1 pt-160 lg-pt-130 pb-160 xl-pb-120 md-pb-80 position-relative" style="background-image: url(assets/images/media/img_49.jpg);">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6">
+                <h3 class="mb-35 xl-mb-20 pt-15">Our Services</h3>
+                <ul class="theme-breadcrumb style-none d-inline-flex align-items-center justify-content-center position-relative z-1 bottom-line">
+                    <li><a routerLink="/">Home</a></li>
+                    <li>/</li>
+                    <li>Services</li>
+                </ul>
+            </div>
+            <div class="col-lg-6">
+                <p class="sub-heading">Over 745,000 listings, apartments, lots and plots available now!</p>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="block-feature-eleven mt-150 xl-mt-100">
+    <div class="container container-large">
+        <div class="row">
+            <div class="col-lg-5">
+                <div class="title-one md-mb-40">
+                    <h3>1,230+ <span>Companies <img src="assets/images/shape/title_shape_10.svg" alt="" class="lazy-img"></span>Trust by us.</h3>
+                </div>
+            </div>
+            <div class="col-xxl-6 col-lg-7 ms-auto">
+                <p class="fs-24 lh-lg mb-30 color-dark">Your leading real estate advocate, transforming houses into dreams. Trust us to expertly guide you home. 745,000 apartments & home for sell, rent & mortgage.</p>
+                <div class="d-inline-flex flex-wrap align-items-center">
+                    <a routerLink="/about_us_02" class="btn-five md rounded-0 mt-20 me-5"><span>More Details</span></a>
+                    <a routerLink="/contact" class="btn-three mt-20"><span>Request a Callback</span> <i class="fa-light fa-arrow-right-long"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="partner-section-two mt-100 lg-mt-80">
+    <div class="container container-large">
+        <div class="swiper-container swiper">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide" *ngFor="let logo of logos">
+                    <img [src]="logo" alt="Logo">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="block-feature-seven position-relative z-1 mt-150 xl-mt-120 lg-mt-100">
+    <div class="container container-large">
+        <div class="position-relative">
+            <div class="text-center fadeInUp" data-aos="fade-up">
+                <div class="title-one">
+                    <h3><span>We’r Here <img src="assets/images/shape/title_shape_10.svg" alt="" class="lazy-img"></span>to help you</h3>
+                    <p class="fs-22 mt-xs">Explore featured properties for sale.</p>
+                </div>
+            </div>
+            <div class="wrapper position-relative z-1 mt-45 lg-mt-20 mb-100 lg-mb-50">
+                <div class="row gx-xxl-5">
+                    <div class="col-lg-4 col-md-6 fadeInUp" *ngFor="let card of propertyCards" [attr.data-aos]="card.wowDelay ? 'fade-up' : 'fade-up'" [attr.data-aos-delay]="card.wowDelay">
+                        <div class="card-style-two overflow-hidden position-relative z-1 mt-30">
+                            <img [src]="card.img" alt="" class="lazy-img w-100 tran5s">
+                            <div class="content text-center">
+                                <div class="btn-line tran3s fw-500 text-uppercase">{{ card.btnText }}</div>
+                                <h4 class="mt-15 mb-35">{{ card.title }}</h4>
+                                <a [href]="card.link" class="btn-four rounded-circle m-auto"><i class="bi bi-arrow-up-right"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="block-feature-seventeen dark-bg position-relative z-1 pt-120 xl-pt-80 pb-140 xl-pb-80">
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-8 m-auto">
+                <div class="title-one text-center fadeInUp mb-40 lg-mb-20" data-aos="fade-up">
+                    <h3 class="text-white">Core <span>Services<img src="assets/images/shape/title_shape_07.svg" alt="" class="lazy-img"></span></h3>
+                    <p class="fs-22 color-dark text-white">Over 745K listings of apartments, lots, plots - available today.</p>
+                </div>
+            </div>
+        </div>
+        <div class="row gx-xxl-5">
+            <div class="col-lg-4 col-md-6 d-flex mt-40 fadeInUp" *ngFor="let card of cards" [attr.data-aos]="card.wowDelay ? 'fade-up' : 'fade-up'" [attr.data-aos-delay]="card.wowDelay">
+                <div class="card-style-ten rounded-0 d-flex align-items-start flex-column w-100 h-100">
+                    <div class="icon d-flex align-items-center justify-content-center rounded-circle tran3s">
+                        <img [src]="card.img" alt="" class="lazy-img">
+                    </div>
+                    <h6>{{ card.title }}</h6>
+                    <p>{{ card.description }}</p>
+                    <a [href]="card.link" class="btn-twelve sm mt-auto">{{ card.btnText }}</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <img src="assets/images/shape/shape_75.svg" alt="" class="lazy-img shapes shape_01">
+    <img src="assets/images/shape/shape_76.svg" alt="" class="lazy-img shapes shape_02">
+</div>
+<div class="block-feature-ten mt-170 xl-mt-120 md-mt-100 mb-150 xl-mb-100">
+    <div class="container container-large">
+        <div class="row">
+            <div class="col-xxl-5 col-lg-6 ms-auto order-lg-last fadeInRight" data-aos="fade-right">
+                <div class="pb-45">
+                    <div class="title-one mb-70 lg-mb-50">
+                        <div class="upper-title">Why US</div>
+                        <h3>Find you Dream Home Easily.</h3>
+                    </div>
+                    <div class="accordion accordion-style-one top-bottom-line p0 mb-80 lg-mb-50" id="accordionOne">
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                                    Advance Search
+                                </button>
+                            </h2>
+                            <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#accordionOne">
+                                <div class="accordion-body">
+                                    <p>It only takes 5 minutes. Set-up is smooth & simple, with fully customisable filter to the right one.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                    Exert Agents for any help
+                                </button>
+                            </h2>
+                            <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionOne">
+                                <div class="accordion-body">
+                                    <p>It only takes 5 minutes. Set-up is smooth & simple, with fully customisable filter to the right one.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="true" aria-controls="collapseThree">
+                                    Protected payments, every time
+                                </button>
+                            </h2>
+                            <div id="collapseThree" class="accordion-collapse collapse" data-bs-parent="#accordionOne">
+                                <div class="accordion-body">
+                                    <p>It only takes 5 minutes. Set-up is smooth & simple, with fully customisable filter to the right one.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <a routerLink="/contact" class="btn-five rounded-0">Contact us</a>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="media-gallery position-relative z-1 h-100 fadeInLeft" data-aos="fade-left">
+                    <div class="bg" style="background-image: url(assets/images/media/img_56.jpg);">
+                        <div class="card-style-three p0">
+                            <div class="bg-wrapper text-center">
+                                <h3>07+</h3>
+                                <p>Years Experience <br>with proud.</p>
+                            </div>
+                        </div>
+                        <img src="assets/images/assets/screen_05.jpg" alt="" class="lazy-img screen_01">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<app-fancy-banner-two></app-fancy-banner-two>
+<app-footer-5></app-footer-5>

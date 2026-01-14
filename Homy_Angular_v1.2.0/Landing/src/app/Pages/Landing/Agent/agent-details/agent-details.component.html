@@ -1,0 +1,302 @@
+<app-navbar-6></app-navbar-6>
+<div class="inner-banner-two inner-banner z-1 pt-170 xl-pt-150 md-pt-130 pb-140 xl-pb-100 md-pb-80 position-relative" style="background-image: url(assets/images/media/img_49.jpg);">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6">
+                <h3 class="mb-45 xl-mb-30 md-mb-20">Agent Details</h3>
+                <ul class="theme-breadcrumb style-none d-inline-flex align-items-center justify-content-center position-relative z-1 bottom-line">
+                    <li><a routerLink="/">Home</a></li>
+                    <li>/</li>
+                    <li><a routerLink="/agent">Agent</a></li>
+                    <li>/</li>
+                    <li>Mathews Firlo</li>
+                </ul>
+            </div>
+            <div class="col-lg-6">
+                <p class="sub-heading">Over 745,000 listings, apartments, lots and plots available now!</p>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="agent-details theme-details-one mt-130 xl-mt-100 pb-150 xl-pb-100">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8">
+                <div class="info-pack-one mb-80 xl-mb-50">
+                    <div class="row">
+                        <div class="col-xl-6 d-flex">
+                            <div class="media position-relative z-1 w-100 me-xl-4" style="background-image: url(assets/images/agent/img_10.jpg);">
+                                <div class="tag bg-white position-absolute text-uppercase">4 Listing</div>
+                            </div>
+                        </div>
+                        <div class="col-xl-6">
+                            <div class="ps-xxl-3 pe-xxl-3 pe-xl-0 ps-xl-0 pe-3 ps-3 pt-40 lg-pt-30 pb-45 lg-pb-30">
+                                <h4>Mathews Firlo.</h4>
+                                <div class="designation fs-16">Sales & Broker</div>
+                                <div class="table-responsive">
+                                    <table class="table">
+                                        <tbody>
+                                            <tr>
+                                                <td>Location: </td>
+                                                <td>Spain, Barcelona </td>
+                                            </tr>
+                                            <tr>
+                                                <td>Phone: </td>
+                                                <td>+21 456 987 330</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Email:</td>
+                                                <td>mathfir&#64;support.com</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Qualification:</td>
+                                                <td>Master Degree</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <ul class="style-none d-flex align-items-center social-icon">
+                                    <li><a href="javascript:void(0);"><i class="fa-brands fa-whatsapp"></i></a></li>
+                                    <li><a href="javascript:void(0);"><i class="fa-brands fa-x-twitter"></i></a></li>
+                                    <li><a href="javascript:void(0);"><i class="fa-brands fa-instagram"></i></a></li>
+                                    <li><a href="javascript:void(0);"><i class="fa-brands fa-viber"></i></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="agent-overview bottom-line-dark pb-40 mb-80 xl-mb-50">
+                    <h4 class="mb-20">Overview</h4>
+                    <p class="fs-20 lh-lg pb-15">Before establishing Beratung in 2001, Mathew founded Silicon Valley internet companies and later held management roles at Salomon in New York.</p>
+                    <p class="fs-20 lh-lg">Risk management and compliance, when approached strategically, have the potential to go beyond mitigating threats and protecting a company’s operations & reputation.They can actually generate value and create opportunities. </p>
+                </div>
+                <div class="agent-property-listing bottom-line-dark pb-20 mb-80 xl-mb-50">
+                    <div class="d-sm-flex justify-content-between align-items-center mb-40 xs-mb-20">
+                        <h4 class="mb-10">Listings</h4>
+                        <div class="filter-nav-one xs-mt-40">
+                            <ul class="style-none d-flex justify-content-center flex-wrap isotop-menu-wrapper">
+                                <li *ngFor="let filter of ['*', 'sell', 'rent']" [class.is-checked]="activeFilter === filter" (click)="setFilter(filter)">
+                                    {{ filter === '*' ? 'All' : filter.charAt(0).toUpperCase() + filter.slice(1) }}
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div id="isotop-gallery-wrapper" class="grid-2column">
+                        <div class="grid-sizer"></div>
+                        <div *ngFor="let item of items" [class]="isItemVisible(item.type) ? 'isotop-item ' + item.type : ''">
+                            <div class="listing-card-one shadow-none style-two mb-50">
+                                <div class="img-gallery">
+                                    <div class="position-relative overflow-hidden">
+                                        <div class="tag bg-white text-dark fw-500">{{ item.tag }}</div>
+                                        <img [src]="item.image" class="w-100" alt="...">
+                                        <div class="img-slider-btn">
+                                            03 <i class="fa-regular fa-image"></i>
+                                            <a href="{{ item.image }}" class="d-block" data-fancybox="img" data-caption="Blueberry villa"></a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="property-info d-flex justify-content-between align-items-end pt-30">
+                                    <div>
+                                        <strong class="price fw-500 color-dark">{{ item.price }}</strong>
+                                        <div class="address pt-5 m0">{{ item.address }}</div>
+                                    </div>
+                                    <a href="javascript:void(0);" class="btn-four mb-5">
+                                        <i class="bi bi-arrow-up-right"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="review-panel-one bottom-line-dark pb-40 mb-80 xl-mb-50">
+                    <div class="position-relative z-1">
+                        <div class="d-sm-flex justify-content-between align-items-center mb-10">
+                            <h4 class="m0 xs-pb-30">All Reviews (4.7 Rating)</h4>
+                            <select class="nice-select rounded-0">
+                                <option value="0">Newest</option>
+                                <option value="1">Best Seller</option>
+                                <option value="2">Best Match</option>
+                            </select>
+                        </div>
+                        <div class="review-wrapper mb-35">
+                            <div class="review">
+                                <img src="assets/images/media/img_01.jpg" alt="" class="rounded-circle avatar">
+                                <div class="text">
+                                    <div class="d-sm-flex justify-content-between">
+                                        <div>
+                                            <h6 class="name">Zubayer Al Hasan</h6>
+                                            <div class="time fs-16">17 Aug, 23</div>
+                                        </div>
+                                        <ul class="rating style-none d-flex xs-mt-10">
+                                            <li><span class="fst-italic me-2">(4.7 Rating)</span> </li>
+                                            <li><i class="fa-sharp fa-solid fa-star"></i></li>
+                                            <li><i class="fa-sharp fa-solid fa-star"></i></li>
+                                            <li><i class="fa-sharp fa-solid fa-star"></i></li>
+                                            <li><i class="fa-sharp fa-solid fa-star"></i></li>
+                                            <li><i class="fa-sharp fa-solid fa-star"></i></li>
+                                        </ul>
+                                    </div>
+                                    <p class="fs-20 mt-20 mb-30">Lorem ipsum dolor sit amet consectetur. Pellentesque sed nulla facili diam posuere aliquam suscipit quam.</p>
+                                    <div class="d-flex review-help-btn">
+                                        <a href="javascript:void(0);" class="me-5"><i class="fa-sharp fa-regular fa-thumbs-up"></i> <span>Helpful</span></a>
+                                        <a href="javascript:void(0);"><i class="fa-sharp fa-regular fa-flag-swallowtail"></i> <span>Flag</span></a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="review">
+                                <img src="assets/images/media/img_03.jpg" alt="" class="rounded-circle avatar">
+                                <div class="text">
+                                    <div class="d-sm-flex justify-content-between">
+                                        <div>
+                                            <h6 class="name">Rashed Kabir</h6>
+                                            <div class="time fs-16">13 Jun, 23</div>
+                                        </div>
+                                        <ul class="rating style-none d-flex xs-mt-10">
+                                            <li><span class="fst-italic me-2">(4.9 Rating)</span> </li>
+                                            <li><i class="fa-sharp fa-solid fa-star"></i></li>
+                                            <li><i class="fa-sharp fa-solid fa-star"></i></li>
+                                            <li><i class="fa-sharp fa-solid fa-star"></i></li>
+                                            <li><i class="fa-sharp fa-solid fa-star"></i></li>
+                                            <li><i class="fa-sharp fa-solid fa-star"></i></li>
+                                        </ul>
+                                    </div>
+                                    <p class="fs-20 mt-20 mb-30">Lorem ipsum dolor sit amet consectetur. Pellentesque sed nulla facili diam posuere aliquam suscipit quam.</p>
+                                    <ul class="style-none d-flex flex-wrap review-gallery pb-30">
+                                        <li *ngFor="let item of album; let i = index">
+                                            <a href="javascript:void(0);" (click)="open(i)">
+                                                <img [src]="item.thumb" [alt]="item.caption" class="d-block">
+                                            </a>
+                                        </li>
+                                    </ul>
+                                    <div class="d-flex review-help-btn">
+                                        <a href="javascript:void(0);" class="me-5"><i class="fa-sharp fa-regular fa-thumbs-up"></i> <span>Helpful</span></a>
+                                        <a href="javascript:void(0);"><i class="fa-sharp fa-regular fa-flag-swallowtail"></i> <span>Flag</span></a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="review hide">
+                                <img src="assets/images/media/img_02.jpg" alt="" class="rounded-circle avatar">
+                                <div class="text">
+                                    <div class="d-sm-flex justify-content-between">
+                                        <div>
+                                            <h6 class="name">Perty Jinta</h6>
+                                            <div class="time fs-16">17 Aug, 23</div>
+                                        </div>
+                                        <ul class="rating style-none d-flex xs-mt-10">
+                                            <li><span class="fst-italic me-2">(4.7 Rating)</span> </li>
+                                            <li><i class="fa-sharp fa-solid fa-star"></i></li>
+                                            <li><i class="fa-sharp fa-solid fa-star"></i></li>
+                                            <li><i class="fa-sharp fa-solid fa-star"></i></li>
+                                            <li><i class="fa-sharp fa-solid fa-star"></i></li>
+                                            <li><i class="fa-sharp fa-solid fa-star"></i></li>
+                                        </ul>
+                                    </div>
+                                    <p class="fs-20 mt-20 mb-30">Lorem ipsum dolor sit amet consectetur. Pellentesque sed nulla facili diam posuere aliquam suscipit quam.</p>
+                                    <div class="d-flex review-help-btn">
+                                        <a href="javascript:void(0);" class="me-5"><i class="fa-sharp fa-regular fa-thumbs-up"></i> <span>Helpful</span></a>
+                                        <a href="javascript:void(0);"><i class="fa-sharp fa-regular fa-flag-swallowtail"></i> <span>Flag</span></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="load-more-review text-uppercase fw-500 w-100 inverse rounded-0 tran3s">VIEW ALL 120 REVIEWS <i class="bi bi-arrow-up-right"></i></div>
+                    </div>
+                </div>
+                <div class="review-form">
+                    <h4 class="mb-20">Leave A Reply</h4>
+                    <p class="fs-20 lh-lg pb-15"><a href="javascript:void(0);" (click)="openModal()" class="color-dark fw-500 text-decoration-underline">Sign in</a> to post your comment or signup if you don't have any account.</p>
+
+                    <div class="bg-dot p-30">
+                        <form action="javascript:void(0);" class="bg-white p-40">
+                            <div class="row">
+                                <div class="col-12">
+                                    <div class="input-box-two mb-30">
+                                        <div class="label">Title*</div>
+                                        <input type="text" placeholder="Rashed Kabir" class="type-input rounded-0">
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="input-box-two mb-30">
+                                        <div class="label">Email*</div>
+                                        <input type="email" placeholder="rshdkabir@gmail.com" class="type-input rounded-0">
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="input-box-two mb-30">
+                                        <div class="label">Ratings*</div>
+                                        <select class="nice-select rounded-0">
+                                            <option value="0">Ratings</option>
+                                            <option value="1">Five Star</option>
+                                            <option value="1">Four Star</option>
+                                            <option value="1">Three Star</option>
+                                            <option value="1">Two Star</option>
+                                            <option value="1">One Star</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <div class="input-box-two mb-30">
+                                        <textarea placeholder="Write your review here..." class="rounded-0"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                            <button class="btn-five text-uppercase rounded-0 sm">Post Review</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="theme-sidebar-one dot-bg p-30 ms-xxl-3 md-mt-60">
+                    <div class="tour-schedule bg-white p-30 mb-40">
+                        <h5 class="mb-40">Contact Form</h5>
+                        <form action="javascript:void(0);">
+                            <div class="input-box-three mb-25">
+                                <div class="label">Your Email*</div>
+                                <input type="email" placeholder="Enter mail address" class="type-input rounded-0">
+                            </div>
+                            <div class="input-box-three mb-25">
+                                <div class="label">Your Phone*</div>
+                                <input type="tel" placeholder="Your phone number" class="type-input rounded-0">
+                            </div>
+                            <div class="input-box-three mb-15">
+                                <div class="label">Message*</div>
+                                <textarea placeholder="Hello, I am interested in [Califronia Apartments]" class="rounded-0"></textarea>
+                            </div>
+                            <button class="btn-nine text-uppercase w-100 mb-20">INQUIry</button>
+                        </form>
+                        <a href="tel:+548842445" class="btn-eight sm text-uppercase w-100 rounded-0 tran3s">CALL NOW</a>
+                    </div>
+
+                    <div class="agent-finder bg-white p-30 mb-40">
+                        <h5 class="mb-40">Search Agent</h5>
+                        <form action="javascript:void(0);">
+                            <div class="input-box-one mb-25">
+                                <div class="label">Agent Name</div>
+                                <input type="text" placeholder="Type Agent Name" class="type-input">
+                            </div>
+                            <div class="input-box-one mb-25">
+                                <div class="label">Keyword</div>
+                                <input type="text" placeholder="Apartments, Villa" class="type-input">
+                            </div>
+                            <div class="input-box-one mb-25">
+                                <div class="label">Location</div>
+                                <select class="nice-select fw-normal">
+                                    <option value="1">Dhanmondi, Dhaka</option>
+                                    <option value="2">Acapulco, Mexico</option>
+                                    <option value="3">Berlin, Germany</option>
+                                    <option value="4">Cannes, France</option>
+                                    <option value="5">Delhi, India</option>
+                                    <option value="6">Giza, Egypt </option>
+                                    <option value="7">Havana, Cuba</option>
+                                </select>
+                            </div>
+                            <button class="btn-nine text-uppercase w-100 mb-10">SEARCH</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<app-fancy-banner-two></app-fancy-banner-two>
+<app-footer-5></app-footer-5>

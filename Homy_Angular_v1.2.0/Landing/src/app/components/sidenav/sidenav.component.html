@@ -1,0 +1,55 @@
+<div class="offcanvas offcanvas-end sidebar-nav" data-bs-backdrop="static" tabindex="-1" id="sideNav" aria-labelledby="staticBackdropLabel">
+    <div class="offcanvas-header">
+        <div class="logo order-lg-0">
+            <a routerLink="/" class="d-flex align-items-center">
+                <img src="assets/images/logo/logo_02.svg" alt="">
+            </a>
+        </div>
+        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    </div>
+    <div class="wrapper mt-60">
+        <div class="d-flex flex-column h-100">
+            <div class="property-block">
+                <h4 class="title pb-25">Featured Listing </h4>
+                <div class="row">
+                    <div class="col-12" *ngFor="let property of listings">
+                        <div class="listing-card-one shadow-none style-two mb-40">
+                            <div class="img-gallery">
+                                <div class="position-relative overflow-hidden">
+                                    <div class="tag bg-white text-dark fw-500">{{ property.tag }}</div>
+                                    <img [src]="property.imgUrl" class="w-100" alt="...">
+
+                                    <div class="img-slider-btn">
+                                        <span>{{ property.images.length }} <i class="fa-regular fa-image"></i></span>
+                                        <a *ngFor="let img of property.images; let i = index" [href]="img" class="d-block" data-fancybox="'img' + i" [attr.data-caption]="'Blueberry villa'"></a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="property-info d-flex justify-content-between align-items-end pt-30">
+                                <div>
+                                    <strong class="price fw-500 color-dark fs-3">{{ property.price }}<sub>/ m</sub></strong>
+                                    <div class="address pt-5 m0">{{ property.address }}</div>
+                                </div>
+                                <a href="javascript:void(0);" class="btn-four mb-5"><i class="bi bi-arrow-up-right"></i></a>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="address-block mt-50">
+                <h4 class="title pb-15">Our Address</h4>
+                <p>Chowrastar Mirpur- 1210, Sangu <br>River, Dhaka</p>
+                <p>Urgent issue? call us at <br><a href="tel:310.841.5500">310.841.5500</a></p>
+            </div>
+            <ul class="style-none d-flex flex-wrap w-100 justify-content-between align-items-center social-icon pt-25 mt-auto">
+                <li><a href="javascript:void(0);"><i class="fa-brands fa-whatsapp"></i></a></li>
+                <li><a href="javascript:void(0);"><i class="fa-brands fa-x-twitter"></i></a></li>
+                <li><a href="javascript:void(0);"><i class="fa-brands fa-instagram"></i></a></li>
+                <li><a href="javascript:void(0);"><i class="fa-brands fa-viber"></i></a></li>
+            </ul>
+        </div>
+    </div>
+</div>

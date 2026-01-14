@@ -1,0 +1,64 @@
+<app-navbar-6></app-navbar-6>
+<div class="inner-banner-two inner-banner z-1 pt-160 lg-pt-130 pb-160 xl-pb-120 md-pb-80 position-relative" style="background-image: url(assets/images/media/img_49.jpg);">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6">
+                <h3 class="mb-35 xl-mb-20 pt-15">Our Projects</h3>
+                <ul class="theme-breadcrumb style-none d-inline-flex align-items-center justify-content-center position-relative z-1 bottom-line">
+                    <li><a routerLink="/">Home</a></li>
+                    <li>/</li>
+                    <li><a href="javascript:void(0);">Pages</a></li>
+                    <li>/</li>
+                    <li>Project</li>
+                </ul>
+            </div>
+            <div class="col-lg-6">
+                <p class="sub-heading">Over 745,000 listings, apartments, lots and plots available now!</p>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="project-section-one mt-150 xl-mt-100 mb-170 xl-mb-100">
+    <div class="container">
+        <div class="filter-nav-one style-two border-line d-lg-flex align-items-center justify-content-between">
+            <ul class="style-none d-flex justify-content-center flex-wrap isotop-menu-wrapper">
+                <li *ngFor="let category of categories" class="rounded-0" [ngClass]="{'is-checked': currentFilter === category.value}" (click)="applyFilter(category.value)">
+                    {{ category.label }}
+                </li>
+            </ul>
+            <ul class="style-none d-flex align-items-center justify-content-center social-icon md-mt-20">
+                <li>Share :</li>
+                <li><a href="javascript:void(0);"><i class="fa-brands fa-facebook-f"></i></a></li>
+                <li><a href="javascript:void(0);"><i class="fa-brands fa-twitter"></i></a></li>
+                <li><a href="javascript:void(0);"><i class="fa-brands fa-instagram"></i></a></li>
+            </ul>
+        </div>
+
+        <div id="isotop-gallery-wrapper" class="grid-1column pt-40 lg-pt-30">
+            <div class="isotop-item house flat" *ngFor="let item of filteredItems" [ngClass]="item.type">
+                <div class="project-block-three mt-80 lg-mt-50">
+                    <div class="row gx-xxl-5 align-items-center">
+                        <div class="col-lg-6">
+                            <figure class="image-wrapper position-relative z-1 overflow-hidden">
+                                <a [href]="item.img" class="d-block position-relative" data-fancybox data-caption="Apartments on Vintage City">
+                                    <img [src]="item.img" alt="" class="w-100 tran5s">
+                                </a>
+                            </figure>
+                        </div>
+                        <div class="col-lg-6 ms-auto">
+                            <div class="caption ps-xxl-5">
+                                <div class="tag fw-500 text-uppercase">{{item.type}}</div>
+                                <h3><a href="project_details_01.html">{{item.caption}}</a></h3>
+                                <p class="fs-24 pt-45 lg-pt-30 md-pt-10 pb-50 lg-pb-30 md-pb-10">{{item.temp}} </p>
+                                <a href="project_details_01.html" class="btn-thirteen rounded-circle"><i class="fa-thin fa-arrow-up-right"></i></a>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<app-fancy-banner-two></app-fancy-banner-two>
+<app-footer-5></app-footer-5>

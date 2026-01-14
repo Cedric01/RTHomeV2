@@ -1,0 +1,526 @@
+<app-navbar-6></app-navbar-6>
+<div class="property-listing-six pt-200 xl-pt-150 pb-200 xl-pb-120">
+    <div class="container container-large">
+        <div class="search-wrapper-one layout-one bg position-relative mb-75 md-mb-50">
+            <div class="bg-wrapper rounded-0 border-0">
+                <form action="javascript:void(0);">
+                    <div class="row gx-0 align-items-center">
+                        <div class="col-xxl-2 col-xl-3 col-lg-4">
+                            <div class="input-box-one border-left">
+                                <div class="label">I’m looking to...</div>
+                                <ng-select [items]="options" bindLabel="label" bindValue="value" [placeholder]="'Buy Apartments'">
+                                    <ng-option *ngFor="let option of options" [value]="option.value">{{ option.label }}</ng-option>
+                                </ng-select>
+                            </div>
+                        </div>
+                        <div class="col-xl-3 col-lg-4">
+                            <div class="input-box-one border-left">
+                                <div class="label">Location</div>
+                                <ng-select class="" [items]="locations" bindLabel="label" bindValue="value" [placeholder]="'Dhanmondi, Dhaka'">
+                                    <ng-option *ngFor="let location of locations" [value]="location.value">{{ location.label }}</ng-option>
+                                </ng-select>
+                            </div>
+                        </div>
+                        <div class="col-xl-3 col-lg-4">
+                            <div class="input-box-one border-left border-lg-0">
+                                <div class="label">Price Range</div>
+                                <ng-select [items]="priceRanges" bindLabel="label" bindValue="value" [placeholder]="'$10,000 - $200,000'">
+                                    <ng-option *ngFor="let range of priceRanges" [value]="range.value">{{ range.label }}</ng-option>
+                                </ng-select>
+                            </div>
+                        </div>
+                        <div class="col-xxl-4 col-xl-3">
+                            <div class="input-box-one lg-mt-20">
+                                <div class="d-flex align-items-center justify-content-center">
+                                    <a href="javascript:void(0);" data-bs-toggle="modal" data-bs-target="#advanceFilterModal" class="search-modal-btn tran3s text-uppercase fw-500 d-inline-flex align-items-center me-3">
+                                        <span class="d-xl-none d-xxl-block">ADVANCE Search</span>
+                                        <i class="fa-light fa-sliders-up"></i>
+                                    </a>
+                                    <button class="fw-500 text-uppercase tran3s search-btn-four">
+                                        <span>Search</span>
+                                        <i class="fa-light fa-magnifying-glass"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="listing-header-filter d-sm-flex justify-content-between align-items-center mb-40 lg-mb-30">
+            <div>Showing <span class="color-dark fw-500">1–9</span> of <span class="color-dark fw-500">1,230</span> results</div>
+            <div class="d-flex align-items-center xs-mt-20">
+                <div class="short-filter d-flex align-items-center">
+                    <div class="fs-16 me-2">Short by:</div>
+                    <ng-select [items]="short" bindLabel="label" bindValue="value" [placeholder]="'Newest'">
+                        <ng-option *ngFor="let range of short" [value]="range.value">{{ range.label }}</ng-option>
+                    </ng-select>
+                </div>
+                <a routerLink="/listing_08" class="tran3s layout-change rounded-circle ms-auto ms-sm-3" data-bs-toggle="tooltip" title="Switch To List View"><i class="fa-regular fa-bars"></i></a>
+            </div>
+        </div>
+        <div class="row gx-xxl-5">
+            <div class="col-lg-4 col-md-6 d-flex mb-80 lg-mb-40 fadeInUp" data-aos="fade-up">
+                <div class="listing-card-one style-two shadow-none h-100 w-100">
+                    <div class="img-gallery">
+                        <div class="position-relative overflow-hidden">
+                            <div class="tag fw-500">FOR RENT</div>
+                            <a href="javascript:void(0);" class="fav-btn tran3s"><i class="fa-light fa-heart"></i></a>
+                            <div id="carousel1" class="carousel slide">
+                                <div class="carousel-indicators">
+                                    <button type="button" data-bs-target="#carousel1" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                                    <button type="button" data-bs-target="#carousel1" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                                    <button type="button" data-bs-target="#carousel1" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                                </div>
+                                <div class="carousel-inner">
+                                    <div class="carousel-item active" data-bs-interval="1000000">
+                                        <a href="javascript:void(0);" class="d-block"><img src="assets/images/listing/img_17.jpg" class="w-100" alt="..."></a>
+                                    </div>
+                                    <div class="carousel-item" data-bs-interval="1000000">
+                                        <a href="javascript:void(0);" class="d-block"><img src="assets/images/listing/img_18.jpg" class="w-100" alt="..."></a>
+                                    </div>
+                                    <div class="carousel-item" data-bs-interval="1000000">
+                                        <a href="javascript:void(0);" class="d-block"><img src="assets/images/listing/img_19.jpg" class="w-100" alt="..."></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="property-info pt-20">
+                        <a routerLink="/listing_details_06" class="title tran3s">Blueberry villa</a>
+                        <div class="address">Mirpur 10, Stadium dhaka 1208</div>
+                        <ul class="style-none feature d-flex flex-wrap align-items-center justify-content-between pb-15 pt-5">
+                            <li class="d-flex align-items-center">
+                                <img src="assets/images/icon/icon_32.svg" alt="" class="lazy-img icon me-2">
+                                <span class="fs-16"><span class="color-dark">1370</span> sqft</span>
+                            </li>
+                            <li class="d-flex align-items-center">
+                                <img src="assets/images/icon/icon_33.svg" alt="" class="lazy-img icon me-2">
+                                <span class="fs-16"><span class="color-dark">03</span> bed</span>
+                            </li>
+                            <li class="d-flex align-items-center">
+                                <img src="assets/images/icon/icon_34.svg" alt="" class="lazy-img icon me-2">
+                                <span class="fs-16"><span class="color-dark">02</span> bath</span>
+                            </li>
+                        </ul>
+                        <div class="pl-footer top-border bottom-border d-flex align-items-center justify-content-between">
+                            <strong class="price fw-500 color-dark">$1,710/<sub>m</sub></strong>
+                            <a routerLink="/listing_details_06" class="btn-four"><i class="bi bi-arrow-up-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 d-flex mb-80 lg-mb-40 fadeInUp" data-aos="fade-up" data-aos-delay="100">
+                <div class="listing-card-one style-two shadow-none h-100 w-100">
+                    <div class="img-gallery">
+                        <div class="position-relative overflow-hidden">
+                            <div class="tag fw-500">FOR SELL</div>
+                            <a href="javascript:void(0);" class="fav-btn tran3s"><i class="fa-light fa-heart"></i></a>
+                            <div id="carousel2" class="carousel slide">
+                                <div class="carousel-indicators">
+                                    <button type="button" data-bs-target="#carousel2" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                                    <button type="button" data-bs-target="#carousel2" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                                    <button type="button" data-bs-target="#carousel2" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                                </div>
+                                <div class="carousel-inner">
+                                    <div class="carousel-item active" data-bs-interval="1000000">
+                                        <a href="javascript:void(0);" class="d-block"><img src="assets/images/listing/img_18.jpg" class="w-100" alt="..."></a>
+                                    </div>
+                                    <div class="carousel-item" data-bs-interval="1000000">
+                                        <a href="javascript:void(0);" class="d-block"><img src="assets/images/listing/img_19.jpg" class="w-100" alt="..."></a>
+                                    </div>
+                                    <div class="carousel-item" data-bs-interval="1000000">
+                                        <a href="javascript:void(0);" class="d-block"><img src="assets/images/listing/img_17.jpg" class="w-100" alt="..."></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="property-info pt-20">
+                        <a routerLink="/listing_details_06" class="title tran3s">White House villa</a>
+                        <div class="address">Muza link road, ca, usa</div>
+                        <ul class="style-none feature d-flex flex-wrap align-items-center justify-content-between pb-15 pt-5">
+                            <li class="d-flex align-items-center">
+                                <img src="assets/images/icon/icon_32.svg" alt="" class="lazy-img icon me-2">
+                                <span class="fs-16"><span class="color-dark">1270</span> sqft</span>
+                            </li>
+                            <li class="d-flex align-items-center">
+                                <img src="assets/images/icon/icon_33.svg" alt="" class="lazy-img icon me-2">
+                                <span class="fs-16"><span class="color-dark">02</span> bed</span>
+                            </li>
+                            <li class="d-flex align-items-center">
+                                <img src="assets/images/icon/icon_34.svg" alt="" class="lazy-img icon me-2">
+                                <span class="fs-16"><span class="color-dark">02</span> bath</span>
+                            </li>
+                        </ul>
+                        <div class="pl-footer top-border bottom-border d-flex align-items-center justify-content-between">
+                            <strong class="price fw-500 color-dark">$37,200</strong>
+                            <a routerLink="/listing_details_06" class="btn-four"><i class="bi bi-arrow-up-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 d-flex mb-80 lg-mb-40 fadeInUp" data-aos="fade-up" data-aos-delay="200">
+                <div class="listing-card-one style-two shadow-none h-100 w-100">
+                    <div class="img-gallery">
+                        <div class="position-relative overflow-hidden">
+                            <div class="tag fw-500">FOR SELL</div>
+                            <a href="javascript:void(0);" class="fav-btn tran3s"><i class="fa-light fa-heart"></i></a>
+                            <div id="carousel3" class="carousel slide">
+                                <div class="carousel-indicators">
+                                    <button type="button" data-bs-target="#carousel3" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                                    <button type="button" data-bs-target="#carousel3" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                                    <button type="button" data-bs-target="#carousel3" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                                </div>
+                                <div class="carousel-inner">
+                                    <div class="carousel-item active" data-bs-interval="1000000">
+                                        <a href="javascript:void(0);" class="d-block"><img src="assets/images/listing/img_19.jpg" class="w-100" alt="..."></a>
+                                    </div>
+                                    <div class="carousel-item" data-bs-interval="1000000">
+                                        <a href="javascript:void(0);" class="d-block"><img src="assets/images/listing/img_18.jpg" class="w-100" alt="..."></a>
+                                    </div>
+                                    <div class="carousel-item" data-bs-interval="1000000">
+                                        <a href="javascript:void(0);" class="d-block"><img src="assets/images/listing/img_17.jpg" class="w-100" alt="..."></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="property-info pt-20">
+                        <a routerLink="/listing_details_06" class="title tran3s">Blueberry villa</a>
+                        <div class="address">Mirpur 10, Stadium</div>
+                        <ul class="style-none feature d-flex flex-wrap align-items-center justify-content-between pb-15 pt-5">
+                            <li class="d-flex align-items-center">
+                                <img src="assets/images/icon/icon_32.svg" alt="" class="lazy-img icon me-2">
+                                <span class="fs-16"><span class="color-dark">1270</span> sqft</span>
+                            </li>
+                            <li class="d-flex align-items-center">
+                                <img src="assets/images/icon/icon_33.svg" alt="" class="lazy-img icon me-2">
+                                <span class="fs-16"><span class="color-dark">02</span> bed</span>
+                            </li>
+                            <li class="d-flex align-items-center">
+                                <img src="assets/images/icon/icon_34.svg" alt="" class="lazy-img icon me-2">
+                                <span class="fs-16">02 bath</span>
+                            </li>
+                        </ul>
+                        <div class="pl-footer top-border bottom-border d-flex align-items-center justify-content-between">
+                            <strong class="price fw-500 color-dark">$28,300</strong>
+                            <a routerLink="/listing_details_06" class="btn-four"><i class="bi bi-arrow-up-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 d-flex mb-80 lg-mb-40 fadeInUp" data-aos="fade-up">
+                <div class="listing-card-one style-two shadow-none h-100 w-100">
+                    <div class="img-gallery">
+                        <div class="position-relative overflow-hidden">
+                            <div class="tag fw-500">FOR RENT</div>
+                            <a href="javascript:void(0);" class="fav-btn tran3s"><i class="fa-light fa-heart"></i></a>
+                            <div id="carousel4" class="carousel slide">
+                                <div class="carousel-indicators">
+                                    <button type="button" data-bs-target="#carousel4" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                                    <button type="button" data-bs-target="#carousel4" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                                    <button type="button" data-bs-target="#carousel4" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                                </div>
+                                <div class="carousel-inner">
+                                    <div class="carousel-item active" data-bs-interval="1000000">
+                                        <a href="javascript:void(0);" class="d-block"><img src="assets/images/listing/img_32.jpg" class="w-100" alt="..."></a>
+                                    </div>
+                                    <div class="carousel-item" data-bs-interval="1000000">
+                                        <a href="javascript:void(0);" class="d-block"><img src="assets/images/listing/img_18.jpg" class="w-100" alt="..."></a>
+                                    </div>
+                                    <div class="carousel-item" data-bs-interval="1000000">
+                                        <a href="javascript:void(0);" class="d-block"><img src="assets/images/listing/img_17.jpg" class="w-100" alt="..."></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="property-info pt-20">
+                        <a routerLink="/listing_details_06" class="title tran3s">White House villa</a>
+                        <div class="address">Muza link road, ca, usa</div>
+                        <ul class="style-none feature d-flex flex-wrap align-items-center justify-content-between pb-15 pt-5">
+                            <li class="d-flex align-items-center">
+                                <img src="assets/images/icon/icon_32.svg" alt="" class="lazy-img icon me-2">
+                                <span class="fs-16"><span class="color-dark">1270</span> sqft</span>
+                            </li>
+                            <li class="d-flex align-items-center">
+                                <img src="assets/images/icon/icon_33.svg" alt="" class="lazy-img icon me-2">
+                                <span class="fs-16"><span class="color-dark">02</span> bed</span>
+                            </li>
+                            <li class="d-flex align-items-center">
+                                <img src="assets/images/icon/icon_34.svg" alt="" class="lazy-img icon me-2">
+                                <span class="fs-16">02 bath</span>
+                            </li>
+                        </ul>
+                        <div class="pl-footer top-border bottom-border d-flex align-items-center justify-content-between">
+                            <strong class="price fw-500 color-dark">$2,370/<sub>m</sub></strong>
+                            <a routerLink="/listing_details_06" class="btn-four"><i class="bi bi-arrow-up-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 d-flex mb-80 lg-mb-40 fadeInUp" data-aos="fade-up" data-aos-delay="100">
+                <div class="listing-card-one style-two shadow-none h-100 w-100">
+                    <div class="img-gallery">
+                        <div class="position-relative overflow-hidden">
+                            <div class="tag fw-500">FOR RENT</div>
+                            <a href="javascript:void(0);" class="fav-btn tran3s"><i class="fa-light fa-heart"></i></a>
+                            <div id="carousel5" class="carousel slide">
+                                <div class="carousel-indicators">
+                                    <button type="button" data-bs-target="#carousel5" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                                    <button type="button" data-bs-target="#carousel5" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                                    <button type="button" data-bs-target="#carousel5" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                                </div>
+                                <div class="carousel-inner">
+                                    <div class="carousel-item active" data-bs-interval="1000000">
+                                        <a href="javascript:void(0);" class="d-block"><img src="assets/images/listing/img_33.jpg" class="w-100" alt="..."></a>
+                                    </div>
+                                    <div class="carousel-item" data-bs-interval="1000000">
+                                        <a href="javascript:void(0);" class="d-block"><img src="assets/images/listing/img_18.jpg" class="w-100" alt="..."></a>
+                                    </div>
+                                    <div class="carousel-item" data-bs-interval="1000000">
+                                        <a href="javascript:void(0);" class="d-block"><img src="assets/images/listing/img_17.jpg" class="w-100" alt="..."></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="property-info pt-20">
+                        <a routerLink="/listing_details_06" class="title tran3s">Blueberry villa</a>
+                        <div class="address">Mirpur 10, Stadium</div>
+                        <ul class="style-none feature d-flex flex-wrap align-items-center justify-content-between pb-15 pt-5">
+                            <li class="d-flex align-items-center">
+                                <img src="assets/images/icon/icon_32.svg" alt="" class="lazy-img icon me-2">
+                                <span class="fs-16"><span class="color-dark">1270</span> sqft</span>
+                            </li>
+                            <li class="d-flex align-items-center">
+                                <img src="assets/images/icon/icon_33.svg" alt="" class="lazy-img icon me-2">
+                                <span class="fs-16"><span class="color-dark">02</span> bed</span>
+                            </li>
+                            <li class="d-flex align-items-center">
+                                <img src="assets/images/icon/icon_34.svg" alt="" class="lazy-img icon me-2">
+                                <span class="fs-16">02 bath</span>
+                            </li>
+                        </ul>
+                        <div class="pl-footer top-border bottom-border d-flex align-items-center justify-content-between">
+                            <strong class="price fw-500 color-dark">$1,329/<sub>m</sub></strong>
+                            <a routerLink="/listing_details_06" class="btn-four"><i class="bi bi-arrow-up-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 d-flex mb-80 lg-mb-40 fadeInUp" data-aos="fade-up" data-aos-delay="200">
+                <div class="listing-card-one style-two shadow-none h-100 w-100">
+                    <div class="img-gallery">
+                        <div class="position-relative overflow-hidden">
+                            <div class="tag fw-500">FOR SELL</div>
+                            <a href="javascript:void(0);" class="fav-btn tran3s"><i class="fa-light fa-heart"></i></a>
+                            <div id="carousel6" class="carousel slide">
+                                <div class="carousel-indicators">
+                                    <button type="button" data-bs-target="#carousel6" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                                    <button type="button" data-bs-target="#carousel6" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                                    <button type="button" data-bs-target="#carousel6" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                                </div>
+                                <div class="carousel-inner">
+                                    <div class="carousel-item active" data-bs-interval="1000000">
+                                        <a href="javascript:void(0);" class="d-block"><img src="assets/images/listing/img_34.jpg" class="w-100" alt="..."></a>
+                                    </div>
+                                    <div class="carousel-item" data-bs-interval="1000000">
+                                        <a href="javascript:void(0);" class="d-block"><img src="assets/images/listing/img_18.jpg" class="w-100" alt="..."></a>
+                                    </div>
+                                    <div class="carousel-item" data-bs-interval="1000000">
+                                        <a href="javascript:void(0);" class="d-block"><img src="assets/images/listing/img_17.jpg" class="w-100" alt="..."></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="property-info pt-20">
+                        <a routerLink="/listing_details_06" class="title tran3s">White House villa</a>
+                        <div class="address">Muza link road, ca, usa</div>
+                        <ul class="style-none feature d-flex flex-wrap align-items-center justify-content-between pb-15 pt-5">
+                            <li class="d-flex align-items-center">
+                                <img src="assets/images/icon/icon_32.svg" alt="" class="lazy-img icon me-2">
+                                <span class="fs-16"><span class="color-dark">1270</span> sqft</span>
+                            </li>
+                            <li class="d-flex align-items-center">
+                                <img src="assets/images/icon/icon_33.svg" alt="" class="lazy-img icon me-2">
+                                <span class="fs-16"><span class="color-dark">02</span> bed</span>
+                            </li>
+                            <li class="d-flex align-items-center">
+                                <img src="assets/images/icon/icon_34.svg" alt="" class="lazy-img icon me-2">
+                                <span class="fs-16">02 bath</span>
+                            </li>
+                        </ul>
+                        <div class="pl-footer top-border bottom-border d-flex align-items-center justify-content-between">
+                            <strong class="price fw-500 color-dark">$28,100</strong>
+                            <a routerLink="/listing_details_06" class="btn-four"><i class="bi bi-arrow-up-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 d-flex mb-80 lg-mb-40 fadeInUp" data-aos="fade-up">
+                <div class="listing-card-one style-two shadow-none h-100 w-100">
+                    <div class="img-gallery">
+                        <div class="position-relative overflow-hidden">
+                            <div class="tag fw-500">FOR RENT</div>
+                            <a href="javascript:void(0);" class="fav-btn tran3s"><i class="fa-light fa-heart"></i></a>
+                            <div id="carousel7" class="carousel slide">
+                                <div class="carousel-indicators">
+                                    <button type="button" data-bs-target="#carousel7" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                                    <button type="button" data-bs-target="#carousel7" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                                    <button type="button" data-bs-target="#carousel7" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                                </div>
+                                <div class="carousel-inner">
+                                    <div class="carousel-item active" data-bs-interval="1000000">
+                                        <a href="javascript:void(0);" class="d-block"><img src="assets/images/listing/img_17.jpg" class="w-100" alt="..."></a>
+                                    </div>
+                                    <div class="carousel-item" data-bs-interval="1000000">
+                                        <a href="javascript:void(0);" class="d-block"><img src="assets/images/listing/img_18.jpg" class="w-100" alt="..."></a>
+                                    </div>
+                                    <div class="carousel-item" data-bs-interval="1000000">
+                                        <a href="javascript:void(0);" class="d-block"><img src="assets/images/listing/img_19.jpg" class="w-100" alt="..."></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="property-info pt-20">
+                        <a routerLink="/listing_details_06" class="title tran3s">Blueberry villa</a>
+                        <div class="address">Mirpur 10, Stadium dhaka 1208</div>
+                        <ul class="style-none feature d-flex flex-wrap align-items-center justify-content-between pb-15 pt-5">
+                            <li class="d-flex align-items-center">
+                                <img src="assets/images/icon/icon_32.svg" alt="" class="lazy-img icon me-2">
+                                <span class="fs-16"><span class="color-dark">1370</span> sqft</span>
+                            </li>
+                            <li class="d-flex align-items-center">
+                                <img src="assets/images/icon/icon_33.svg" alt="" class="lazy-img icon me-2">
+                                <span class="fs-16"><span class="color-dark">03</span> bed</span>
+                            </li>
+                            <li class="d-flex align-items-center">
+                                <img src="assets/images/icon/icon_34.svg" alt="" class="lazy-img icon me-2">
+                                <span class="fs-16"><span class="color-dark">02</span> bath</span>
+                            </li>
+                        </ul>
+                        <div class="pl-footer top-border bottom-border d-flex align-items-center justify-content-between">
+                            <strong class="price fw-500 color-dark">$1,710/<sub>m</sub></strong>
+                            <a routerLink="/listing_details_06" class="btn-four"><i class="bi bi-arrow-up-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 d-flex mb-80 lg-mb-40 fadeInUp" data-aos="fade-up" data-aos-delay="100">
+                <div class="listing-card-one style-two shadow-none h-100 w-100">
+                    <div class="img-gallery">
+                        <div class="position-relative overflow-hidden">
+                            <div class="tag fw-500">FOR SELL</div>
+                            <a href="javascript:void(0);" class="fav-btn tran3s"><i class="fa-light fa-heart"></i></a>
+                            <div id="carousel8" class="carousel slide">
+                                <div class="carousel-indicators">
+                                    <button type="button" data-bs-target="#carousel8" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                                    <button type="button" data-bs-target="#carousel8" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                                    <button type="button" data-bs-target="#carousel8" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                                </div>
+                                <div class="carousel-inner">
+                                    <div class="carousel-item active" data-bs-interval="1000000">
+                                        <a href="javascript:void(0);" class="d-block"><img src="assets/images/listing/img_18.jpg" class="w-100" alt="..."></a>
+                                    </div>
+                                    <div class="carousel-item" data-bs-interval="1000000">
+                                        <a href="javascript:void(0);" class="d-block"><img src="assets/images/listing/img_19.jpg" class="w-100" alt="..."></a>
+                                    </div>
+                                    <div class="carousel-item" data-bs-interval="1000000">
+                                        <a href="javascript:void(0);" class="d-block"><img src="assets/images/listing/img_17.jpg" class="w-100" alt="..."></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="property-info pt-20">
+                        <a routerLink="/listing_details_06" class="title tran3s">White House villa</a>
+                        <div class="address">Muza link road, ca, usa</div>
+                        <ul class="style-none feature d-flex flex-wrap align-items-center justify-content-between pb-15 pt-5">
+                            <li class="d-flex align-items-center">
+                                <img src="assets/images/icon/icon_32.svg" alt="" class="lazy-img icon me-2">
+                                <span class="fs-16"><span class="color-dark">1270</span> sqft</span>
+                            </li>
+                            <li class="d-flex align-items-center">
+                                <img src="assets/images/icon/icon_33.svg" alt="" class="lazy-img icon me-2">
+                                <span class="fs-16"><span class="color-dark">02</span> bed</span>
+                            </li>
+                            <li class="d-flex align-items-center">
+                                <img src="assets/images/icon/icon_34.svg" alt="" class="lazy-img icon me-2">
+                                <span class="fs-16"><span class="color-dark">02</span> bath</span>
+                            </li>
+                        </ul>
+                        <div class="pl-footer top-border bottom-border d-flex align-items-center justify-content-between">
+                            <strong class="price fw-500 color-dark">$37,200</strong>
+                            <a routerLink="/listing_details_06" class="btn-four"><i class="bi bi-arrow-up-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 d-flex mb-80 lg-mb-40 fadeInUp" data-aos="fade-up" data-aos-delay="200">
+                <div class="listing-card-one style-two shadow-none h-100 w-100">
+                    <div class="img-gallery">
+                        <div class="position-relative overflow-hidden">
+                            <div class="tag fw-500">FOR SELL</div>
+                            <a href="javascript:void(0);" class="fav-btn tran3s"><i class="fa-light fa-heart"></i></a>
+                            <div id="carousel9" class="carousel slide">
+                                <div class="carousel-indicators">
+                                    <button type="button" data-bs-target="#carousel9" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                                    <button type="button" data-bs-target="#carousel9" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                                    <button type="button" data-bs-target="#carousel9" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                                </div>
+                                <div class="carousel-inner">
+                                    <div class="carousel-item active" data-bs-interval="1000000">
+                                        <a href="javascript:void(0);" class="d-block"><img src="assets/images/listing/img_19.jpg" class="w-100" alt="..."></a>
+                                    </div>
+                                    <div class="carousel-item" data-bs-interval="1000000">
+                                        <a href="javascript:void(0);" class="d-block"><img src="assets/images/listing/img_18.jpg" class="w-100" alt="..."></a>
+                                    </div>
+                                    <div class="carousel-item" data-bs-interval="1000000">
+                                        <a href="javascript:void(0);" class="d-block"><img src="assets/images/listing/img_17.jpg" class="w-100" alt="..."></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="property-info pt-20">
+                        <a routerLink="/listing_details_06" class="title tran3s">Blueberry villa</a>
+                        <div class="address">Mirpur 10, Stadium</div>
+                        <ul class="style-none feature d-flex flex-wrap align-items-center justify-content-between pb-15 pt-5">
+                            <li class="d-flex align-items-center">
+                                <img src="assets/images/icon/icon_32.svg" alt="" class="lazy-img icon me-2">
+                                <span class="fs-16"><span class="color-dark">1270</span> sqft</span>
+                            </li>
+                            <li class="d-flex align-items-center">
+                                <img src="assets/images/icon/icon_33.svg" alt="" class="lazy-img icon me-2">
+                                <span class="fs-16"><span class="color-dark">02</span> bed</span>
+                            </li>
+                            <li class="d-flex align-items-center">
+                                <img src="assets/images/icon/icon_34.svg" alt="" class="lazy-img icon me-2">
+                                <span class="fs-16">02 bath</span>
+                            </li>
+                        </ul>
+                        <div class="pl-footer top-border bottom-border d-flex align-items-center justify-content-between">
+                            <strong class="price fw-500 color-dark">$28,300</strong>
+                            <a routerLink="/listing_details_06" class="btn-four"><i class="bi bi-arrow-up-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <ul class="pagination-one square d-flex align-items-center justify-content-center style-none pt-30">
+            <li><a href="javascript:void(0);">1</a></li>
+            <li class="active"><a href="javascript:void(0);">2</a></li>
+            <li><a href="javascript:void(0);">3</a></li>
+            <li><a href="javascript:void(0);">4</a></li>
+            <li>....</li>
+            <li class="ms-2"><a href="javascript:void(0);" class="d-flex align-items-center">Last <img src="assets/images/icon/icon_46.svg" alt="" class="ms-2"></a></li>
+        </ul>
+    </div>
+</div>
+<app-fancy-banner-two></app-fancy-banner-two>
+<app-footer-5></app-footer-5>
+<app-advance-filter-modal></app-advance-filter-modal>

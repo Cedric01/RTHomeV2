@@ -1,0 +1,193 @@
+<div class="modal fade" id="advanceFilterModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-8 m-auto">
+                    <div class="modal-content">
+                        <button type="button" class="btn-close ms-auto mt-20 me-4" data-bs-dismiss="modal" aria-label="Close"><i class="fa-regular fa-xmark"></i></button>
+                        <div class="advance-search-panel">
+                            <div class="main-bg border-0">
+                                <form action="#">
+                                    <div class="row gx-lg-5">
+                                        <div class="col-md-6">
+                                            <div class="input-box-one mb-35">
+                                                <div class="label">I’m looking to...</div>
+                                                <select class="nice-select fw-normal">
+                                                    <option value="1">Buy Apartments</option>
+                                                    <option value="2">Rent Condos</option>
+                                                    <option value="3">Sell Houses</option>
+                                                    <option value="4">Rent Industrial</option>
+                                                    <option value="6">Sell Villas</option>
+                                                </select>
+                                            </div>
+
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="input-box-one mb-35">
+                                                <div class="label">Location</div>
+                                                <select class="nice-select location fw-normal">
+                                                    <option value="1">Washington DC</option>
+                                                    <option value="2">Acapulco, Mexico</option>
+                                                    <option value="3">Berlin, Germany</option>
+                                                    <option value="4">Cannes, France</option>
+                                                    <option value="5">Delhi, India</option>
+                                                    <option value="6">Giza, Egypt </option>
+                                                    <option value="7">Havana, Cuba</option>
+                                                </select>
+                                            </div>
+
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="input-box-one mb-35">
+                                                <div class="label">Keyword</div>
+                                                <input type="text" placeholder="buy, home, loft, apartment" class="type-input">
+                                            </div>
+
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="input-box-one mb-35">
+                                                <div class="label">Property ID</div>
+                                                <input type="text" placeholder="EM45203014" class="type-input">
+                                            </div>
+
+                                        </div>
+
+                                        <div class="col-lg-6">
+                                            <div class="input-box-one mb-40">
+                                                <div class="label">Bedroom</div>
+                                                <select class="nice-select fw-normal">
+                                                    <option value="1">3+</option>
+                                                    <option value="2">4+</option>
+                                                    <option value="3">2+</option>
+                                                    <option value="4">1+</option>
+                                                </select>
+                                            </div>
+
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <div class="input-box-one mb-40">
+                                                <div class="label">Bath</div>
+                                                <select class="nice-select fw-normal">
+                                                    <option value="1">2+</option>
+                                                    <option value="2">4+</option>
+                                                    <option value="3">3+</option>
+                                                    <option value="4">1+</option>
+                                                </select>
+                                            </div>
+
+                                        </div>
+                                        <div class="col-12">
+                                            <h6 class="block-title fw-bold mb-30">Amenities</h6>
+                                            <ul class="style-none d-flex flex-wrap justify-content-between filter-input">
+                                                <li>
+                                                    <input type="checkbox" name="Amenities" value="01">
+                                                    <label>A/C & Heating</label>
+                                                </li>
+                                                <li>
+                                                    <input type="checkbox" name="Amenities" value="02">
+                                                    <label>Garages</label>
+                                                </li>
+                                                <li>
+                                                    <input type="checkbox" name="Amenities" value="03">
+                                                    <label>Garden</label>
+                                                </li>
+                                                <li>
+                                                    <input type="checkbox" name="Amenities" value="04">
+                                                    <label>Disabled Access</label>
+                                                </li>
+                                                <li>
+                                                    <input type="checkbox" name="Amenities" value="05">
+                                                    <label>Swimming Pool</label>
+                                                </li>
+                                                <li>
+                                                    <input type="checkbox" name="Amenities" value="06">
+                                                    <label>Parking</label>
+                                                </li>
+                                                <li>
+                                                    <input type="checkbox" name="Amenities" value="07">
+                                                    <label>Wifi</label>
+                                                </li>
+                                                <li>
+                                                    <input type="checkbox" name="Amenities" value="08">
+                                                    <label>Pet Friendly</label>
+                                                </li>
+                                                <li>
+                                                    <input type="checkbox" name="Amenities" value="09">
+                                                    <label>Ceiling Height</label>
+                                                </li>
+                                                <li>
+                                                    <input type="checkbox" name="Amenities" value="10">
+                                                    <label>Fireplace</label>
+                                                </li>
+                                                <li>
+                                                    <input type="checkbox" name="Amenities" value="11">
+                                                    <label>Play Ground</label>
+                                                </li>
+                                                <li>
+                                                    <input type="checkbox" name="Amenities" value="12">
+                                                    <label>Elevator</label>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <h6 class="block-title fw-bold mt-45 mb-20">Price range</h6>
+                                            <div class="price-ranger">
+                                                <div class="price-input d-flex align-items-center justify-content-between pt-5">
+                                                    <div class="field d-flex align-items-center">
+                                                        <input type="number" class="input-min" value="2500" readonly>
+                                                    </div>
+                                                    <div class="divider-line"></div>
+                                                    <div class="field d-flex align-items-center">
+                                                        <input type="number" class="input-max" value="35000" readonly>
+                                                    </div>
+                                                    <div class="currency ps-1">USD</div>
+                                                </div>
+                                                <div class="slider">
+                                                    <div class="progress"></div>
+                                                </div>
+                                                <div class="range-input mb-10">
+                                                    <input type="range" class="range-min" min="1000" max="80000" value="2500" step="500">
+                                                    <input type="range" class="range-max" min="0" max="100000" value="35000" step="500">
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                        <div class="col-md-6">
+                                            <h6 class="block-title fw-bold mt-45 mb-20">SQFT</h6>
+                                            <div class="d-flex align-items-center sqf-ranger">
+                                                <input type="text" placeholder="Min">
+                                                <div class="divider"></div>
+                                                <input type="text" placeholder="Max">
+                                            </div>
+                                        </div>
+                                        <div class="col-12">
+                                            <button class="fw-500 text-uppercase tran3s apply-search w-100 mt-40 mb-25">
+                                                <i class="fa-light fa-magnifying-glass"></i>
+                                                <span>Search</span>
+                                            </button>
+                                        </div>
+                                        <div class="col-12">
+                                            <div class="d-flex justify-content-between form-widget">
+                                                <a href="#" class="tran3s">
+                                                    <i class="fa-regular fa-arrows-rotate"></i>
+                                                    <span>Reset Filter</span>
+                                                </a>
+                                                <a href="#" class="tran3s">
+                                                    <i class="fa-regular fa-star"></i>
+                                                    <span>Save Search</span>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

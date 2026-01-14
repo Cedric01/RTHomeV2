@@ -1,0 +1,248 @@
+<div class="property-amenities bg-white shadow4 border-20 p-40 mb-50">
+    <h4 class="mb-20">Amenities</h4>
+    <p class="fs-20 lh-lg pb-25">Risk management & compliance, when approached strategically, have the potential</p>
+    <ul class="style-none d-flex flex-wrap justify-content-between list-style-two">
+        <li *ngFor="let amenity of amenities">{{ amenity }}</li>
+    </ul>
+</div>
+<div class="property-video-tour mb-50">
+    <h4 class="mb-40">Video Tour</h4>
+    <div class="bg-white shadow4 border-20 p-15">
+        <div class="position-relative border-15 image-bg overflow-hidden z-1">
+            <img src="assets/images/listing/img_47.jpg" alt="" class="lazy-img w-100">
+            <a class="video-icon tran3s rounded-circle d-flex align-items-center justify-content-center" data-fancybox href="https://www.youtube.com/embed/aXFSJTjVjw0">
+                <i class="fa-thin fa-play"></i>
+            </a>
+        </div>
+    </div>
+</div>
+<div class="property-floor-plan mb-50">
+    <h4 class="mb-40">Floor Plans</h4>
+    <div class="bg-white shadow4 border-20 p-30">
+        <div id="floor-plan" class="carousel slide">
+            <div class="carousel-indicators">
+                <button type="button" data-bs-target="#floor-plan" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                <button type="button" data-bs-target="#floor-plan" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                <button type="button" data-bs-target="#floor-plan" data-bs-slide-to="2" aria-label="Slide 3"></button>
+            </div>
+            <div class="carousel-inner">
+                <div class="carousel-item" *ngFor="let image of images; let i = index" [class.active]="i === 0">
+                    <img [src]="image.src" [alt]="image.alt" class="w-100">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="property-nearby bg-white shadow4 border-20 p-40 mb-50">
+    <h4 class="mb-20">What’s Nearby</h4>
+    <p class="fs-20 lh-lg pb-30">Risk management and compliance, when approached strategically, have th potential to go beyond mitigating threats.</p>
+    <ul class="style-none d-flex flex-wrap justify-content-between nearby-list-item">
+        <li *ngFor="let place of nearbyPlaces">
+            {{ place.name }}: <span class="fw-500 color-dark">{{ place.distance }}</span>
+        </li>
+    </ul>
+</div>
+<div class="similar-property">
+    <h4 class="mb-40">Similar Homes You May Like</h4>
+    <div class="swiper-container swiper">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide" *ngFor="let property of properties; let i = index">
+                <div class="listing-card-one shadow4 style-three border-30 mb-50">
+                    <div class="img-gallery p-15">
+                        <div class="position-relative border-20 overflow-hidden">
+                            <div class="tag bg-white text-dark fw-500 border-20">{{ property.type }}</div>
+                            <img [src]="property.image" class="w-100 border-20" alt="...">
+                            <a [routerLink]="property.detailsLink" class="btn-four inverse rounded-circle position-absolute">
+                                <i class="bi bi-arrow-up-right"></i>
+                            </a>
+                            <div class="img-slider-btn">
+                                {{ property.images.length }} <i class="fa-regular fa-image"></i>
+                                <a *ngFor="let image of property.images; let j = index" [href]="image" class="d-block" [attr.data-fancybox]="'group' + i" [attr.data-caption]="property.name + ' - Image ' + (j + 1)"></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="property-info pe-4 ps-4">
+                        <a [routerLink]="property.detailsLink" class="title tran3s">{{ property.name }}</a>
+                        <div class="address m0 pb-5">{{ property.address }}</div>
+                        <div class="pl-footer m0 d-flex align-items-center justify-content-between">
+                            <strong class="price fw-500 color-dark">{{ property.price }}</strong>
+                            <ul class="style-none d-flex action-icons">
+                                <li><a href="javascript:void(0);"><i class="fa-light fa-heart"></i></a></li>
+                                <li><a href="javascript:void(0);"><i class="fa-light fa-bookmark"></i></a></li>
+                                <li><a href="javascript:void(0);"><i class="fa-light fa-circle-plus"></i></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="property-score bg-white shadow4 border-20 p-40 mb-50">
+    <h4 class="mb-20">Walk Score</h4>
+    <p class="fs-20 lh-lg pb-30">Risk management and compliance, when approached strategically, have the potential</p>
+    <div class="row">
+        <div class="col-md-6" *ngFor="let score of scores">
+            <div class="block d-flex align-items-center mb-50 sm-mb-30">
+                <img [src]="score.icon" alt="" class="lazy-img icon">
+                <div class="text">
+                    <h6>{{ score.label }}</h6>
+                    <p class="fs-16 m0">
+                        <span class="color-dark">{{ score.value }}</span>/100
+                        ({{ score.description }})
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="property-location mb-50">
+    <h4 class="mb-40">Location</h4>
+    <div class="bg-white shadow4 border-20 p-30">
+        <div class="map-banner overflow-hidden border-15">
+            <div class="gmap_canvas h-100 w-100">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d83088.3595592641!2d-105.54557276330914!3d39.29302101722867!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x874014749b1856b7%3A0xc75483314990a7ff!2sColorado%2C%20USA!5e0!3m2!1sen!2sbd!4v1699764452737!5m2!1sen!2sbd" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" class="w-100 h-100"></iframe>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="review-panel-one bg-white shadow4 border-20 p-40 mb-50">
+    <div class="position-relative z-1">
+        <div class="d-sm-flex justify-content-between align-items-center mb-10">
+            <h4 class="m0 xs-pb-30">Reviews</h4>
+            <select class="nice-select">
+                <option value="0">Newest</option>
+                <option value="1">Best Seller</option>
+                <option value="2">Best Match</option>
+            </select>
+        </div>
+        <div class="review-wrapper mb-35">
+            <div class="review">
+                <img src="assets/images/media/img_01.jpg" alt="" class="rounded-circle avatar">
+                <div class="text">
+                    <div class="d-sm-flex justify-content-between">
+                        <div>
+                            <h6 class="name">Zubayer Al Hasan</h6>
+                            <div class="time fs-16">17 Aug, 23</div>
+                        </div>
+                        <ul class="rating style-none d-flex xs-mt-10">
+                            <li><span class="fst-italic me-2">(4.7 Rating)</span> </li>
+                            <li><i class="fa-sharp fa-solid fa-star"></i></li>
+                            <li><i class="fa-sharp fa-solid fa-star"></i></li>
+                            <li><i class="fa-sharp fa-solid fa-star"></i></li>
+                            <li><i class="fa-sharp fa-solid fa-star"></i></li>
+                            <li><i class="fa-sharp fa-solid fa-star"></i></li>
+                        </ul>
+                    </div>
+                    <p class="fs-20 mt-20 mb-30">Lorem ipsum dolor sit amet consectetur. Pellentesque sed nulla facili diam posuere aliquam suscipit quam.</p>
+                    <div class="d-flex review-help-btn">
+                        <a href="javascript:void(0);" class="me-5"><i class="fa-sharp fa-regular fa-thumbs-up"></i> <span>Helpful</span></a>
+                        <a href="javascript:void(0);"><i class="fa-sharp fa-regular fa-flag-swallowtail"></i> <span>Flag</span></a>
+                    </div>
+                </div>
+            </div>
+            <div class="review">
+                <img src="assets/images/media/img_03.jpg" alt="" class="rounded-circle avatar">
+                <div class="text">
+                    <div class="d-sm-flex justify-content-between">
+                        <div>
+                            <h6 class="name">Rashed Kabir</h6>
+                            <div class="time fs-16">13 Jun, 23</div>
+                        </div>
+                        <ul class="rating style-none d-flex xs-mt-10">
+                            <li><span class="fst-italic me-2">(4.9 Rating)</span> </li>
+                            <li><i class="fa-sharp fa-solid fa-star"></i></li>
+                            <li><i class="fa-sharp fa-solid fa-star"></i></li>
+                            <li><i class="fa-sharp fa-solid fa-star"></i></li>
+                            <li><i class="fa-sharp fa-solid fa-star"></i></li>
+                            <li><i class="fa-sharp fa-solid fa-star"></i></li>
+                        </ul>
+                    </div>
+                    <p class="fs-20 mt-20 mb-30">Lorem ipsum dolor sit amet consectetur. Pellentesque sed nulla facili diam posuere aliquam suscipit quam.</p>
+                    <ul class="style-none d-flex flex-wrap review-gallery pb-30">
+                        <li><a href="assets/images/listing/img_large_01.jpg" class="d-block" data-fancybox="revImg" data-caption="Duplex orkit villa"><img src="assets/images/listing/img_48.jpg" alt=""></a></li>
+                        <li><a href="assets/images/listing/img_large_02.jpg" class="d-block" data-fancybox="revImg" data-caption="Duplex orkit villa"><img src="assets/images/listing/img_49.jpg" alt=""></a></li>
+                        <li><a href="assets/images/listing/img_large_03.jpg" class="d-block" data-fancybox="revImg" data-caption="Duplex orkit villa"><img src="assets/images/listing/img_50.jpg" alt=""></a></li>
+                        <li>
+                            <div class="position-relative more-img">
+                                <img src="assets/images/listing/img_50.jpg" alt="">
+                                <span>13+</span>
+                                <a href="assets/images/listing/img_large_04.jpg" class="d-block" data-fancybox="revImg" data-caption="Duplex orkit villa."></a>
+                                <a href="assets/images/listing/img_large_05.jpg" class="d-block" data-fancybox="revImg" data-caption="Duplex orkit villa."></a>
+                                <a href="assets/images/listing/img_large_06.jpg" class="d-block" data-fancybox="revImg" data-caption="Duplex orkit villa."></a>
+                            </div>
+                        </li>
+                    </ul>
+                    <div class="d-flex review-help-btn">
+                        <a href="javascript:void(0);" class="me-5"><i class="fa-sharp fa-regular fa-thumbs-up"></i> <span>Helpful</span></a>
+                        <a href="javascript:void(0);"><i class="fa-sharp fa-regular fa-flag-swallowtail"></i> <span>Flag</span></a>
+                    </div>
+                </div>
+            </div>
+            <div class="review hide">
+                <img src="assets/images/media/img_02.jpg" alt="" class="rounded-circle avatar">
+                <div class="text">
+                    <div class="d-sm-flex justify-content-between">
+                        <div>
+                            <h6 class="name">Perty Jinta</h6>
+                            <div class="time fs-16">17 Aug, 23</div>
+                        </div>
+                        <ul class="rating style-none d-flex xs-mt-10">
+                            <li><span class="fst-italic me-2">(4.7 Rating)</span> </li>
+                            <li><i class="fa-sharp fa-solid fa-star"></i></li>
+                            <li><i class="fa-sharp fa-solid fa-star"></i></li>
+                            <li><i class="fa-sharp fa-solid fa-star"></i></li>
+                            <li><i class="fa-sharp fa-solid fa-star"></i></li>
+                            <li><i class="fa-sharp fa-solid fa-star"></i></li>
+                        </ul>
+                    </div>
+                    <p class="fs-20 mt-20 mb-30">Lorem ipsum dolor sit amet consectetur. Pellentesque sed nulla facili diam posuere aliquam suscipit quam.</p>
+                    <div class="d-flex review-help-btn">
+                        <a href="javascript:void(0);" class="me-5"><i class="fa-sharp fa-regular fa-thumbs-up"></i> <span>Helpful</span></a>
+                        <a href="javascript:void(0);"><i class="fa-sharp fa-regular fa-flag-swallowtail"></i> <span>Flag</span></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="load-more-review text-uppercase w-100 border-15 tran3s">VIEW ALL 120 REVIEWS <i class="bi bi-arrow-up-right"></i></div>
+    </div>
+</div>
+<div class="review-form bg-white shadow4 border-20 p-40">
+    <h4 class="mb-20">Leave A Reply</h4>
+    <p class="fs-20 lh-lg pb-15"><a href="javascript:void(0);" (click)="openModal()" class="color-dark fw-500 text-decoration-underline">Sign in</a> to post your comment or signup if you don't have any account.</p>
+    <form action="javascript:void(0);">
+        <div class="row">
+            <div class="col-12">
+                <div class="input-box-two mb-30">
+                    <div class="label">Title*</div>
+                    <input type="text" placeholder="Rashed Kabir" class="type-input">
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="input-box-two mb-30">
+                    <div class="label">Email*</div>
+                    <input type="email" placeholder="rshdkabir@gmail.com" class="type-input">
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="input-box-two mb-30">
+                    <div class="label">Ratings*</div>
+                    <select class="nice-select">
+                        <option value="0">Ratings</option>
+                        <option value="1">Five Star</option>
+                        <option value="1">Four Star</option>
+                        <option value="1">Three Star</option>
+                        <option value="1">Two Star</option>
+                        <option value="1">One Star</option>
+                    </select>
+                </div>
+            </div>
+            <div class="col-12">
+                <div class="input-box-two mb-30">
+                    <textarea placeholder="Write your review here..."></textarea>
+                </div>
+            </div>
+        </div>
+        <button class="btn-five text-uppercase sm">Post Review</button>
+    </form>
+</div>

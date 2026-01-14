@@ -1,0 +1,45 @@
+<app-dashboard-navbar [Title]="'Saved Search'"></app-dashboard-navbar>
+
+<h2 class="main-title d-block d-lg-none">Saved Search</h2>
+
+<div class="bg-white card-box p0 border-20">
+    <div class="table-responsive pt-25 pb-25 pe-4 ps-4">
+        <table class="table saved-search-table">
+            <thead>
+                <tr>
+                    <th scope="col">Title</th>
+                    <th scope="col">Date</th>
+                    <th scope="col">Action</th>
+                </tr>
+            </thead>
+            <tbody class="border-0">
+                <tr *ngFor="let property of properties">
+                    <td>
+                        <a href="javascript:void(0);" class="property-name tran3s color-dark fw-500">
+                            {{ property.title }}
+                        </a>
+                    </td>
+                    <td>{{ property.date }}</td>
+                    <td>
+                        <div class="d-flex justify-content-end btns-group">
+                            <a href="javascript:void(0);" data-bs-toggle="tooltip" title="View">
+                                <i class="fa-sharp fa-regular fa-eye"></i>
+                            </a>
+                            <a href="javascript:void(0);" data-bs-toggle="tooltip" title="Delete" (click)="deleteRecord(property.id)">
+                                <i class="fa-regular fa-trash"></i>
+                            </a>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+<ul class="pagination-one d-flex align-items-center style-none pt-40">
+    <li><a href="javascript:void(0);">1</a></li>
+    <li class="active"><a href="javascript:void(0);">2</a></li>
+    <li><a href="javascript:void(0);">3</a></li>
+    <li><a href="javascript:void(0);">4</a></li>
+    <li>....</li>
+    <li class="ms-2"><a href="javascript:void(0);" class="d-flex align-items-center">Last <img src="assets/images/icon/icon_46.svg" alt="" class="ms-2"></a></li>
+</ul>

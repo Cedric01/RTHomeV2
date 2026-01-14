@@ -1,0 +1,32 @@
+<div class="block-feature-three mt-150 xl-mt-120">
+    <div class="container">
+        <div class="position-relative z-1">
+            <div class="title-one text-center mb-75 xl-mb-50 md-mb-30 fadeInUp" data-aos="fade-up">
+                <h3>Explore Popular <span>Location <img src="assets/images/shape/title_shape_02.svg" alt="" class="lazy-img"></span></h3>
+                <p class="fs-22">Explore the latest listings & projects in diverse areas</p>
+            </div>
+
+            <div class="swiper-container property-location-slider-one swiper">
+
+                <div class="swiper-wrapper pb-5">
+                    <div class="swiper-slide" *ngFor="let location of locations">
+                        <div class="location-card-one position-relative z-1 d-flex align-items-end" [ngStyle]="{'background-image': 'url(' + location.imageUrl + ')'}">
+                            <div class="content text-center w-100 tran3s">
+                                <h5 class="text-white fw-normal">{{ location.name }}</h5>
+                                <p class="text-white fw-light">{{ location.properties }}</p>
+                            </div>
+                            <a routerLink="/listing_01" class="stretched-link"></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-button-prev">
+                    <i class="fa-sharp fa-light fa-angle-left"></i>
+                </div>
+                <div class="swiper-button-next">
+                    <i class="fa-sharp fa-light fa-angle-right"></i>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>

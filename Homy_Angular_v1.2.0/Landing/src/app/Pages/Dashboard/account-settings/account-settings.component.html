@@ -1,0 +1,54 @@
+<app-dashboard-navbar [Title]="'Account Settings'"></app-dashboard-navbar>
+
+
+<h2 class="main-title d-block d-lg-none">Account Settings</h2>
+
+<div class="bg-white card-box border-20">
+    <h4 class="dash-title-three">Edit & Update</h4>
+    <form (ngSubmit)="onSave()">
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="dash-input-wrapper mb-20">
+                    <label for="">First Name</label>
+                    <input type="text" [(ngModel)]="user.firstName" name="firstName" placeholder="Rashed" required>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="dash-input-wrapper mb-20">
+                    <label for="">Last Name</label>
+                    <input type="text" [(ngModel)]="user.lastName" name="lastName" placeholder="Kabir" required>
+                </div>
+            </div>
+            <div class="col-12">
+                <div class="dash-input-wrapper mb-20">
+                    <label for="">Email</label>
+                    <input type="email" [(ngModel)]="user.email" name="email" placeholder="rshakbair365@gmal.com" required>
+                </div>
+            </div>
+            <div class="col-12">
+                <div class="dash-input-wrapper mb-20">
+                    <label for="">Phone Number</label>
+                    <input type="tel" [(ngModel)]="user.phone" name="phone" placeholder="+810 321 889 021" required>
+                </div>
+            </div>
+            <div class="col-12">
+                <div class="dash-input-wrapper mb-20">
+                    <label for="">Password</label>
+                    <input type="password" [(ngModel)]="user.password" name="password" required>
+                    <div class="info-text d-sm-flex align-items-center justify-content-between mt-5">
+                        <p class="m0">Want to change the password? <a routerLink="/account-settings-pass-change">Click here</a></p>
+                        <a href="javascript:void(0);" routerLink="/account-settings-pass-change" class="chng-pass">Change Password</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="button-group d-inline-flex align-items-center mt-30">
+            <button type="submit" class="dash-btn-two tran3s me-3" [ngClass]="{'animate-bounce': isClicked}" (click)="onButtonClick()">
+                Save
+            </button>
+            <button type="button" class="dash-cancel-btn tran3s" (click)="onCancel()">Cancel</button>
+        </div>
+    </form>
+
+</div>

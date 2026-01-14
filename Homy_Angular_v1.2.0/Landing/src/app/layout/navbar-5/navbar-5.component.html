@@ -1,0 +1,36 @@
+<header [ngClass]="headerClass">
+    <div class="inner-content gap-one">
+        <div class="top-header position-relative">
+            <div class="d-flex align-items-center">
+                <div class="logo order-lg-0">
+                    <a routerLink="/" class="d-flex align-items-center">
+                        <img src="assets/images/logo/logo_06.svg" alt="">
+                    </a>
+                </div>
+                <div class="right-widget ms-auto me-3 me-lg-0 order-lg-4">
+                    <ul class="d-flex align-items-center style-none">
+                        <li class="d-flex align-items-center login-btn-one">
+                            <i class="fa-regular fa-lock"></i>
+                            <a href="javascript:void(0);" (click)="openModal()" class="fw-500 tran3s">Login <span class="d-none d-sm-inline-block">/ Sign up</span></a>
+                        </li>
+                        <li class="d-none d-md-inline-block ms-3 ms-xl-4 me-xl-4">
+                            <a routerLink="/add-property" class="btn-five md rounded-0" target="_blank"><span>Add Listing</span> <i class="fa-thin fa-arrow-up-right"></i></a>
+                        </li>
+                        <li class="d-none d-xl-block"><button class="sidenavbtn rounded-circle tran3s" type="button" data-bs-toggle="offcanvas" data-bs-target="#sideNav" aria-controls="sideNav"><i class="fa-sharp fa-light fa-bars-filter"></i></button></li>
+                    </ul>
+                </div>
+                <div class="order-lg-2 d-none d-xxl-block">
+                    <p class="m0 email-text ps-5 pe-5">Our Email <a href="javascript:void(0);" class="tran3s fw-500 ms-2">askhomy&#64;demo.com</a></p>
+                </div>
+                <nav class="navbar navbar-expand-lg p0 ms-lg-5 order-lg-3">
+                    <button class="navbar-toggler d-block d-lg-none" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                        <span></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarNav">
+                        <app-menu-list></app-menu-list>
+                    </div>
+                </nav>
+            </div>
+        </div> <!--/.top-header-->
+    </div>
+</header>

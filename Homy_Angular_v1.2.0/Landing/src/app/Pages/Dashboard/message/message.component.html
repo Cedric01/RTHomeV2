@@ -1,0 +1,263 @@
+<app-dashboard-navbar [Title]="'Message'"></app-dashboard-navbar>
+<div class="row gx-0 align-items-center">
+    <div class="offcanvas compose-mail-offcanvas" [class.show]="isOffcanvasOpen" tabindex="-1" role="dialog" aria-labelledby="offcanvasScrollingLabel" [ngStyle]="{'visibility': isOffcanvasOpen ? 'visible' : 'hidden'}">
+        <div class="compose-new-email-container">
+            <div class="new-email-header position-relative">
+                <div class="btn-group">
+                    <a data-bs-toggle="collapse" href="#CC-input" role="button" aria-expanded="false" aria-controls="collapseExample">Cc</a>
+                    <a data-bs-toggle="collapse" href="#BCC-input" role="button" aria-expanded="false" aria-controls="collapseExample">Bcc</a>
+                </div>
+                <div class="input-group d-flex align-items-center">
+                    <div class="text-center" style="width: 60px;">To</div>
+                    <input type="email" class="flex-fill" placeholder="payoneer@inquiry.com" />
+                </div>
+                <div class="collapse" id="CC-input">
+                    <div class="input-group d-flex align-items-center">
+                        <div class="text-center" style="width: 60px;">Cc</div>
+                        <input type="email" class="flex-fill" placeholder="payoneer@inquiry.com" />
+                    </div>
+                </div>
+                <div class="collapse" id="BCC-input">
+                    <div class="input-group d-flex align-items-center">
+                        <div class="text-center" style="width: 60px;">Bcc</div>
+                        <input type="email" class="flex-fill" placeholder="payoneer@inquiry.com" />
+                    </div>
+                </div>
+            </div>
+            <div class="compose-body">
+                <textarea [(ngModel)]="messageContent">
+                    Hi, Mary Cooper!
+                    Thanks for your invitation for the account manager position for your company. I will get back to you soon with all the required documents.
+                </textarea>
+            </div>
+            <div class="compose-email-footer d-flex justify-content-between">
+                <div class="d-flex align-items-center">
+                    <div class="insert-file position-relative me-3">
+                        <img src="assets/dashboard-images/icon/icon_32.svg" alt="" class="lazy-img" />
+                        <input type="file" name="uploadImg" title="Insert File" />
+                    </div>
+                    <button class="insert-emoji me-3">
+                        <img src="assets/dashboard-images/icon/icon_33.svg" alt="" class="lazy-img" />
+                    </button>
+                    <div class="insert-file position-relative me-3">
+                        <img src="assets/dashboard-images/icon/icon_34.svg" alt="" class="lazy-img" />
+                        <input type="file" name="uploadImg" title="Insert Image" />
+                    </div>
+                </div>
+                <div class="d-flex align-items-center">
+                    <a href="javascript:void(0);" class="delete-mail me-3" (click)="clearTextarea()">
+                        <img src="assets/dashboard-images/icon/icon_35.svg" alt="" class="lazy-img" />
+                    </a>
+                    <a href="javascript:void(0);" class="reply-btn tran3s" (click)="closeOffcanvas()">Reply</a>
+                </div>
+            </div>
+        </div>
+        <button type="button" class="btn-close text-reset" aria-label="Close" (click)="closeOffcanvas()"></button>
+    </div>
+    <div class="col-lg-4">
+        <div class="d-flex align-items-center justify-content-between">
+            <h2 class="main-title d-block d-lg-none m0">Messages</h2>
+            <a class="new-message-compose rounded-circle" (click)="openOffcanvas()">+</a>
+        </div>
+    </div>
+    <div class="col-lg-8">
+        <div class="message-pagination ps-lg-4 ps-xxl-5 d-flex align-items-center justify-content-between md-mt-40">
+            <a href="javascript:void()" class="prev-msg"><img src="assets/dashboard-images/icon/icon_26.svg" alt="" class="lazy-img"></a>
+            <div class="d-flex align-items-center">
+                <a href="javascript:void(0);"><i class="bi bi-chevron-left"></i></a>
+                <span>1-5 of 120</span>
+                <a href="javascript:void(0);"><i class="bi bi-chevron-right"></i></a>
+            </div>
+            <a href="javascript:void()" class="next-msg"><img src="assets/dashboard-images/icon/icon_27.svg" alt="" class="lazy-img"></a>
+        </div>
+    </div>
+</div>
+
+<div class="bg-white card-box border-20 p0 mt-30">
+    <div class="message-wrapper">
+        <div class="row gx-0">
+            <div class="col-lg-4">
+                <div class="message-sidebar pt-20">
+                    <div class="ps-3 pe-3 ps-xxl-4 pe-xxl-4">
+                        <div class="d-flex align-items-center justify-content-between">
+                            <div class="page-title fw-500">Inbox</div>
+                            <div class="action-dots float-end">
+                                <button class="action-btn dropdown-toggle" type="button" [ngClass]="{ 'show': isDropdownOpen }" (click)="toggleDropdown()">
+                                    <span></span>
+                                </button>
+                                <ul class="dropdown-menu dropdown-menu-end" [ngClass]="{ 'show': isDropdownOpen }">
+                                    <li><a class="dropdown-item" href="javascript:void(0);">Sent</a></li>
+                                    <li><a class="dropdown-item" href="javascript:void(0);">Important</a></li>
+                                    <li><a class="dropdown-item" href="javascript:void(0);">Draft</a></li>
+                                    <li><a class="dropdown-item" href="javascript:void(0);">Trash</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <form action="javascript:void(0);" class="search-form mt-20 mb-20">
+                            <input type="text" placeholder="Search contacts">
+                            <button><img src="assets/dashboard-images/icon/icon_43.svg" alt="" class="lazy-img m-auto"></button>
+                        </form>
+
+                        <div class="message_filter d-flex align-items-center justify-content-between mb-20" id="module_btns">
+                            <button class="filter_btn" [ngClass]="{ 'active': selectedFilter === 'All' }" (click)="filterEmails('All')">
+                                All
+                            </button>
+                            <button class="filter_btn" [ngClass]="{ 'active': selectedFilter === 'Read' }" (click)="filterEmails('Read')">
+                                <span style="background:#FF4545;"></span> Read
+                            </button>
+                            <button class="filter_btn" [ngClass]="{ 'active': selectedFilter === 'Unread' }" (click)="filterEmails('Unread')">
+                                <span style="background:#3BDA84;"></span> Unread
+                            </button>
+                            <button class="filter_btn" [ngClass]="{ 'active': selectedFilter === 'Primary' }" (click)="filterEmails('Primary')">
+                                <span style="background:#50C0FF;"></span> Primary
+                            </button>
+                        </div>
+                    </div>
+                    <div class="email-read-panel">
+                        <div class="email-list-item ps-3 pe-3 ps-xxl-4 pe-xxl-4" *ngFor="let email of filteredEmails" [ngClass]="{ 'read': email.isRead, 'primary': email.isPrimary }">
+                            <div class="email-short-preview position-relative">
+                                <div class="d-flex align-items-center justify-content-between">
+                                    <div class="sender-name">{{ email.senderName }}</div>
+                                    <div class="date">{{ email.date }}</div>
+                                </div>
+                                <div class="mail-sub">{{ email.subject }}</div>
+                                <div class="mail-text">{{ email.text }}</div>
+                                <div class="attached-file-preview d-flex align-items-center mt-15" *ngIf="email.attachments?.length">
+                                    <div class="file d-flex align-items-center me-2" *ngFor="let file of email.attachments">
+                                        <img src="assets/dashboard-images/icon/icon_28.svg" alt="" class="lazy-img me-2" />
+                                        <span>{{ file }}</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-8">
+                <div class="open-email-container pb-40">
+                    <div class="email-header divider d-flex justify-content-between ps-4 pe-4 ps-xxl-5 pe-xxl-5">
+                        <div class="sender-info d-flex align-items-center">
+                            <img src="assets/dashboard-images/logo_02.png" alt="" class="lazy-img logo">
+                            <div class="ps-3">
+                                <div class="sender-name">Killwake</div>
+                                <div class="sender-email">kilwakesales&#64;inquiry.com</div>
+                            </div>
+                        </div>
+                        <div class="email-info">
+                            <div class="time">4:45AM (3 hours ago)</div>
+                            <div class="d-flex align-items-center justify-content-end">
+                                <button class="delete-email"><img src="assets/dashboard-images/icon/icon_29.svg" alt="" class="lazy-img"></button>
+                                <button class="reply-email ms-3 me-3"><img src="assets/dashboard-images/icon/icon_30.svg" alt="" class="lazy-img"></button>
+                                <div class="action-dots float-end">
+                                    <button class="action-btn dropdown-toggle" type="button" [ngClass]="{ 'show': isDropdownOpen2 }" (click)="toggleDropdown2()">
+                                        <span></span>
+                                    </button>
+                                    <ul class="dropdown-menu dropdown-menu-end" [ngClass]="{ 'show': isDropdownOpen2 }">
+                                        <li><a class="dropdown-item" href="javascript:void(0);">Reply</a></li>
+                                        <li><a class="dropdown-item" href="javascript:void(0);">Forward</a></li>
+                                        <li><a class="dropdown-item" href="javascript:void(0);">Block</a></li>
+                                        <li><a class="dropdown-item" href="javascript:void(0);">Delete</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="email-body divider">
+                        <div class="ps-4 pe-4 ps-xxl-5 pe-xxl-5" *ngFor="let message of chatMessages">
+                            <div *ngIf="message.type === 'initial'">
+                                <h2>{{ message.message }}</h2>
+                            </div>
+                            <div *ngIf="message.type === 'sent'">
+                                <p>{{ message.message }}</p>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="email-footer">
+                        <div class="ps-4 pe-4 ps-xxl-5 pe-xxl-5">
+                            <div class="attachments mb-30">
+                                <div class="d-flex justify-content-between mb-5">
+                                    <h6 class="m0">2 Attachment</h6>
+                                    <a href="javascript:void(0);" class="all-download">Download All</a>
+                                </div>
+                                <div class="d-flex">
+                                    <a href="javascript:void(0);" class="file tran3s d-flex align-items-center mt-10" download>
+                                        <div class="icon rounded-circle d-flex align-items-center justify-content-center"><img src="assets/dashboard-images/icon/icon_31.svg" alt="" class="lazy-img"></div>
+                                        <div class="ps-2">
+                                            <div class="file-name">project-details.pdf</div>
+                                            <div class="file-size">2.3mb</div>
+                                        </div>
+                                    </a>
+                                    <a href="javascript:void(0);" class="file tran3s d-flex align-items-center mt-10" download>
+                                        <div class="icon rounded-circle d-flex align-items-center justify-content-center"><img src="assets/dashboard-images/icon/icon_31.svg" alt="" class="lazy-img"></div>
+                                        <div class="ps-2">
+                                            <div class="file-name">form.pdf</div>
+                                            <div class="file-size">1.3mb</div>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+
+                            <div class="compose-new-email-container">
+                                <div class="new-email-header position-relative">
+                                    <div class="btn-group">
+                                        <a href="javascript:void(0);" (click)="toggleSection('cc')" [attr.aria-expanded]="ccCollapsed ? 'false' : 'true'" aria-controls="CC-input">
+                                            Cc
+                                        </a>
+                                        <a href="javascript:void(0);" (click)="toggleSection('bcc')" [attr.aria-expanded]="bccCollapsed ? 'false' : 'true'" aria-controls="BCC-input">
+                                            Bcc
+                                        </a>
+                                    </div>
+
+                                    <div class="input-group d-flex align-items-center">
+                                        <div class="text-center" style="width: 60px;">To</div>
+                                        <input type="email" class="flex-fill" placeholder="rainbowsales@inquiry.com" [(ngModel)]="toEmail" />
+                                    </div>
+
+                                    <div [ngClass]="{ 'collapse': ccCollapsed }" id="CC-input">
+                                        <div class="input-group d-flex align-items-center">
+                                            <div class="text-center" style="width: 60px;">Cc</div>
+                                            <input type="email" class="flex-fill" placeholder="zoonwala@inquiry.com" [(ngModel)]="ccEmail" />
+                                        </div>
+                                    </div>
+
+                                    <div [ngClass]="{ 'collapse': bccCollapsed }" id="BCC-input">
+                                        <div class="input-group d-flex align-items-center">
+                                            <div class="text-center" style="width: 60px;">Bcc</div>
+                                            <input type="email" class="flex-fill" placeholder="mojobdltd@inquiry.com" [(ngModel)]="bccEmail" />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="compose-body">
+                                    <textarea [(ngModel)]="messageContent" placeholder="Write your email here..." (keyup.enter)="sendMessage()"></textarea>
+                                </div>
+
+                                <div class="compose-email-footer d-flex justify-content-between">
+                                    <div class="d-flex align-items-center">
+                                        <div class="insert-file position-relative me-3">
+                                            <img src="assets/dashboard-images/icon/icon_32.svg" alt="" class="lazy-img">
+                                            <input type="file" name="uploadImg" placeholder="" title="Insert File">
+                                        </div>
+                                        <button class="insert-emoji me-3"><img src="assets/dashboard-images/icon/icon_33.svg" alt="" class="lazy-img"></button>
+                                        <div class="insert-file position-relative me-3">
+                                            <img src="assets/dashboard-images/icon/icon_34.svg" alt="" class="lazy-img">
+                                            <input type="file" name="uploadImg" placeholder="" title="Insert Image">
+                                        </div>
+                                    </div>
+
+                                    <div class="d-flex align-items-center">
+                                        <a href="javascript:void(0);" class="delete-mail me-3" (click)="clearEmailContent()">
+                                            <img src="assets/dashboard-images/icon/icon_35.svg" alt="Delete Email" class="lazy-img" />
+                                        </a><a href="javascript:void(0);" class="reply-btn tran3s">Reply</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

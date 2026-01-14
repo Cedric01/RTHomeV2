@@ -1,0 +1,154 @@
+<app-dashboard-navbar [Title]="'Reviews'"></app-dashboard-navbar>
+
+<h2 class="main-title d-block d-lg-none">Reviews</h2>
+
+<div class="d-sm-flex align-items-center justify-content-between mb-25">
+    <div class="fs-16">Showing <span class="color-dark fw-500">1–5</span> of <span class="color-dark fw-500">40</span> results</div>
+    <div class="d-flex ms-auto xs-mt-30">
+        <div class="short-filter d-flex align-items-center ms-sm-auto">
+            <div class="fs-16 me-2">Short by:</div>
+            <select class="nice-select">
+                <option value="0">Newest</option>
+                <option value="1">Best Rating</option>
+                <option value="3">Rating Low</option>
+                <option value="4">Rating High</option>
+            </select>
+        </div>
+    </div>
+</div>
+
+<div class="bg-white card-box pt-0 border-20">
+    <div class="theme-details-one">
+        <div class="review-panel-one">
+            <div class="position-relative z-1">
+                <div class="review-wrapper">
+                    <div class="review">
+                        <img src="assets/images/media/img_01.jpg" alt="" class="rounded-circle avatar">
+                        <div class="text">
+                            <div class="d-sm-flex justify-content-between">
+                                <div>
+                                    <h6 class="name">Zubayer Al Hasan</h6>
+                                    <div class="time fs-16">17 Aug, 23</div>
+                                </div>
+                                <ul class="rating style-none d-flex xs-mt-10">
+                                    <li><span class="fst-italic me-2">(4.7 Rating)</span> </li>
+                                    <li><i class="fa-sharp fa-solid fa-star"></i></li>
+                                    <li><i class="fa-sharp fa-solid fa-star"></i></li>
+                                    <li><i class="fa-sharp fa-solid fa-star"></i></li>
+                                    <li><i class="fa-sharp fa-solid fa-star"></i></li>
+                                    <li><i class="fa-sharp fa-solid fa-star"></i></li>
+                                </ul>
+                            </div>
+                            <p class="fs-20 mt-20 mb-30">Lorem ipsum dolor sit amet consectetur. Pellentesque sed nulla facili diam posuere aliquam suscipit quam.</p>
+                            <div class="d-flex review-help-btn">
+                                <a href="javascript:void(0);" class="me-5"><i class="fa-sharp fa-regular fa-thumbs-up"></i> <span>Helpful</span></a>
+                                <a href="javascript:void(0);" class="me-5"><i class="fa-sharp fa-regular fa-flag-swallowtail"></i> <span>Flag</span></a>
+                                <a href="javascript:void(0);"><i class="fa-sharp fa-regular fa-reply"></i> <span>Reply</span></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="review">
+                        <img src="assets/images/media/img_03.jpg" alt="" class="rounded-circle avatar">
+                        <div class="text">
+                            <div class="d-sm-flex justify-content-between">
+                                <div>
+                                    <h6 class="name">Rashed Kabir</h6>
+                                    <div class="time fs-16">13 Jun, 23</div>
+                                </div>
+                                <ul class="rating style-none d-flex xs-mt-10">
+                                    <li><span class="fst-italic me-2">(4.9 Rating)</span> </li>
+                                    <li><i class="fa-sharp fa-solid fa-star"></i></li>
+                                    <li><i class="fa-sharp fa-solid fa-star"></i></li>
+                                    <li><i class="fa-sharp fa-solid fa-star"></i></li>
+                                    <li><i class="fa-sharp fa-solid fa-star"></i></li>
+                                    <li><i class="fa-sharp fa-solid fa-star"></i></li>
+                                </ul>
+                            </div>
+                            <p class="fs-20 mt-20 mb-30">Lorem ipsum dolor sit amet consectetur. Pellentesque sed nulla facili diam posuere aliquam suscipit quam.</p>
+                            <ul class="style-none d-flex flex-wrap review-gallery pb-30">
+                                <li *ngFor="let image of gallery; let i = index">
+                                    <a href="javascript:void(0);" class="d-block" (click)="openLightbox(i)">
+                                        <img [src]="image.thumb" [alt]="image.caption">
+                                    </a>
+                                </li>
+                                <li>
+                                    <div class="position-relative more-img">
+                                        <img [src]="gallery[3]?.thumb" alt="More Images">
+                                        <span>{{ gallery.length - 3 }}+</span>
+                                        <a href="javascript:void(0);" (click)="openLightbox(3)" class="d-block"></a>
+                                    </div>
+                                </li>
+                            </ul>
+                            <div class="d-flex review-help-btn">
+                                <a href="javascript:void(0);" class="me-5"><i class="fa-sharp fa-regular fa-thumbs-up"></i> <span>Helpful</span></a>
+                                <a href="javascript:void(0);" class="me-5"><i class="fa-sharp fa-regular fa-flag-swallowtail"></i> <span>Flag</span></a>
+                                <a href="javascript:void(0);"><i class="fa-sharp fa-regular fa-reply"></i> <span>Reply</span></a>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="review">
+                        <img src="assets/images/media/img_02.jpg" alt="" class="rounded-circle avatar">
+                        <div class="text">
+                            <div class="d-sm-flex justify-content-between">
+                                <div>
+                                    <h6 class="name">Perty Jinta</h6>
+                                    <div class="time fs-16">17 Aug, 23</div>
+                                </div>
+                                <ul class="rating style-none d-flex xs-mt-10">
+                                    <li><span class="fst-italic me-2">(4.7 Rating)</span> </li>
+                                    <li><i class="fa-sharp fa-solid fa-star"></i></li>
+                                    <li><i class="fa-sharp fa-solid fa-star"></i></li>
+                                    <li><i class="fa-sharp fa-solid fa-star"></i></li>
+                                    <li><i class="fa-sharp fa-solid fa-star"></i></li>
+                                    <li><i class="fa-sharp fa-solid fa-star"></i></li>
+                                </ul>
+                            </div>
+                            <p class="fs-20 mt-20 mb-30">Lorem ipsum dolor sit amet consectetur. Amet amet id cursus dignissim. Eget vitae amet tempus sit mattis. Semper integer condimentum nunc augue aliquet quam a tincidunt.</p>
+                            <div class="d-flex review-help-btn">
+                                <a href="javascript:void(0);" class="me-5"><i class="fa-sharp fa-regular fa-thumbs-up"></i> <span>Helpful</span></a>
+                                <a href="javascript:void(0);" class="me-5"><i class="fa-sharp fa-regular fa-flag-swallowtail"></i> <span>Flag</span></a>
+                                <a href="javascript:void(0);"><i class="fa-sharp fa-regular fa-reply"></i> <span>Reply</span></a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="review border-0 pb-0">
+                        <img src="assets/images/media/img_01.jpg" alt="" class="rounded-circle avatar">
+                        <div class="text">
+                            <div class="d-sm-flex justify-content-between">
+                                <div>
+                                    <h6 class="name">Milon Ahmed</h6>
+                                    <div class="time fs-16">7 Jan, 23</div>
+                                </div>
+                                <ul class="rating style-none d-flex xs-mt-10">
+                                    <li><span class="fst-italic me-2">(4.7 Rating)</span> </li>
+                                    <li><i class="fa-sharp fa-solid fa-star"></i></li>
+                                    <li><i class="fa-sharp fa-solid fa-star"></i></li>
+                                    <li><i class="fa-sharp fa-solid fa-star"></i></li>
+                                    <li><i class="fa-sharp fa-solid fa-star"></i></li>
+                                    <li><i class="fa-sharp fa-solid fa-star"></i></li>
+                                </ul>
+                            </div>
+                            <p class="fs-20 mt-20 mb-30">Lorem ipsum dolor sit amet consectetur. Pellentesque sed nulla facili diam posuere aliquam suscipit quam.</p>
+                            <div class="d-flex review-help-btn">
+                                <a href="javascript:void(0);" class="me-5"><i class="fa-sharp fa-regular fa-thumbs-up"></i> <span>Helpful</span></a>
+                                <a href="javascript:void(0);" class="me-5"><i class="fa-sharp fa-regular fa-flag-swallowtail"></i> <span>Flag</span></a>
+                                <a href="javascript:void(0);"><i class="fa-sharp fa-regular fa-reply"></i> <span>Reply</span></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<ul class="pagination-one d-flex align-items-center style-none pt-40">
+    <li><a href="javascript:void(0);">1</a></li>
+    <li class="active"><a href="javascript:void(0);">2</a></li>
+    <li><a href="javascript:void(0);">3</a></li>
+    <li><a href="javascript:void(0);">4</a></li>
+    <li>....</li>
+    <li class="ms-2"><a href="javascript:void(0);" class="d-flex align-items-center">Last <img src="assets/images/icon/icon_46.svg" alt="" class="ms-2"></a></li>
+</ul>
