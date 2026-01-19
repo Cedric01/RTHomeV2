@@ -28,7 +28,7 @@ import { MenuListComponent } from "../../../../components/menu-list/menu-list.co
 })
 export class IndexComponent {
   headerClass = 'theme-main-menu menu-overlay menu-style-one sticky-menu';
-
+ 
   options = [
     { value: '1', label: 'Buy Apartments' }, { value: '2', label: 'Rent Condos' },
     { value: '3', label: 'Sell Houses' }, { value: '4', label: 'Rent Industrial' },
