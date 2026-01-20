@@ -1,5 +1,5 @@
 import { SwiperService } from './../../../../service/swiper.service';
-import { Component, HostListener, Inject, PLATFORM_ID } from '@angular/core';
+import { AfterViewInit, Component, HostListener, Inject, PLATFORM_ID, OnInit } from '@angular/core';
 import { CommonModule, isPlatformBrowser } from '@angular/common';
 import { NgSelectModule } from '@ng-select/ng-select';
 import AOS from 'aos';
@@ -15,6 +15,11 @@ import { FancyBannerOneComponent } from '../../../../components/fancy-banner-one
 import { FancyBannerTwoComponent } from '../../../../components/fancy-banner-two/fancy-banner-two.component';
 import { ModalService } from '../../../../service/modal.service';
 import { MenuListComponent } from "../../../../components/menu-list/menu-list.component";
+import { Property } from '../../../../models/property';
+import { Agent } from '../../../../models/agent';
+import { PropertyService } from '../../../../service/property.service';
+import { LocationService } from '../../../../service/location.service';
+import { AgentService } from '../../../../service/agent.service';
 
 @Component({
     selector: 'app-index',
@@ -26,8 +31,14 @@ import { MenuListComponent } from "../../../../components/menu-list/menu-list.co
     ],
     templateUrl: './index.component.html'
 })
-export class IndexComponent {
+export class IndexComponent implements OnInit, AfterViewInit{
   headerClass = 'theme-main-menu menu-overlay menu-style-one sticky-menu';
+
+  properties: Property[] = [];
+  featuredProperties: Property[] = [];
+  locations: Location[] = [];
+  
+//  agents: Agent[] = [];
  
   options = [
     { value: '1', label: 'Buy Apartments' }, { value: '2', label: 'Rent Condos' },
@@ -35,12 +46,12 @@ export class IndexComponent {
     { value: '6', label: 'Sell Villas' }
   ];
 
-  locations = [
-    { value: '1', label: 'Dhanmondi, Dhaka' }, { value: '2', label: 'Acapulco, Mexico' },
-    { value: '3', label: 'Berlin, Germany' }, { value: '4', label: 'Cannes, France' },
-    { value: '5', label: 'Delhi, India' }, { value: '6', label: 'Giza, Egypt' },
-    { value: '7', label: 'Havana, Cuba' }
-  ];
+  // locations = [
+  //   { value: '1', label: 'Dhanmondi, Dhaka' }, { value: '2', label: 'Acapulco, Mexico' },
+  //   { value: '3', label: 'Berlin, Germany' }, { value: '4', label: 'Cannes, France' },
+  //   { value: '5', label: 'Delhi, India' }, { value: '6', label: 'Giza, Egypt' },
+  //   { value: '7', label: 'Havana, Cuba' }
+  // ];
 
   priceRanges = [
     { value: '1', label: '$10,000 - $200,000' }, { value: '2', label: '$200,000 - $300,000' },
@@ -96,11 +107,22 @@ export class IndexComponent {
     { id: 'carousel5', tag: 'FOR RENT', images: ['assets/images/listing/img_33.jpg', 'assets/images/listing/img_18.jpg', 'assets/images/listing/img_17.jpg'], title: 'Blueberry villa', address: 'Mirpur 10, Stadium dhaka 1208', features: [{ icon: 'icon_04.svg', label: '1370 sqft' }, { icon: 'icon_05.svg', label: '03 bed' }, { icon: 'icon_06.svg', label: '02 bath' }], price: '$3,280/<sub>m</sub>', rent: true },
     { id: 'carousel6', tag: 'FOR SELL', images: ['assets/images/listing/img_34.jpg', 'assets/images/listing/img_18.jpg', 'assets/images/listing/img_17.jpg'], title: 'Blueberry villa', address: 'Mirpur 10, Stadium dhaka 1208', features: [{ icon: 'icon_04.svg', label: '1370 sqft' }, { icon: 'icon_05.svg', label: '03 bed' }, { icon: 'icon_06.svg', label: '02 bath' }], price: '$3,280/<sub>m</sub>', rent: true }
   ];
+  loading: boolean | undefined;
 
-  constructor(@Inject(PLATFORM_ID) private platformId: Object, private swiperService: SwiperService, private modalService: ModalService) { }
 
-  ngOnInit() {
+  constructor(@Inject(PLATFORM_ID) private platformId: Object, 
+  private swiperService: SwiperService, 
+  private modalService: ModalService,
+  private propertyService: PropertyService,
+  private locationService: LocationService,
+  private agentService: AgentService,
+
+) { }
+
+  ngOnInit() : void {
     if (isPlatformBrowser(this.platformId)) AOS.init({ duration: 800, easing: 'ease', once: true, mirror: false });
+    
+    this.loadHomePageData();
   }
 
   ngAfterViewInit() {
@@ -111,6 +133,42 @@ export class IndexComponent {
 
   initializeSwiper(selector: string, options: any) {
     new Swiper(selector, { ...options, navigation: { nextEl: '.swiper-button-next', prevEl: '.swiper-button-prev' } });
+  }
+
+  private loadHomePageData(): void {
+    this.loading = true;
+
+    this.propertyService.getAll().subscribe({
+      next: properties => {
+        this.properties = properties;
+        this.featuredProperties = properties.slice(0, 6);
+        this.initSwipers();
+      },
+      error: err => console.error(err),
+      complete: () => (this.loading = false)
+    });
+
+    this.agentService.getAll().subscribe({
+      next: agents => (this.agents = agents)
+    });
+
+    this.locationService.getAll().subscribe({
+      next: locations => (this.locations = locations)
+    });
+  }
+
+    private initSwipers(): void {
+    if (!isPlatformBrowser(this.platformId)) return;
+
+    this.swiperService.initSwiper(
+      '.swiper-container',
+      1,
+      20,
+      3000,
+      3,
+      6,
+      4
+    );
   }
 
   @HostListener('window:scroll', ['$event'])
