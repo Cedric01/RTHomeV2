@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  apiUrl: 'https://your-azure-api.azurewebsites.net/api'
+  apiUrl: 'https://orange-rock-0f996da0f.2.azurestaticapps.net'
 };

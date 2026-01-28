@@ -57,8 +57,8 @@
                                 <div class="col-xl-4 col-lg-4">
                                     <div class="input-box-one border-left">
                                         <div class="label">Location</div>
-                                        <ng-select class="" [items]="locations" bindLabel="label" bindValue="value" [placeholder]="'Dhanmondi, Dhaka'">
-                                            <ng-option *ngFor="let location of locations" [value]="location.value">{{ location.label }}</ng-option>
+                                        <ng-select [items]="locationOptions" bindLabel="label" bindValue="id" [placeholder]="'City, Country'">
+                                            <ng-option *ngFor="let location of locationOptions" [value]="location.value">{{ location.label }}</ng-option>
                                         </ng-select>
                                     </div>
                                 </div>

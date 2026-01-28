@@ -20,6 +20,8 @@ import { Agent } from '../../../../models/agent';
 import { PropertyService } from '../../../../service/property.service';
 import { LocationService } from '../../../../service/location.service';
 import { AgentService } from '../../../../service/agent.service';
+import { Location as LocationModel } from '../../../../models/location';
+import { PriceRangeService } from '../../../../service/price-range.service';
 
 @Component({
     selector: 'app-index',
@@ -36,7 +38,10 @@ export class IndexComponent implements OnInit, AfterViewInit{
 
   properties: Property[] = [];
   featuredProperties: Property[] = [];
-  locations: Location[] = [];
+locations: LocationModel[] = [];
+locationOptions: { value: string; label: string }[] = [];
+priceRanges: { value: string; label: string }[] = [];
+
   
 //  agents: Agent[] = [];
  
@@ -53,10 +58,10 @@ export class IndexComponent implements OnInit, AfterViewInit{
   //   { value: '7', label: 'Havana, Cuba' }
   // ];
 
-  priceRanges = [
-    { value: '1', label: '$10,000 - $200,000' }, { value: '2', label: '$200,000 - $300,000' },
-    { value: '3', label: '$300,000 - $400,000' }
-  ];
+  // priceRanges = [
+  //   { value: '1', label: '$10,000 - $200,000' }, { value: '2', label: '$200,000 - $300,000' },
+  //   { value: '3', label: '$300,000 - $400,000' }
+  // ];
 
   listings = [
     {
@@ -116,6 +121,7 @@ export class IndexComponent implements OnInit, AfterViewInit{
   private propertyService: PropertyService,
   private locationService: LocationService,
   private agentService: AgentService,
+  private priceRangeService: PriceRangeService
 
 ) { }
 
@@ -152,9 +158,27 @@ export class IndexComponent implements OnInit, AfterViewInit{
       next: agents => (this.agents = agents)
     });
 
-    this.locationService.getAll().subscribe({
-      next: locations => (this.locations = locations)
-    });
+this.locationService.getAll().subscribe({
+  next: locations => {
+    this.locations = locations;
+
+    this.locationOptions = locations.map(l => ({
+      value: l.id.toString(),
+      label: l.displayName
+    }));
+  }
+});
+
+this.priceRangeService.getAll().subscribe({
+  next: ranges => {
+    this.priceRanges = ranges.map(r => ({
+      value: r.id.toString(),
+      label: r.displayLabel
+    }));
+  }
+});
+
+
   }
 
     private initSwipers(): void {
