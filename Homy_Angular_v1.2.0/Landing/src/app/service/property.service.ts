@@ -11,7 +11,7 @@ export class PropertyService {
   constructor(private http: HttpClient, @Inject(PLATFORM_ID) private platformId: Object) {
     if (isPlatformBrowser(this.platformId)) {
       const host = window.location.host;
-      this.baseUrl = host.includes('azurestaticapps') ? 'https://orange-rock-0f996da0f-1.eastus2.2.azurestaticapps.net/properties' : 'https://localhost:7213/api/properties';
+      this.baseUrl = host.includes('azurestaticapps') ? 'https://rthomepropertymanagement-fze4g3hbd8e6avby.uksouth-01.azurewebsites.net/api/properties' : 'https://localhost:7213/api/properties';
     } else {
       this.baseUrl = 'https://localhost:7213/api/properties';
     }
