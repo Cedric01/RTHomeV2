@@ -3,6 +3,7 @@ import { Injectable, Inject, PLATFORM_ID } from "@angular/core";
 import { isPlatformBrowser } from '@angular/common';
 import { Observable } from "rxjs";
 import { Property } from "../models/property";
+import { SelectOptionListing } from "../models/selectoptionlisting";
 
 @Injectable({ providedIn: 'root' })
 export class PropertyService {
@@ -36,4 +37,7 @@ export class PropertyService {
   delete(id: number): Observable<void> {
     return this.http.delete<void>(`${this.baseUrl}/${id}`);
   }
+
+
+
 }

@@ -18,4 +18,5 @@ export interface Property {
 
   status?: 'ACTIVE' | 'SOLD' | 'RENTED';
   createdAt?: string;
+  imageUrls?: string[];
 }

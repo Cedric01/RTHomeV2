@@ -104,14 +104,7 @@ priceRanges: { value: string; label: string }[] = [];
     { icon: 'assets/images/icon/icon_09.svg', title: 'Quick Process', description: 'Apply & get your preferable jobs with all the requirements and get it.', delay: 200 }
   ];
 
-  listingsAll = [
-    { id: 'carousel1', tag: 'FOR RENT', images: ['assets/images/listing/img_18.jpg', 'assets/images/listing/img_17.jpg', 'assets/images/listing/img_19.jpg'], title: 'Blueberry villa', address: 'Mirpur 10, Stadium dhaka 1208', features: [{ icon: 'icon_04.svg', label: '1370 sqft' }, { icon: 'icon_05.svg', label: '03 bed' }, { icon: 'icon_06.svg', label: '02 bath' }], price: '$3,280/<sub>m</sub>', rent: true },
-    { id: 'carousel2', tag: 'FOR SELL', images: ['assets/images/listing/img_18.jpg', 'assets/images/listing/img_19.jpg', 'assets/images/listing/img_17.jpg'], title: 'White House villa', address: 'Muza link road, ca, usa', features: [{ icon: 'icon_04.svg', label: '1270 sqft' }, { icon: 'icon_05.svg', label: '02 bed' }, { icon: 'icon_06.svg', label: '02 bath' }], price: '$28,100.00', rent: false },
-    { id: 'carousel3', tag: 'FOR SELL', images: ['assets/images/listing/img_19.jpg', 'assets/images/listing/img_18.jpg', 'assets/images/listing/img_17.jpg'], title: 'Luxury villa in Dal lake.', address: 'Mirpur 10, Stadium', features: [{ icon: 'icon_04.svg', label: '1270 sqft' }, { icon: 'icon_05.svg', label: '02 bed' }, { icon: 'icon_06.svg', label: '02 bath' }], price: '$42,500.00', rent: false },
-    { id: 'carousel4', tag: 'FOR RENT', images: ['assets/images/listing/img_32.jpg', 'assets/images/listing/img_18.jpg', 'assets/images/listing/img_17.jpg'], title: 'Blueberry villa', address: 'Mirpur 10, Stadium dhaka 1208', features: [{ icon: 'icon_04.svg', label: '1370 sqft' }, { icon: 'icon_05.svg', label: '03 bed' }, { icon: 'icon_06.svg', label: '02 bath' }], price: '$3,280/<sub>m</sub>', rent: true },
-    { id: 'carousel5', tag: 'FOR RENT', images: ['assets/images/listing/img_33.jpg', 'assets/images/listing/img_18.jpg', 'assets/images/listing/img_17.jpg'], title: 'Blueberry villa', address: 'Mirpur 10, Stadium dhaka 1208', features: [{ icon: 'icon_04.svg', label: '1370 sqft' }, { icon: 'icon_05.svg', label: '03 bed' }, { icon: 'icon_06.svg', label: '02 bath' }], price: '$3,280/<sub>m</sub>', rent: true },
-    { id: 'carousel6', tag: 'FOR SELL', images: ['assets/images/listing/img_34.jpg', 'assets/images/listing/img_18.jpg', 'assets/images/listing/img_17.jpg'], title: 'Blueberry villa', address: 'Mirpur 10, Stadium dhaka 1208', features: [{ icon: 'icon_04.svg', label: '1370 sqft' }, { icon: 'icon_05.svg', label: '03 bed' }, { icon: 'icon_06.svg', label: '02 bath' }], price: '$3,280/<sub>m</sub>', rent: true }
-  ];
+  listingsAll: any[] = [];
   loading: boolean | undefined;
 
 
@@ -148,6 +141,24 @@ priceRanges: { value: string; label: string }[] = [];
       next: properties => {
         this.properties = properties;
         this.featuredProperties = properties.slice(0, 6);
+        this.listingsAll = this.featuredProperties.map((p, i) => ({
+          id: 'carousel' + (p.id ?? i + 1),
+          tag: p.isForRent ? 'FOR RENT' : 'FOR SELL',
+          images: (p.imageUrls && p.imageUrls.length > 0)
+            ? p.imageUrls
+            : ['assets/images/listing/img_18.jpg'],
+          title: p.title,
+          address: p.address,
+          features: [
+            { icon: 'icon_04.svg', label: (p.squareFeet ?? '—') + ' sqft' },
+            { icon: 'icon_05.svg', label: (p.bedrooms ?? '—') + ' bed' },
+            { icon: 'icon_06.svg', label: (p.bathrooms ?? '—') + ' bath' }
+          ],
+          price: p.isForRent
+            ? '$' + Number(p.price).toLocaleString() + '/<sub>m</sub>'
+            : '$' + Number(p.price).toLocaleString(),
+          rent: p.isForRent
+        }));
         this.initSwipers();
       },
       error: err => console.error(err),

@@ -3,6 +3,10 @@ import { DashboardNavbarComponent } from "../../../components/dashboard-navbar/d
 import { NgSelectModule } from '@ng-select/ng-select';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { PropertyService } from '../../../service/property.service';
+import { LocationService } from '../../../service/location.service';
+import { ListingTypeService } from '../../../service/listingType.service';
+import { SelectOptionListing } from '../../../models/selectoptionlisting';
 
 @Component({
     selector: 'app-add-property',
@@ -53,6 +57,24 @@ export class AddPropertyComponent {
   ];
   selectedFloor = null;
   uploadedFiles: Array<{ name: string }> = [];
+  listingTypes: SelectOptionListing[] = [];
+
+  constructor(
+  private propertyService: PropertyService,
+  private locationService: LocationService,
+  private listingTypeService: ListingTypeService) {}
+
+  ngOnInit(): void {
+  this.loadLookups();
+}
+
+private loadLookups(): void {
+  this.listingTypeService.getListingTypes().subscribe(types => {
+    this.listingTypes = types;
+  });
+}
+  
+
 
   onFileChange(event: any): void {
     const files = event.target.files;
