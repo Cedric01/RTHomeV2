@@ -37,7 +37,4 @@ export class PropertyService {
   delete(id: number): Observable<void> {
     return this.http.delete<void>(`${this.baseUrl}/${id}`);
   }
-
-
-
 }

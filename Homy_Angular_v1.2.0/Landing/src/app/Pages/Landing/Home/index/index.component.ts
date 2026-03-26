@@ -1,6 +1,6 @@
 import { SwiperService } from './../../../../service/swiper.service';
 import { AfterViewInit, Component, HostListener, Inject, PLATFORM_ID, OnInit } from '@angular/core';
-import { CommonModule, isPlatformBrowser } from '@angular/common';
+import { AsyncPipe, CommonModule, isPlatformBrowser } from '@angular/common';
 import { NgSelectModule } from '@ng-select/ng-select';
 import AOS from 'aos';
 import Swiper from 'swiper';
@@ -13,6 +13,7 @@ import { BLockFeatureOneComponent } from '../../../../components/block-feature-o
 import { BLockFeatureThreeComponent } from '../../../../components/block-feature-three/block-feature-three.component';
 import { FancyBannerOneComponent } from '../../../../components/fancy-banner-one/fancy-banner-one.component';
 import { FancyBannerTwoComponent } from '../../../../components/fancy-banner-two/fancy-banner-two.component';
+import { AuthService } from '../../../../service/auth.service';
 import { ModalService } from '../../../../service/modal.service';
 import { MenuListComponent } from "../../../../components/menu-list/menu-list.component";
 import { Property } from '../../../../models/property';
@@ -22,11 +23,10 @@ import { LocationService } from '../../../../service/location.service';
 import { AgentService } from '../../../../service/agent.service';
 import { Location as LocationModel } from '../../../../models/location';
 import { PriceRangeService } from '../../../../service/price-range.service';
-
 @Component({
     selector: 'app-index',
     imports: [
-        Footer1Component, RouterLink, CommonModule, FormsModule,
+        Footer1Component, RouterLink, CommonModule, AsyncPipe, FormsModule,
         FeedbackSectionOneComponent, BLockFeatureOneComponent, BLockFeatureThreeComponent,
         FancyBannerOneComponent, NgSelectModule, FancyBannerTwoComponent,
         MenuListComponent
@@ -108,14 +108,14 @@ priceRanges: { value: string; label: string }[] = [];
   loading: boolean | undefined;
 
 
-  constructor(@Inject(PLATFORM_ID) private platformId: Object, 
-  private swiperService: SwiperService, 
+  constructor(@Inject(PLATFORM_ID) private platformId: Object,
+  private swiperService: SwiperService,
+  public authService: AuthService,
   private modalService: ModalService,
   private propertyService: PropertyService,
   private locationService: LocationService,
   private agentService: AgentService,
   private priceRangeService: PriceRangeService
-
 ) { }
 
   ngOnInit() : void {
@@ -206,6 +206,10 @@ this.priceRangeService.getAll().subscribe({
     );
   }
 
+  openModal(): void {
+    this.modalService.openModal();
+  }
+
   @HostListener('window:scroll', ['$event'])
   onWindowScroll() {
     if (window.pageYOffset > 100) {
@@ -213,8 +217,5 @@ this.priceRangeService.getAll().subscribe({
     } else {
       this.headerClass = 'theme-main-menu menu-overlay menu-style-one sticky-menu';
     }
-  }
-  openModal() {
-    this.modalService.openModal();
   }
 }
