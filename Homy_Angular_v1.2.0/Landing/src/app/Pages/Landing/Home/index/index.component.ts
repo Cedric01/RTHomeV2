@@ -90,12 +90,12 @@ priceRanges: { value: string; label: string }[] = [];
     }
   ];
 
-  agents = [
-    { name: 'Mark Filo', imageUrl: 'assets/images/agent/img_01.jpg', designation: 'CEO & Founder', link: '/agent_details' },
-    { name: 'Chris Matial', imageUrl: 'assets/images/agent/img_02.jpg', designation: 'Retailer', link: '/agent_details' },
-    { name: 'Jubayer Al Hasan', imageUrl: 'assets/images/agent/img_03.jpg', designation: 'Marketing Expert', link: '/agent_details' },
-    { name: 'Jannatul Ferdaus', imageUrl: 'assets/images/agent/img_04.jpg', designation: 'Broker', link: '/agent_details' },
-    { name: 'Chris Matial', imageUrl: 'assets/images/agent/img_05.jpg', designation: 'Broker', link: '/agent_details' }
+  agents: Agent[] = [
+    { id: 0, name: 'Mark Filo', imageUrl: 'assets/images/agent/img_01.jpg', designation: 'CEO & Founder', link: '/agent_details' },
+    { id: 0, name: 'Chris Matial', imageUrl: 'assets/images/agent/img_02.jpg', designation: 'Retailer', link: '/agent_details' },
+    { id: 0, name: 'Jubayer Al Hasan', imageUrl: 'assets/images/agent/img_03.jpg', designation: 'Marketing Expert', link: '/agent_details' },
+    { id: 0, name: 'Jannatul Ferdaus', imageUrl: 'assets/images/agent/img_04.jpg', designation: 'Broker', link: '/agent_details' },
+    { id: 0, name: 'Chris Matial', imageUrl: 'assets/images/agent/img_05.jpg', designation: 'Broker', link: '/agent_details' }
   ];
 
   steps = [
@@ -143,6 +143,7 @@ priceRanges: { value: string; label: string }[] = [];
         this.featuredProperties = properties.slice(0, 6);
         this.listingsAll = this.featuredProperties.map((p, i) => ({
           id: 'carousel' + (p.id ?? i + 1),
+          propertyId: p.id,
           tag: p.isForRent ? 'FOR RENT' : 'FOR SELL',
           images: (p.imageUrls && p.imageUrls.length > 0)
             ? p.imageUrls

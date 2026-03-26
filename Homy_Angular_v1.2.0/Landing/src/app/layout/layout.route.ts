@@ -86,6 +86,7 @@ export const MP_ROUTES: Routes = [
   { path: 'project_03', component: Project03Component },
   { path: 'project_04', component: Project04Component },
   { path: 'project_details_01', component: ProjectDetails01Component },
+  { path: 'listing_details_01/:id', component: ListingDetails01Component },
   { path: 'listing_details_01', component: ListingDetails01Component },
   { path: 'listing_details_02', component: ListingDetails02Component },
   { path: 'listing_details_03', component: ListingDetails03Component },

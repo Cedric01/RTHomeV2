@@ -2,7 +2,7 @@ import { HttpClient } from "@angular/common/http";
 import { Injectable, Inject, PLATFORM_ID } from "@angular/core";
 import { isPlatformBrowser } from '@angular/common';
 import { Observable } from "rxjs";
-import { Property } from "../models/property";
+import { Agent } from "../models/agent";
 
 @Injectable({ providedIn: 'root' })
 export class AgentService {
@@ -17,7 +17,11 @@ export class AgentService {
         }
     }
 
-    getAll(): Observable<any[]> {
-        return this.http.get<any[]>(this.baseUrl);
+    getAll(): Observable<Agent[]> {
+        return this.http.get<Agent[]>(this.baseUrl);
+    }
+
+    getById(id: number): Observable<Agent> {
+        return this.http.get<Agent>(`${this.baseUrl}/${id}`);
     }
 }

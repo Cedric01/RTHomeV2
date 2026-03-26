@@ -1,12 +1,29 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
+import { Property } from '../../models/property';
 
 @Component({
     selector: 'app-property-features',
     imports: [CommonModule],
     templateUrl: './property-features.component.html'
 })
-export class PropertyFeaturesComponent {
+export class PropertyFeaturesComponent implements OnChanges {
+  @Input() property: Property | null = null;
+
+  ngOnChanges(_changes: SimpleChanges): void {
+    if (!this.property) return;
+    const p = this.property;
+    const details = this.accordionSections[0].items;
+    const set = (label: string, value: string) => {
+      const item = details.find(d => d.label === label);
+      if (item) item.value = value;
+    };
+    set('Bedrooms', p.bedrooms?.toString() ?? '—');
+    set('Bathrooms', p.bathrooms?.toString() ?? '—');
+    set('Property Type', p.isForRent ? 'Rental' : 'For Sale');
+    set('Status', p.status ?? '—');
+  }
+
   accordionSections = [
     {
       id: 'collapseOneA',

@@ -184,7 +184,7 @@
                             </div>
                         </div>
                         <div class="property-info p-25">
-                            <a href="listing_details_01.html" class="title tran3s">{{ property.title }}</a>
+                            <a [routerLink]="['/listing_details_01', property.propertyId]" class="title tran3s">{{ property.title }}</a>
                             <div class="address">{{ property.address }}</div>
                             <ul class="style-none feature d-flex flex-wrap align-items-center justify-content-between">
                                 <li *ngFor="let feature of property.features" class="d-flex align-items-center">
@@ -194,7 +194,7 @@
                             </ul>
                             <div class="pl-footer top-border d-flex align-items-center justify-content-between">
                                 <strong class="price fw-500 color-dark" [innerHTML]="property.price"></strong>
-                                <a href="listing_details_01.html" class="btn-four rounded-circle"><i class="bi bi-arrow-up-right"></i></a>
+                                <a [routerLink]="['/listing_details_01', property.propertyId]" class="btn-four rounded-circle"><i class="bi bi-arrow-up-right"></i></a>
                             </div>
                         </div>
                     </div>
@@ -223,7 +223,7 @@
                             </div>
                             <div class="text-center">
                                 <h6>{{ agent.name }}</h6>
-                                <a [routerLink]="agent.link" class="stretched-link">{{ agent.designation }}</a>
+                                <a [routerLink]="agent.link ?? '/agent_details'" class="stretched-link">{{ agent.designation }}</a>
                             </div>
                         </div>
                     </div>

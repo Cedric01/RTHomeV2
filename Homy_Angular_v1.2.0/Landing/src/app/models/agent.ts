@@ -3,4 +3,8 @@ export interface Agent {
   name: string;
   imageUrl?: string;
   designation?: string;
+  email?: string;
+  phone?: string;
+  location?: string;
+  link?: string;
 }
