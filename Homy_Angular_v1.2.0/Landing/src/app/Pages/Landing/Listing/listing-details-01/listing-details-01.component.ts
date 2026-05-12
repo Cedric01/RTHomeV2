@@ -25,6 +25,7 @@ export class ListingDetails01Component implements OnInit {
   agent: Agent | null = null;
   mortgagePayment: number = 0;
   relatedListings: { id: number; tag: string; imageUrl: string; price: string; address: string; link: string }[] = [];
+  loadError = false;
 
   carouselImages: string[] = [
     'assets/images/listing/img_43.jpg',
@@ -55,8 +56,11 @@ export class ListingDetails01Component implements OnInit {
 
   ngOnInit(): void {
     const id = this.route.snapshot.paramMap.get('id');
-    if (id) {
-      this.propertyService.getById(Number(id)).subscribe({
+    if (!id) {
+      this.loadError = true;
+      return;
+    }
+    this.propertyService.getById(Number(id)).subscribe({
         next: (p) => {
           this.property = p;
 
@@ -101,7 +105,6 @@ export class ListingDetails01Component implements OnInit {
         },
         error: (err) => console.error('Failed to load property', err)
       });
-    }
   }
 
   ngAfterViewInit(): void {
