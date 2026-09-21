@@ -5,6 +5,7 @@ import { provideAuth0, authHttpInterceptorFn } from '@auth0/auth0-angular';
 
 import { routes } from './app.routes';
 import { provideClientHydration } from '@angular/platform-browser';
+import { environment } from '../environtment';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -20,34 +21,22 @@ export const appConfig: ApplicationConfig = {
       },
       httpInterceptor: {
         allowedList: [
-          // Protected endpoints — attach token, fail if not authenticated
+          // Protected endpoints — attach token, fail if not authenticated.
+          // Only the property-mutation endpoints need a token: reads stay public,
+          // and the API itself independently enforces the "agent" role on these,
+          // this list just controls whether Angular bothers attaching a token.
           {
-            uri: 'https://rthomepropertymanagement-fze4g3hbd8e6avby.uksouth-01.azurewebsites.net/api/properties',
+            uri: `${environment.apiUrl}/properties`,
             httpMethod: 'POST',
             tokenOptions: { authorizationParams: { audience: 'https://homy-api' } }
           },
           {
-            uri: 'https://rthomepropertymanagement-fze4g3hbd8e6avby.uksouth-01.azurewebsites.net/api/properties/*',
+            uri: `${environment.apiUrl}/properties/*`,
             httpMethod: 'PUT',
             tokenOptions: { authorizationParams: { audience: 'https://homy-api' } }
           },
           {
-            uri: 'https://rthomepropertymanagement-fze4g3hbd8e6avby.uksouth-01.azurewebsites.net/api/properties/*',
-            httpMethod: 'DELETE',
-            tokenOptions: { authorizationParams: { audience: 'https://homy-api' } }
-          },
-          {
-            uri: 'https://localhost:7213/api/properties',
-            httpMethod: 'POST',
-            tokenOptions: { authorizationParams: { audience: 'https://homy-api' } }
-          },
-          {
-            uri: 'https://localhost:7213/api/properties/*',
-            httpMethod: 'PUT',
-            tokenOptions: { authorizationParams: { audience: 'https://homy-api' } }
-          },
-          {
-            uri: 'https://localhost:7213/api/properties/*',
+            uri: `${environment.apiUrl}/properties/*`,
             httpMethod: 'DELETE',
             tokenOptions: { authorizationParams: { audience: 'https://homy-api' } }
           }

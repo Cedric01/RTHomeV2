@@ -1,21 +1,14 @@
 import { HttpClient } from '@angular/common/http';
-import { Injectable, Inject, PLATFORM_ID } from '@angular/core';
-import { isPlatformBrowser } from '@angular/common';
+import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { PriceRange } from '../models/pricerange';
+import { environment } from '../../environtment';
 
 @Injectable({ providedIn: 'root' })
 export class PriceRangeService {
-  private baseUrl: string;
+  private baseUrl = `${environment.apiUrl}/priceranges`;
 
-  constructor(private http: HttpClient, @Inject(PLATFORM_ID) private platformId: Object) {
-    if (isPlatformBrowser(this.platformId)) {
-      const host = window.location.host;
-      this.baseUrl = host.includes('azurestaticapps') ? 'https://rthomepropertymanagement-fze4g3hbd8e6avby.uksouth-01.azurewebsites.net/api/priceranges' : 'https://localhost:7213/api/priceranges';
-    } else {
-      this.baseUrl = 'https://localhost:7213/api/priceranges';
-    }
-  }
+  constructor(private http: HttpClient) {}
 
   getAll(): Observable<PriceRange[]> {
     return this.http.get<PriceRange[]>(this.baseUrl);

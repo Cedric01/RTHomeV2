@@ -48,7 +48,10 @@
                 { "type": "initial", "maximumWarning": "3mb", "maximumError": "3mb" },
                 { "type": "anyComponentStyle", "maximumWarning": "2kB", "maximumError": "4kB" }
               ],
-              "outputHashing": "all"
+              "outputHashing": "all",
+              "fileReplacements": [
+                { "replace": "src/environtment.ts", "with": "src/environtment.prod.ts" }
+              ]
             },
             "development": {
               "optimization": false,

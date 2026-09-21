@@ -1,21 +1,14 @@
 import { HttpClient } from "@angular/common/http";
-import { Injectable, Inject, PLATFORM_ID } from "@angular/core";
-import { isPlatformBrowser } from '@angular/common';
+import { Injectable } from "@angular/core";
 import { Observable } from "rxjs";
 import { Agent } from "../models/agent";
+import { environment } from "../../environtment";
 
 @Injectable({ providedIn: 'root' })
 export class AgentService {
-    private baseUrl: string;
+    private baseUrl = `${environment.apiUrl}/agents`;
 
-    constructor(private http: HttpClient, @Inject(PLATFORM_ID) private platformId: Object) {
-        if (isPlatformBrowser(this.platformId)) {
-            const host = window.location.host;
-            this.baseUrl = host.includes('azurestaticapps') ? 'https://rthomepropertymanagement-fze4g3hbd8e6avby.uksouth-01.azurewebsites.net/api/agents' : 'https://localhost:7213/api/agents';
-        } else {
-            this.baseUrl = 'https://localhost:7213/api/agents';
-        }
-    }
+    constructor(private http: HttpClient) {}
 
     getAll(): Observable<Agent[]> {
         return this.http.get<Agent[]>(this.baseUrl);

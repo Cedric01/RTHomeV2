@@ -23,6 +23,8 @@ import { LocationService } from '../../../../service/location.service';
 import { AgentService } from '../../../../service/agent.service';
 import { Location as LocationModel } from '../../../../models/location';
 import { PriceRangeService } from '../../../../service/price-range.service';
+import { EstimateRequestService } from '../../../../service/estimate-request.service';
+import { ListingTypeService } from '../../../../service/listingType.service';
 @Component({
     selector: 'app-index',
     imports: [
@@ -44,51 +46,10 @@ priceRanges: { value: string; label: string }[] = [];
 
   
 //  agents: Agent[] = [];
- 
-  options = [
-    { value: '1', label: 'Buy Apartments' }, { value: '2', label: 'Rent Condos' },
-    { value: '3', label: 'Sell Houses' }, { value: '4', label: 'Rent Industrial' },
-    { value: '6', label: 'Sell Villas' }
-  ];
 
-  // locations = [
-  //   { value: '1', label: 'Dhanmondi, Dhaka' }, { value: '2', label: 'Acapulco, Mexico' },
-  //   { value: '3', label: 'Berlin, Germany' }, { value: '4', label: 'Cannes, France' },
-  //   { value: '5', label: 'Delhi, India' }, { value: '6', label: 'Giza, Egypt' },
-  //   { value: '7', label: 'Havana, Cuba' }
-  // ];
-
-  // priceRanges = [
-  //   { value: '1', label: '$10,000 - $200,000' }, { value: '2', label: '$200,000 - $300,000' },
-  //   { value: '3', label: '$300,000 - $400,000' }
-  // ];
-
-  listings = [
-    {
-      id: 1, tag: 'FOR RENT', imageUrls: ['assets/images/listing/img_01.jpg'], title: 'Blueberry villa',
-      address: 'Mirpur 10, Stadium dhaka 1208', sqft: '1370 sqft', bed: '03 bed', bath: '02 bath', price: '$3,280/m'
-    },
-    {
-      id: 1, tag: 'FOR SELL', imageUrls: ['assets/images/listing/img_02.jpg'], title: 'White House villa',
-      address: 'Muza link road, ca, usa', sqft: '1270 sqft', bed: '02 bed', bath: '02 bath', price: '$28,100.00'
-    },
-    {
-      id: 1, tag: 'FOR SELL', imageUrls: ['assets/images/listing/img_03.jpg'], title: 'Luxury villa in Dal lake.',
-      address: 'Mirpur 10, Stadium', sqft: '1270 sqft', bed: '02 bed', bath: '02 bath', price: '$42,500.00'
-    },
-    {
-      id: 1, tag: 'FOR RENT', imageUrls: ['assets/images/listing/img_04.jpg'], title: 'Blueberry villa',
-      address: 'Mirpur 10, Stadium dhaka 1208', sqft: '1370 sqft', bed: '03 bed', bath: '02 bath', price: '$3,280/m'
-    },
-    {
-      id: 1, tag: 'FOR SELL', imageUrls: ['assets/images/listing/img_05.jpg'], title: 'White House villa',
-      address: 'Muza link road, ca, usa', sqft: '1270 sqft', bed: '02 bed', bath: '02 bath', price: '$28,100.00'
-    },
-    {
-      id: 1, tag: 'FOR RENT', imageUrls: ['assets/images/listing/img_06.jpg'], title: 'Luxury villa in Dal lake.',
-      address: 'Mirpur 10, Stadium', sqft: '1270 sqft', bed: '02 bed', bath: '02 bath', price: '$3,280/m'
-    }
-  ];
+  // Populated from ListingTypeService in loadHomePageData(); starts empty so the
+  // dropdown doesn't flash stale placeholder options before the real ones load.
+  options: { value: string; label: string }[] = [];
 
   agents: Agent[] = [
     { id: 0, name: 'Mark Filo', imageUrl: 'assets/images/agent/img_01.jpg', designation: 'CEO & Founder', link: '/agent_details' },
@@ -107,6 +68,23 @@ priceRanges: { value: string; label: string }[] = [];
   listingsAll: any[] = [];
   loading: boolean | undefined;
 
+  // "Explore Popular Location" carousel data for block-feature-three. Computed
+  // from the same properties/locations already loaded here - no separate API
+  // call. There's no location-image field in the API, so we cycle through a
+  // small set of stock photos by index.
+  cityShowcase: { name: string; properties: string; imageUrl: string }[] = [];
+  private readonly cityImages = [
+    'assets/images/media/img_05.jpg',
+    'assets/images/media/img_06.jpg',
+    'assets/images/media/img_07.jpg',
+    'assets/images/media/img_08.jpg',
+    'assets/images/media/img_09.jpg'
+  ];
+
+  estimateEmail = '';
+  estimateSubmitting = false;
+  estimateSubmitted = false;
+  estimateError: string | null = null;
 
   constructor(@Inject(PLATFORM_ID) private platformId: Object,
   private swiperService: SwiperService,
@@ -115,7 +93,9 @@ priceRanges: { value: string; label: string }[] = [];
   private propertyService: PropertyService,
   private locationService: LocationService,
   private agentService: AgentService,
-  private priceRangeService: PriceRangeService
+  private priceRangeService: PriceRangeService,
+  private estimateRequestService: EstimateRequestService,
+  private listingTypeService: ListingTypeService
 ) { }
 
   ngOnInit() : void {
@@ -161,6 +141,7 @@ priceRanges: { value: string; label: string }[] = [];
           rent: p.isForRent
         }));
         this.initSwipers();
+        this.updateCityShowcase();
       },
       error: err => console.error(err),
       complete: () => (this.loading = false)
@@ -178,6 +159,8 @@ this.locationService.getAll().subscribe({
       value: l.id.toString(),
       label: l.displayName
     }));
+
+    this.updateCityShowcase();
   }
 });
 
@@ -190,8 +173,39 @@ this.priceRangeService.getAll().subscribe({
   }
 });
 
+this.listingTypeService.getListingTypes().subscribe({
+  next: types => {
+    this.options = types.map(t => ({
+      value: t.value.toString(),
+      label: t.label
+    }));
+  }
+});
 
   }
+
+    // Fires after either properties or locations load; harmless to recompute
+    // twice since both sides just read whatever's currently in state.
+    private updateCityShowcase(): void {
+      if (this.locations.length === 0) return;
+
+      const countsByLocationId = new Map<number, number>();
+      for (const property of this.properties) {
+        countsByLocationId.set(
+          property.locationId,
+          (countsByLocationId.get(property.locationId) ?? 0) + 1
+        );
+      }
+
+      this.cityShowcase = this.locations.map((location, i) => {
+        const count = countsByLocationId.get(location.id) ?? 0;
+        return {
+          name: location.displayName,
+          properties: `${count.toLocaleString()} Propert${count === 1 ? 'y' : 'ies'}`,
+          imageUrl: this.cityImages[i % this.cityImages.length]
+        };
+      });
+    }
 
     private initSwipers(): void {
     if (!isPlatformBrowser(this.platformId)) return;
@@ -209,6 +223,26 @@ this.priceRangeService.getAll().subscribe({
 
   openModal(): void {
     this.modalService.openModal();
+  }
+
+  submitEstimateRequest(): void {
+    const email = this.estimateEmail.trim();
+    if (!email) return;
+
+    this.estimateSubmitting = true;
+    this.estimateError = null;
+
+    this.estimateRequestService.submit({ email }).subscribe({
+      next: () => {
+        this.estimateSubmitted = true;
+        this.estimateEmail = '';
+        this.estimateSubmitting = false;
+      },
+      error: () => {
+        this.estimateError = 'Something went wrong. Please try again.';
+        this.estimateSubmitting = false;
+      }
+    });
   }
 
   @HostListener('window:scroll', ['$event'])

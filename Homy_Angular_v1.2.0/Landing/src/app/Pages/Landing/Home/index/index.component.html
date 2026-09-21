@@ -154,7 +154,7 @@
         </div>
     </div>
 </div>
-<app-block-feature-three></app-block-feature-three>
+<app-block-feature-three [locations]="cityShowcase"></app-block-feature-three>
 <div class="property-listing-one bg-pink-two mt-150 xl-mt-120 pt-140 xl-pt-120 lg-pt-80 pb-180 xl-pb-120 lg-pb-100">
     <div class="container">
         <div class="position-relative">
@@ -252,10 +252,19 @@
                         <h3>Get quick <span>estimate<img src="assets/images/shape/title_shape_06.svg" alt="" class="lazy-img"></span> on your home.</h3>
                         <p class="fs-24 color-dark">Master your property's valuation for a poised entry into the real estate market, armed with self-assurance and insight.</p>
                     </div>
-                    <form action="javascript:void(0);" class="me-xl-4">
-                        <input type="email" placeholder="Your Email Address...">
-                        <button>Find out</button>
+                    <form action="javascript:void(0);" class="me-xl-4" #estimateForm="ngForm" (ngSubmit)="submitEstimateRequest()" novalidate>
+                        <input type="email" name="estimateEmail" placeholder="Your Email Address..." required email
+                            [(ngModel)]="estimateEmail" #estimateEmailField="ngModel">
+                        <button type="submit" [disabled]="estimateForm.invalid || estimateSubmitting">
+                            {{ estimateSubmitting ? 'Sending...' : 'Find out' }}
+                        </button>
                     </form>
+                    @if (estimateSubmitted) {
+                        <div class="fs-16 mt-10 text-success">Thanks! We'll be in touch with your estimate shortly.</div>
+                    }
+                    @if (estimateError) {
+                        <div class="fs-16 mt-10 text-danger">{{ estimateError }}</div>
+                    }
                     <div class="fs-16 mt-10 opacity-75">*For accurate info please <a routerLink="/contact" class="fst-italic color-dark text-decoration-underline">contact us.</a></div>
                 </div>
             </div>
