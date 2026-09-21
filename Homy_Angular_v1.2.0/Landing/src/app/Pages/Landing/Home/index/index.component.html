@@ -1,6 +1,6 @@
 <header [ngClass]="headerClass">
     <div class="alert-wrapper text-center">
-        <p class="fs-16 m0 text-white">The <a routerLink="/listing_01" class="fw-500">flash sale</a> go on. The offer will end in — <span>This Sunday</span></p>
+        <p class="fs-16 m0 text-white">The <a routerLink="/listing_04" class="fw-500">flash sale</a> go on. The offer will end in — <span>This Sunday</span></p>
     </div>
     <div class="inner-content gap-one">
         <div class="top-header position-relative">
@@ -58,12 +58,12 @@
             <div class="col-xxl-10 m-auto">
                 <div class="search-wrapper-one layout-one bg position-relative">
                     <div class="bg-wrapper">
-                        <form action="listing_01.html">
+                        <form action="javascript:void(0);" (ngSubmit)="searchListings()">
                             <div class="row gx-0 align-items-center">
                                 <div class="col-xl-3 col-lg-4">
                                     <div class="input-box-one border-left">
                                         <div class="label">I’m looking to...</div>
-                                        <ng-select [items]="options" bindLabel="label" bindValue="value" [placeholder]="'Buy Apartments'">
+                                        <ng-select [items]="options" bindLabel="label" bindValue="value" [placeholder]="'Buy Apartments'" [(ngModel)]="selectedListingType" name="listingType">
                                             <ng-option *ngFor="let option of options" [value]="option.value">{{ option.label }}</ng-option>
                                         </ng-select>
                                     </div>
@@ -71,7 +71,7 @@
                                 <div class="col-xl-4 col-lg-4">
                                     <div class="input-box-one border-left">
                                         <div class="label">Location</div>
-                                        <ng-select [items]="locationOptions" bindLabel="label" bindValue="id" [placeholder]="'City, Country'">
+                                        <ng-select [items]="locationOptions" bindLabel="label" bindValue="value" [placeholder]="'City, Country'" [(ngModel)]="selectedLocationId" name="location">
                                             <ng-option *ngFor="let location of locationOptions" [value]="location.value">{{ location.label }}</ng-option>
                                         </ng-select>
                                     </div>
@@ -79,14 +79,14 @@
                                 <div class="col-xl-3 col-lg-4">
                                     <div class="input-box-one border-left border-lg-0">
                                         <div class="label">Price Range</div>
-                                        <ng-select [items]="priceRanges" bindLabel="label" bindValue="value" [placeholder]="'$10,000 - $200,000'">
+                                        <ng-select [items]="priceRanges" bindLabel="label" bindValue="value" [placeholder]="'$10,000 - $200,000'" [(ngModel)]="selectedPriceRangeId" name="priceRange">
                                             <ng-option *ngFor="let range of priceRanges" [value]="range.value">{{ range.label }}</ng-option>
                                         </ng-select>
                                     </div>
                                 </div>
                                 <div class="col-xl-2">
                                     <div class="input-box-one lg-mt-10">
-                                        <button class="fw-500 text-uppercase tran3s search-btn">Search</button>
+                                        <button type="submit" class="fw-500 text-uppercase tran3s search-btn">Search</button>
                                     </div>
                                 </div>
                             </div>
@@ -201,7 +201,7 @@
                 </div>
             </div>
             <div class="section-btn text-center md-mt-60">
-                <a routerLink="/listing_01" class="btn-five">Explore All</a>
+                <a routerLink="/listing_04" class="btn-five">Explore All</a>
             </div>
         </div>
     </div>
