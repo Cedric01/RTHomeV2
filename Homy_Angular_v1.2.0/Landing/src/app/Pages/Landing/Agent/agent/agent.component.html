@@ -53,7 +53,7 @@
 <div class="agent-section-two mt-130 xl-mt-100 mb-150 xl-mb-100">
     <div class="container">
         <div class="listing-header-filter d-sm-flex justify-content-between align-items-center mb-50 lg-mb-40">
-            <div>Showing <span class="color-dark fw-500">1–12</span> of <span class="color-dark fw-500">1,230</span> results</div>
+            <div>Showing <span class="color-dark fw-500">1–{{ agents.length }}</span> of <span class="color-dark fw-500">{{ agents.length }}</span> results</div>
             <div class="d-flex align-items-center xs-mt-20">
                 <div class="short-filter d-flex align-items-center">
                     <div class="fs-16 me-2">Short by:</div>
@@ -65,14 +65,14 @@
         </div>
         <div class="row align-items-center">
             <div class="col-xl-3 col-md-4 col-sm-6" *ngFor="let agent of agents">
-                <div class="agent-card-two position-relative z-1 mb-50 fadeInUp" [attr.data-aos]="'fade-up'" [attr.data-aos-delay]="agent.delay">
+                <div class="agent-card-two position-relative z-1 mb-50 fadeInUp" [attr.data-aos]="'fade-up'">
                     <div class="media bg-dark position-relative overflow-hidden">
-                        <div class="tag bg-white position-absolute text-uppercase">{{ agent.listing }} Listing</div>
+                        <div class="tag bg-white position-absolute text-uppercase">{{ agent.listing }} Listing{{ agent.listing === 1 ? '' : 's' }}</div>
                         <img [src]="agent.img" alt="" class="lazy-img agent-img w-100 tran5s" />
                     </div>
                     <div class="text-center pt-30">
                         <h6 class="name">
-                            <a [href]="agent.link" class="stretched-link">{{ agent.name }}</a>
+                            <a [routerLink]="agent.link" class="stretched-link">{{ agent.name }}</a>
                         </h6>
                         <div class="designation">{{ agent.role }}</div>
                     </div>

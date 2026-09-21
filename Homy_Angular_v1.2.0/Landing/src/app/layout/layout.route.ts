@@ -70,6 +70,7 @@ export const MP_ROUTES: Routes = [
   { path: 'agency', component: AgencyComponent },
   { path: 'agency_details', component: AgencyDetailsComponent },
   { path: 'agent', component: AgentComponent },
+  { path: 'agent_details/:id', component: AgentDetailsComponent },
   { path: 'agent_details', component: AgentDetailsComponent },
   { path: 'contact', component: ContactComponent },
   { path: 'pricing_01', component: Pricing01Component },

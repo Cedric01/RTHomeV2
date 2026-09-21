@@ -1,27 +1,34 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Navbar6Component } from "../../../../layout/navbar-6/navbar-6.component";
 import { FancyBannerTwoComponent } from "../../../../components/fancy-banner-two/fancy-banner-two.component";
 import { Footer5Component } from "../../../../layout/footer-5/footer-5.component";
 import { CommonModule } from '@angular/common';
 import { Lightbox, LightboxModule } from 'ngx-lightbox';
 import { ModalService } from '../../../../service/modal.service';
-import { RouterLink } from '@angular/router';
+import { ActivatedRoute, RouterLink } from '@angular/router';
+import { AgentService } from '../../../../service/agent.service';
+import { PropertyService } from '../../../../service/property.service';
+import { Agent } from '../../../../models/agent';
+
+interface ListingItem {
+  type: string;
+  tag: string;
+  image: string;
+  price: string;
+  address: string;
+}
 
 @Component({
     selector: 'app-agent-details',
     imports: [Navbar6Component, FancyBannerTwoComponent, Footer5Component, CommonModule, LightboxModule, RouterLink],
     templateUrl: './agent-details.component.html'
 })
-export class AgentDetailsComponent {
-  items = [
-    { type: 'rent', tag: 'FOR RENT', image: 'assets/images/listing/img_69.jpg', price: '$2,210/ m', address: '6391 Elgin St. Celina' },
-    { type: 'sell', tag: 'FOR RENT', image: 'assets/images/listing/img_70.jpg', price: '$2,210/ m', address: '6391 Elgin St. Celina' },
-    { type: 'sell', tag: 'FOR SELL', image: 'assets/images/listing/img_71.jpg', price: '$1,23,710', address: '6391 Elgin St. Celina' },
-    { type: 'rent', tag: 'FOR SELL', image: 'assets/images/listing/img_72.jpg', price: '$78,420', address: '6391 Elgin St. Celina' },
-  ];
-
+export class AgentDetailsComponent implements OnInit {
+  agent: Agent | null = null;
+  items: ListingItem[] = [];
   activeFilter = '*';
 
+  private readonly fallbackImage = 'assets/images/listing/img_18.jpg';
 
   openModal() {
     this.modalService.openModal();
@@ -35,15 +42,47 @@ export class AgentDetailsComponent {
   }
   album: Array<{ src: string; caption: string; thumb: string }> = [];
 
-  constructor(private lightbox: Lightbox, private modalService: ModalService) {
-    this.album = [
-      { src: 'assets/images/listing/img_large_01.jpg', caption: 'Duplex orkit villa', thumb: 'assets/images/listing/img_48.jpg' },
-      { src: 'assets/images/listing/img_large_02.jpg', caption: 'Duplex orkit villa', thumb: 'assets/images/listing/img_49.jpg' },
-      { src: 'assets/images/listing/img_large_03.jpg', caption: 'Duplex orkit villa', thumb: 'assets/images/listing/img_50.jpg' },
-      { src: 'assets/images/listing/img_large_04.jpg', caption: 'Duplex orkit villa', thumb: 'assets/images/listing/img_04.jpg' },
-      { src: 'assets/images/listing/img_large_05.jpg', caption: 'Duplex orkit villa', thumb: 'assets/images/listing/img_05.jpg' },
-      { src: 'assets/images/listing/img_large_06.jpg', caption: 'Duplex orkit villa', thumb: 'assets/images/listing/img_06.jpg' }
-    ];
+  constructor(
+    private lightbox: Lightbox,
+    private modalService: ModalService,
+    private route: ActivatedRoute,
+    private agentService: AgentService,
+    private propertyService: PropertyService
+  ) { }
+
+  ngOnInit(): void {
+    const idParam = this.route.snapshot.paramMap.get('id');
+    if (!idParam) return;
+    const id = Number(idParam);
+
+    this.agentService.getById(id).subscribe({
+      next: agent => (this.agent = agent),
+      error: err => console.error(err)
+    });
+
+    this.propertyService.getAll().subscribe({
+      next: properties => {
+        const agentProperties = properties.filter(p => p.agentId === id);
+        this.items = agentProperties.map(p => {
+          const image = (p.imageUrls && p.imageUrls.length > 0) ? p.imageUrls[0] : this.fallbackImage;
+          return {
+            type: p.isForRent ? 'rent' : 'sell',
+            tag: p.isForRent ? 'FOR RENT' : 'FOR SELL',
+            image,
+            price: p.isForRent
+              ? '$' + Number(p.price).toLocaleString() + '/m'
+              : '$' + Number(p.price).toLocaleString(),
+            address: p.address
+          };
+        });
+        this.album = agentProperties.flatMap(p =>
+          (p.imageUrls && p.imageUrls.length > 0 ? p.imageUrls : [this.fallbackImage]).map(src => ({
+            src, caption: p.title, thumb: src
+          }))
+        );
+      },
+      error: err => console.error(err)
+    });
   }
 
   open(index: number): void {

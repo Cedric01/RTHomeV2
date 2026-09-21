@@ -223,7 +223,7 @@
                             </div>
                             <div class="text-center">
                                 <h6>{{ agent.name }}</h6>
-                                <a [routerLink]="agent.link ?? '/agent_details'" class="stretched-link">{{ agent.designation }}</a>
+                                <a [routerLink]="['/agent_details', agent.id]" class="stretched-link">{{ agent.designation }}</a>
                             </div>
                         </div>
                     </div>
