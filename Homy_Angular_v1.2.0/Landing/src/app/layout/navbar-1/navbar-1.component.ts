@@ -1,12 +1,13 @@
 import { Component, HostListener } from '@angular/core';
 import { MenuListComponent } from "../../components/menu-list/menu-list.component";
-import { CommonModule } from '@angular/common';
+import { CommonModule, AsyncPipe } from '@angular/common';
 import { RouterLink, RouterModule } from '@angular/router';
+import { AuthService } from '../../service/auth.service';
 import { ModalService } from '../../service/modal.service';
 
 @Component({
     selector: 'app-navbar-1',
-    imports: [MenuListComponent, CommonModule, RouterModule, RouterLink],
+    imports: [MenuListComponent, CommonModule, AsyncPipe, RouterModule, RouterLink],
     templateUrl: './navbar-1.component.html'
 })
 export class Navbar1Component {
@@ -20,9 +21,10 @@ export class Navbar1Component {
       this.headerClass = 'theme-main-menu menu-overlay menu-style-one sticky-menu';
     }
   }
-  constructor(private modalService: ModalService) { }
 
-  openModal() {
+  constructor(public authService: AuthService, private modalService: ModalService) {}
+
+  openModal(): void {
     this.modalService.openModal();
   }
 }

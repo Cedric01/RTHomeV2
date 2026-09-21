@@ -10,11 +10,31 @@
                 <div class="right-widget ms-auto ms-lg-0 me-3 me-lg-0 order-lg-3">
                     <ul class="d-flex align-items-center style-none">
                         <li>
-                            <a href="javascript:void(0);" (click)="openModal()" class="btn-one"><i class="fa-regular fa-lock"></i> <span>Login</span></a>
+                            @if (authService.isLoading$ | async) {
+                                <span class="btn-one opacity-50"><i class="fa-regular fa-circle-notch fa-spin"></i></span>
+                            } @else if (authService.isLoggedIn$ | async) {
+                                @if (authService.user$ | async; as user) {
+                                    <div class="d-flex align-items-center gap-2">
+                                        @if (user.picture) {
+                                            <img [src]="user.picture" alt="" width="32" height="32" style="border-radius:50%;object-fit:cover;flex-shrink:0;">
+                                        } @else {
+                                            <span style="width:32px;height:32px;border-radius:50%;background:#e0e7ff;color:#4f46e5;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:600;flex-shrink:0;">
+                                                {{ (user.name || 'U')[0].toUpperCase() }}
+                                            </span>
+                                        }
+                                        <a routerLink="/dashboard-index" class="fw-500 color-dark d-none d-xl-inline">{{ (user.name || '').split(' ')[0] }}</a>
+                                        <a href="javascript:void(0);" (click)="authService.logout()" class="btn-one ms-1"><i class="fa-regular fa-lock"></i> <span>Logout</span></a>
+                                    </div>
+                                }
+                            } @else {
+                                <a href="javascript:void(0);" (click)="openModal()" class="btn-one"><i class="fa-regular fa-lock"></i> <span>Login</span></a>
+                            }
                         </li>
-                        <li class="d-none d-md-inline-block ms-3">
-                            <a routerLink="/add-property" class="btn-two" target="_blank"><span>Add Listing</span> <i class="fa-thin fa-arrow-up-right"></i></a>
-                        </li>
+                        @if (authService.isAgent$ | async) {
+                            <li class="d-none d-md-inline-block ms-3">
+                                <a routerLink="/add-property" class="btn-two"><span>Add Listing</span> <i class="fa-thin fa-arrow-up-right"></i></a>
+                            </li>
+                        }
                     </ul>
                 </div>
                 <nav class="navbar navbar-expand-lg p0 order-lg-2">

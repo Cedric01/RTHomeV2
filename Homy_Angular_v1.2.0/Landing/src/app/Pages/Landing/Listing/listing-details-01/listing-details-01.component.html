@@ -3,16 +3,16 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-6">
-                <h3 class="property-titlee">Luxury Apartments on California.</h3>
+                <h3 class="property-titlee">{{ property?.title ?? 'Loading...' }}</h3>
                 <div class="d-flex flex-wrap mt-10">
-                    <div class="list-type text-uppercase border-20 mt-15 me-3">FOR SELL</div>
-                    <div class="address mt-15"><i class="bi bi-geo-alt"></i> 3891 Ranchview Dr. Richardson, California</div>
+                    <div class="list-type text-uppercase border-20 mt-15 me-3">{{ property?.isForRent ? 'FOR RENT' : 'FOR SELL' }}</div>
+                    <div class="address mt-15"><i class="bi bi-geo-alt"></i> {{ property?.address }}</div>
                 </div>
             </div>
             <div class="col-lg-6 text-lg-end">
                 <div class="d-inline-block md-mt-40">
-                    <div class="price color-dark fw-500">Price: $1,67,000</div>
-                    <div class="est-price fs-20 mt-25 mb-35 md-mb-30">Est. Payment <span class="fw-500 color-dark">$8,343/mo*</span></div>
+                    <div class="price color-dark fw-500">Price: ${{ property?.price | number }}</div>
+                    <div class="est-price fs-20 mt-25 mb-35 md-mb-30">Est. Payment <span class="fw-500 color-dark">${{ mortgagePayment | number:'1.0-0' }}/mo*</span></div>
                     <ul class="style-none d-flex align-items-center action-btns">
                         <li class="me-auto fw-500 color-dark"><i class="fa-sharp fa-regular fa-share-nodes me-2"></i> Share</li>
                         <li><a href="javascript:void(0);" class="d-flex align-items-center justify-content-center rounded-circle tran3s"><i class="fa-light fa-heart"></i></a></li>
@@ -28,10 +28,8 @@
                     <div class="bg-white shadow4 border-20 p-30 md-mb-20">
                         <div class="position-relative z-1 overflow-hidden border-20">
                             <div class="img-fancy-btn border-10 fw-500 fs-16 color-dark">
-                                Sell all 37 Photos
-                                <a href="assets/images/listing/img_large_01.jpg" class="d-block" data-fancybox="mainImg" data-caption="Duplex orkit villa."></a>
-                                <a href="assets/images/listing/img_large_02.jpg" class="d-block" data-fancybox="mainImg" data-caption="Duplex orkit villa."></a>
-                                <a href="assets/images/listing/img_large_03.jpg" class="d-block" data-fancybox="mainImg" data-caption="Duplex orkit villa."></a>
+                                See all {{ carouselImages.length }} Photos
+                                <a *ngFor="let img of carouselImages" [href]="img" class="d-block" data-fancybox="mainImg" [attr.data-caption]="property?.title"></a>
                             </div>
                             <div class="carousel-inner">
                                 <div class="carousel-item" *ngFor="let image of carouselImages; let i = index" [class.active]="i === 0">
@@ -71,18 +69,18 @@
             <div class="col-xl-8">
                 <div class="property-overview bg-white shadow4 border-20 p-40 mb-50">
                     <h4 class="mb-20">Overview</h4>
-                    <p class="fs-20 lh-lg">Lorem ipsum dolor sit amet consectetur. Et velit varius ipsum tempor vel dignissim tincidunt. Aliquam accumsan laoreet ultricies tincidunt faucibus fames augue in sociis. Nisl enim integer neque nec.</p>
+                    <p class="fs-20 lh-lg">{{ property?.description ?? 'No description available for this property.' }}</p>
                 </div>
-                <app-property-features></app-property-features>
+                <app-property-features [property]="property"></app-property-features>
                 <app-amenities></app-amenities>
             </div>
             <div class="col-xl-4 col-lg-8 me-auto ms-auto">
                 <div class="theme-sidebar-one dot-bg p-30 ms-xxl-3 lg-mt-80">
                     <div class="agent-info bg-white border-20 p-30 mb-40">
-                        <img src="assets/images/agent/img_06.jpg" alt="" class="lazy-img rounded-circle ms-auto me-auto mt-3 avatar">
+                        <img [src]="agent?.imageUrl ?? 'assets/images/agent/img_06.jpg'" alt="" class="lazy-img rounded-circle ms-auto me-auto mt-3 avatar">
                         <div class="text-center mt-25">
-                            <h6 class="name">Rashed Kabir</h6>
-                            <p class="fs-16">Property Agent & Broker</p>
+                            <h6 class="name">{{ agent?.name ?? '—' }}</h6>
+                            <p class="fs-16">{{ agent?.designation ?? 'Property Agent & Broker' }}</p>
                             <ul class="style-none d-flex align-items-center justify-content-center social-icon">
                                 <li><a href="javascript:void(0);"><i class="fa-brands fa-facebook-f"></i></a></li>
                                 <li><a href="javascript:void(0);"><i class="fa-brands fa-twitter"></i></a></li>
@@ -92,9 +90,9 @@
                         </div>
                         <div class="divider-line mt-40 mb-45 pt-20">
                             <ul class="style-none">
-                                <li>Location: <span>Spain, Barcelona</span></li>
-                                <li>Email: <span><a href="mailto:akabirr770@gmail.com">akabirr770&#64;gmail.com</a></span></li>
-                                <li>Phone: <span><a href="tel:+12347687565">+12347687565</a></span></li>
+                                <li *ngIf="agent?.location">Location: <span>{{ agent?.location }}</span></li>
+                                <li *ngIf="agent?.email">Email: <span><a [href]="'mailto:' + agent?.email">{{ agent?.email }}</a></span></li>
+                                <li *ngIf="agent?.phone">Phone: <span><a [href]="'tel:' + agent?.phone">{{ agent?.phone }}</a></span></li>
                             </ul>
                         </div>
                         <a routerLink="/contact" class="btn-nine text-uppercase rounded-3 w-100 mb-10">CONTACT AGENT</a>
@@ -116,7 +114,7 @@
                             </div>
                             <div class="input-box-three mb-15">
                                 <div class="label">Message*</div>
-                                <textarea placeholder="Hello, I am interested in [Califronia Apartments]"></textarea>
+                                <textarea [placeholder]="'Hello, I am interested in [' + (property?.title ?? '') + ']'"></textarea>
                             </div>
                             <button class="btn-nine text-uppercase rounded-3 w-100 mb-10">INQUIry</button>
                         </form>
@@ -126,7 +124,7 @@
                         <form action="javascript:void(0);">
                             <div class="input-box-three mb-25">
                                 <div class="label">Home Price*</div>
-                                <input type="tel" placeholder="1,32,789" class="type-input">
+                                <input type="tel" [value]="property?.price ?? ''" class="type-input">
                             </div>
                             <div class="input-box-three mb-25">
                                 <div class="label">Down Payment*</div>
@@ -147,22 +145,16 @@
                         <h5 class="mb-40">Featured Listing</h5>
                         <div id="F-listing" class="carousel slide">
                             <div class="carousel-indicators">
-                                <button type="button" data-bs-target="#F-listing" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-                                <button type="button" data-bs-target="#F-listing" data-bs-slide-to="1" aria-label="Slide 2"></button>
-                                <button type="button" data-bs-target="#F-listing" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                                <button *ngFor="let listing of relatedListings; let i = index" type="button" data-bs-target="#F-listing" [attr.data-bs-slide-to]="i" [class.active]="i === 0" [attr.aria-current]="i === 0 ? 'true' : null" [attr.aria-label]="'Slide ' + (i + 1)"></button>
                             </div>
                             <div class="carousel-inner">
-                                <div *ngFor="let listing of listings" class="carousel-item" [class.active]="listing === listings[0]">
+                                <div *ngFor="let listing of relatedListings; let i = index" class="carousel-item" [class.active]="i === 0">
                                     <div class="listing-card-one style-three border-10">
                                         <div class="img-gallery">
                                             <div class="position-relative border-10 overflow-hidden">
                                                 <div class="tag bg-white text-dark fw-500 border-20">{{ listing.tag }}</div>
                                                 <a href="javascript:void(0);" class="fav-btn tran3s"><i class="fa-light fa-heart"></i></a>
                                                 <img [src]="listing.imageUrl" class="w-100 border-10" alt="...">
-                                                <div class="img-slider-btn">
-                                                    <span>{{ listing.largeImages.length }} <i class="fa-regular fa-image"></i></span>
-                                                    <a *ngFor="let img of listing.largeImages" [href]="img" class="d-block" data-fancybox="imgA" [attr.data-caption]="'Blueberry villa'"></a>
-                                                </div>
                                             </div>
                                         </div>
                                         <div class="property-info mt-15">

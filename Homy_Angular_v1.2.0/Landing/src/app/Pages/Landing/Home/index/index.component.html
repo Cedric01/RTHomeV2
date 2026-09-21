@@ -13,7 +13,21 @@
                 <div class="right-widget ms-auto ms-lg-0 me-3 me-lg-0 order-lg-3">
                     <ul class="d-flex align-items-center style-none">
                         <li>
-                            <a href="javascript:void(0);" (click)="openModal()" class="btn-one"><i class="fa-regular fa-lock"></i> <span>Login</span></a>
+                            @if (authService.isLoading$ | async) {
+                                <span class="btn-one opacity-50"><i class="fa-regular fa-circle-notch fa-spin"></i></span>
+                            } @else if (authService.isLoggedIn$ | async) {
+                                @if (authService.user$ | async; as user) {
+                                    <div class="d-flex align-items-center gap-2">
+                                        @if (user.picture) {
+                                            <img [src]="user.picture" [alt]="user.name" width="32" height="32" style="border-radius:50%;object-fit:cover;">
+                                        }
+                                        <a routerLink="/dashboard-index" class="fw-500 color-dark">{{ user.name }}</a>
+                                        <a href="javascript:void(0);" (click)="authService.logout()" class="btn-one ms-1"><i class="fa-regular fa-lock"></i> <span>Logout</span></a>
+                                    </div>
+                                }
+                            } @else {
+                                <a href="javascript:void(0);" (click)="openModal()" class="btn-one"><i class="fa-regular fa-lock"></i> <span>Login</span></a>
+                            }
                         </li>
                         <li class="d-none d-md-inline-block ms-3">
                             <a routerLink="/add-property" class="btn-two" target="_blank"><span>Add Listing</span> <i class="fa-thin fa-arrow-up-right"></i></a>
@@ -57,8 +71,8 @@
                                 <div class="col-xl-4 col-lg-4">
                                     <div class="input-box-one border-left">
                                         <div class="label">Location</div>
-                                        <ng-select class="" [items]="locations" bindLabel="label" bindValue="value" [placeholder]="'Dhanmondi, Dhaka'">
-                                            <ng-option *ngFor="let location of locations" [value]="location.value">{{ location.label }}</ng-option>
+                                        <ng-select [items]="locationOptions" bindLabel="label" bindValue="id" [placeholder]="'City, Country'">
+                                            <ng-option *ngFor="let location of locationOptions" [value]="location.value">{{ location.label }}</ng-option>
                                         </ng-select>
                                     </div>
                                 </div>
@@ -140,7 +154,7 @@
         </div>
     </div>
 </div>
-<app-block-feature-three></app-block-feature-three>
+<app-block-feature-three [locations]="cityShowcase"></app-block-feature-three>
 <div class="property-listing-one bg-pink-two mt-150 xl-mt-120 pt-140 xl-pt-120 lg-pt-80 pb-180 xl-pb-120 lg-pb-100">
     <div class="container">
         <div class="position-relative">
@@ -170,7 +184,7 @@
                             </div>
                         </div>
                         <div class="property-info p-25">
-                            <a href="listing_details_01.html" class="title tran3s">{{ property.title }}</a>
+                            <a [routerLink]="['/listing_details_01', property.propertyId]" class="title tran3s">{{ property.title }}</a>
                             <div class="address">{{ property.address }}</div>
                             <ul class="style-none feature d-flex flex-wrap align-items-center justify-content-between">
                                 <li *ngFor="let feature of property.features" class="d-flex align-items-center">
@@ -180,7 +194,7 @@
                             </ul>
                             <div class="pl-footer top-border d-flex align-items-center justify-content-between">
                                 <strong class="price fw-500 color-dark" [innerHTML]="property.price"></strong>
-                                <a href="listing_details_01.html" class="btn-four rounded-circle"><i class="bi bi-arrow-up-right"></i></a>
+                                <a [routerLink]="['/listing_details_01', property.propertyId]" class="btn-four rounded-circle"><i class="bi bi-arrow-up-right"></i></a>
                             </div>
                         </div>
                     </div>
@@ -209,7 +223,7 @@
                             </div>
                             <div class="text-center">
                                 <h6>{{ agent.name }}</h6>
-                                <a [routerLink]="agent.link" class="stretched-link">{{ agent.designation }}</a>
+                                <a [routerLink]="agent.link ?? '/agent_details'" class="stretched-link">{{ agent.designation }}</a>
                             </div>
                         </div>
                     </div>
@@ -238,10 +252,19 @@
                         <h3>Get quick <span>estimate<img src="assets/images/shape/title_shape_06.svg" alt="" class="lazy-img"></span> on your home.</h3>
                         <p class="fs-24 color-dark">Master your property's valuation for a poised entry into the real estate market, armed with self-assurance and insight.</p>
                     </div>
-                    <form action="javascript:void(0);" class="me-xl-4">
-                        <input type="email" placeholder="Your Email Address...">
-                        <button>Find out</button>
+                    <form action="javascript:void(0);" class="me-xl-4" #estimateForm="ngForm" (ngSubmit)="submitEstimateRequest()" novalidate>
+                        <input type="email" name="estimateEmail" placeholder="Your Email Address..." required email
+                            [(ngModel)]="estimateEmail" #estimateEmailField="ngModel">
+                        <button type="submit" [disabled]="estimateForm.invalid || estimateSubmitting">
+                            {{ estimateSubmitting ? 'Sending...' : 'Find out' }}
+                        </button>
                     </form>
+                    @if (estimateSubmitted) {
+                        <div class="fs-16 mt-10 text-success">Thanks! We'll be in touch with your estimate shortly.</div>
+                    }
+                    @if (estimateError) {
+                        <div class="fs-16 mt-10 text-danger">{{ estimateError }}</div>
+                    }
                     <div class="fs-16 mt-10 opacity-75">*For accurate info please <a routerLink="/contact" class="fst-italic color-dark text-decoration-underline">contact us.</a></div>
                 </div>
             </div>
