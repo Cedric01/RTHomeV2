@@ -51,7 +51,7 @@ export class AmenitiesComponent {
       name: 'Blueberry villa',
       address: 'Mirpur 10, Stadium dhaka',
       price: '$34,900',
-      detailsLink: '/listing_details_06',
+      detailsLink: '/listing_details_01',
       images: [
         'assets/images/listing/img_large_01.jpg',
         'assets/images/listing/img_large_02.jpg',
@@ -65,7 +65,7 @@ export class AmenitiesComponent {
       name: 'Blueberry villa',
       address: 'California link road, ca, usa',
       price: '$28,100',
-      detailsLink: '/listing_details_06',
+      detailsLink: '/listing_details_01',
       images: [
         'assets/images/listing/img_large_04.jpg',
         'assets/images/listing/img_large_05.jpg',
@@ -79,7 +79,7 @@ export class AmenitiesComponent {
       name: 'Luxury villa in Dal lake.',
       address: 'Mirpur 10, Stadium',
       price: '$42,500',
-      detailsLink: '/listing_details_06',
+      detailsLink: '/listing_details_01',
       images: [
         'assets/images/listing/img_large_01.jpg',
         'assets/images/listing/img_large_05.jpg',
@@ -94,7 +94,7 @@ export class AmenitiesComponent {
       name: 'South Sun House',
       address: 'Mirpur 10, Stadium',
       price: '$55,500',
-      detailsLink: '/listing_details_06',
+      detailsLink: '/listing_details_01',
       images: [
         'assets/images/listing/img_large_04.jpg',
         'assets/images/listing/img_large_06.jpg',
@@ -109,7 +109,7 @@ export class AmenitiesComponent {
       name: 'White House villa',
       address: 'California link road, ca, usa',
       price: '$28,100',
-      detailsLink: '/listing_details_06',
+      detailsLink: '/listing_details_01',
       images: [
         'assets/images/listing/img_large_04.jpg',
         'assets/images/listing/img_large_05.jpg',

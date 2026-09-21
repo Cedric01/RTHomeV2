@@ -1,12 +1,5 @@
 import { Routes } from '@angular/router';
 import { IndexComponent } from '../Pages/Landing/Home/index/index.component';
-import { Index2Component } from '../Pages/Landing/Home/index-2/index-2.component';
-import { Index3Component } from '../Pages/Landing/Home/index-3/index-3.component';
-import { Index4Component } from '../Pages/Landing/Home/index-4/index-4.component';
-import { Index5Component } from '../Pages/Landing/Home/index-5/index-5.component';
-import { Index7Component } from '../Pages/Landing/Home/index-7/index-7.component';
-import { Index6Component } from '../Pages/Landing/Home/index-6/index-6.component';
-import { AboutUs2Component } from '../Pages/Landing/About/about-us-2/about-us-2.component';
 import { AboutUs1Component } from '../Pages/Landing/About/about-us-1/about-us-1.component';
 import { FaqComponent } from '../Pages/Landing/OthersPages/faq/faq.component';
 import { CompareComponent } from '../Pages/Landing/OthersPages/compare/compare.component';
@@ -17,53 +10,18 @@ import { AgentComponent } from '../Pages/Landing/Agent/agent/agent.component';
 import { AgencyComponent } from '../Pages/Landing/Agency/agency/agency.component';
 import { ContactComponent } from '../Pages/Landing/OthersPages/contact/contact.component';
 import { Pricing01Component } from '../Pages/Landing/Pricing/pricing-01/pricing-01.component';
-import { Pricing02Component } from '../Pages/Landing/Pricing/pricing-02/pricing-02.component';
 import { Service01Component } from '../Pages/Landing/Service/service01/service01.component';
-import { Service02Component } from '../Pages/Landing/Service/service02/service02.component';
 import { ServiceDetailsComponent } from '../Pages/Landing/Service/service-details/service-details.component';
 import { Blog01Component } from '../Pages/Landing/Blog/blog-01/blog-01.component';
-import { Blog02Component } from '../Pages/Landing/Blog/blog-02/blog-02.component';
-import { Blog03Component } from '../Pages/Landing/Blog/blog-03/blog-03.component';
 import { BlogDetailsComponent } from '../Pages/Landing/Blog/blog-details/blog-details.component';
 import { ProjectDetails01Component } from '../Pages/Landing/Project/project-details-01/project-details-01.component';
 import { Project01Component } from '../Pages/Landing/Project/project-01/project-01.component';
-import { Project02Component } from '../Pages/Landing/Project/project-02/project-02.component';
-import { Project03Component } from '../Pages/Landing/Project/project-03/project-03.component';
-import { Project04Component } from '../Pages/Landing/Project/project-04/project-04.component';
 import { ListingDetails01Component } from '../Pages/Landing/Listing/listing-details-01/listing-details-01.component';
-import { ListingDetails02Component } from '../Pages/Landing/Listing/listing-details-02/listing-details-02.component';
-import { ListingDetails03Component } from '../Pages/Landing/Listing/listing-details-03/listing-details-03.component';
-import { ListingDetails04Component } from '../Pages/Landing/Listing/listing-details-04/listing-details-04.component';
-import { ListingDetails05Component } from '../Pages/Landing/Listing/listing-details-05/listing-details-05.component';
-import { ListingDetails06Component } from '../Pages/Landing/Listing/listing-details-06/listing-details-06.component';
-import { Listing01Component } from '../Pages/Landing/Listing/listing-01/listing-01.component';
-import { Listing02Component } from '../Pages/Landing/Listing/listing-02/listing-02.component';
-import { Listing03Component } from '../Pages/Landing/Listing/listing-03/listing-03.component';
 import { Listing04Component } from '../Pages/Landing/Listing/listing-04/listing-04.component';
-import { Listing05Component } from '../Pages/Landing/Listing/listing-05/listing-05.component';
-import { Listing06Component } from '../Pages/Landing/Listing/listing-06/listing-06.component';
-import { Listing07Component } from '../Pages/Landing/Listing/listing-07/listing-07.component';
-import { Listing08Component } from '../Pages/Landing/Listing/listing-08/listing-08.component';
-import { Listing09Component } from '../Pages/Landing/Listing/listing-09/listing-09.component';
-import { Listing10Component } from '../Pages/Landing/Listing/listing-10/listing-10.component';
-import { Listing11Component } from '../Pages/Landing/Listing/listing-11/listing-11.component';
-import { Listing12Component } from '../Pages/Landing/Listing/listing-12/listing-12.component';
-import { Listing13Component } from '../Pages/Landing/Listing/listing-13/listing-13.component';
-import { Listing14Component } from '../Pages/Landing/Listing/listing-14/listing-14.component';
-import { Listing15Component } from '../Pages/Landing/Listing/listing-15/listing-15.component';
-import { Listing16Component } from '../Pages/Landing/Listing/listing-16/listing-16.component';
-import { Listing17Component } from '../Pages/Landing/Listing/listing-17/listing-17.component';
 
 export const MP_ROUTES: Routes = [
   { path: '', component: IndexComponent },
-  { path: 'index-2', component: Index2Component },
-  { path: 'index-3', component: Index3Component },
-  { path: 'index-4', component: Index4Component },
-  { path: 'index-5', component: Index5Component },
-  { path: 'index-6', component: Index6Component },
-  { path: 'index-7', component: Index7Component },
   { path: 'about_us_01', component: AboutUs1Component },
-  { path: 'about_us_02', component: AboutUs2Component },
   { path: 'faq', component: FaqComponent },
   { path: 'compare', component: CompareComponent },
   { path: '404', component: Error404Component },
@@ -74,41 +32,13 @@ export const MP_ROUTES: Routes = [
   { path: 'agent_details', component: AgentDetailsComponent },
   { path: 'contact', component: ContactComponent },
   { path: 'pricing_01', component: Pricing01Component },
-  { path: 'pricing_02', component: Pricing02Component },
   { path: 'service_01', component: Service01Component },
-  { path: 'service_02', component: Service02Component },
   { path: 'service_details', component: ServiceDetailsComponent },
   { path: 'blog_01', component: Blog01Component },
-  { path: 'blog_02', component: Blog02Component },
-  { path: 'blog_03', component: Blog03Component },
   { path: 'blog_details', component: BlogDetailsComponent },
   { path: 'project_01', component: Project01Component },
-  { path: 'project_02', component: Project02Component },
-  { path: 'project_03', component: Project03Component },
-  { path: 'project_04', component: Project04Component },
   { path: 'project_details_01', component: ProjectDetails01Component },
   { path: 'listing_details_01/:id', component: ListingDetails01Component },
   { path: 'listing_details_01', component: ListingDetails01Component },
-  { path: 'listing_details_02', component: ListingDetails02Component },
-  { path: 'listing_details_03', component: ListingDetails03Component },
-  { path: 'listing_details_04', component: ListingDetails04Component },
-  { path: 'listing_details_05', component: ListingDetails05Component },
-  { path: 'listing_details_06', component: ListingDetails06Component },
-  { path: 'listing_01', component: Listing01Component },
-  { path: 'listing_02', component: Listing02Component },
-  { path: 'listing_03', component: Listing03Component },
   { path: 'listing_04', component: Listing04Component },
-  { path: 'listing_05', component: Listing05Component },
-  { path: 'listing_06', component: Listing06Component },
-  { path: 'listing_07', component: Listing07Component },
-  { path: 'listing_08', component: Listing08Component },
-  { path: 'listing_09', component: Listing09Component },
-  { path: 'listing_10', component: Listing10Component },
-  { path: 'listing_11', component: Listing11Component },
-  { path: 'listing_12', component: Listing12Component },
-  { path: 'listing_13', component: Listing13Component },
-  { path: 'listing_14', component: Listing14Component },
-  { path: 'listing_15', component: Listing15Component },
-  { path: 'listing_16', component: Listing16Component },
-  { path: 'listing_17', component: Listing17Component },
 ];
