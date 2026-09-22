@@ -1,18 +1,29 @@
 import AOS from 'aos';
-import { Component, Inject, PLATFORM_ID } from '@angular/core';
+import { Component, Inject, OnInit, PLATFORM_ID } from '@angular/core';
 import { Navbar6Component } from "../../../../layout/navbar-6/navbar-6.component";
 import { FancyBannerTwoComponent } from "../../../../components/fancy-banner-two/fancy-banner-two.component";
 import { Footer5Component } from "../../../../layout/footer-5/footer-5.component";
 import { CommonModule, isPlatformBrowser } from '@angular/common';
 import { NgSelectModule } from '@ng-select/ng-select';
 import { RouterLink } from '@angular/router';
+import { AgentService } from '../../../../service/agent.service';
+import { PropertyService } from '../../../../service/property.service';
+
+interface AgentCard {
+  id: number;
+  name: string;
+  img: string;
+  listing: number;
+  role: string;
+  link: string;
+}
 
 @Component({
     selector: 'app-agent',
     imports: [Navbar6Component, FancyBannerTwoComponent, Footer5Component, CommonModule, NgSelectModule, RouterLink],
     templateUrl: './agent.component.html'
 })
-export class AgentComponent {
+export class AgentComponent implements OnInit {
   categories = [
     { value: '1', label: 'Apartments' }, { value: '2', label: 'Condos' },
     { value: '3', label: 'Houses' }, { value: '4', label: 'Industrial' },
@@ -30,25 +41,41 @@ export class AgentComponent {
     { value: '1', label: 'Popular' }, { value: '2', label: 'Best Seller' },
     { value: '3', label: 'Price Low' }, { value: '4', label: 'Price High' }
   ];
-  agents = [
-    { name: 'Chris Matial', img: 'assets/images/agent/img_07.jpg', listing: 7, delay: '', role: 'Agent', link: 'agent_details.html' },
-    { name: 'Mark Filo', img: 'assets/images/agent/img_08.jpg', listing: 3, delay: '0.1s', role: 'Agent', link: 'agent_details.html' },
-    { name: 'Zubayer Hasan', img: 'assets/images/agent/img_09.jpg', listing: 4, delay: '0.2s', role: 'Agent', link: 'agent_details.html' },
-    { name: 'Jannatul Ferdaus', img: 'assets/images/agent/img_10.jpg', listing: 2, delay: '0.3s', role: 'Agent', link: 'agent_details.html' },
-    { name: 'Chris Matial', img: 'assets/images/agent/img_11.jpg', listing: 7, delay: '', role: 'Agent', link: 'agent_details.html' },
-    { name: 'Mark Filo', img: 'assets/images/agent/img_12.jpg', listing: 3, delay: '0.1s', role: 'Agent', link: 'agent_details.html' },
-    { name: 'Zubayer Hasan', img: 'assets/images/agent/img_13.jpg', listing: 4, delay: '0.2s', role: 'Agent', link: 'agent_details.html' },
-    { name: 'Jannatul Ferdaus', img: 'assets/images/agent/img_14.jpg', listing: 2, delay: '0.3s', role: 'Agent', link: 'agent_details.html' },
-    { name: 'Chris Matial', img: 'assets/images/agent/img_15.jpg', listing: 7, delay: '', role: 'Agent', link: 'agent_details.html' },
-    { name: 'Mark Filo', img: 'assets/images/agent/img_16.jpg', listing: 3, delay: '0.1s', role: 'Agent', link: 'agent_details.html' },
-    { name: 'Zubayer Hasan', img: 'assets/images/agent/img_17.jpg', listing: 4, delay: '0.2s', role: 'Agent', link: 'agent_details.html' },
-    { name: 'Jannatul Ferdaus', img: 'assets/images/agent/img_18.jpg', listing: 2, delay: '0.3s', role: 'Agent', link: 'agent_details.html' },
-  ];
-  constructor(@Inject(PLATFORM_ID) private platformId: object) { }
+
+  agents: AgentCard[] = [];
+  private readonly fallbackImage = 'assets/images/agent/img_01.jpg';
+
+  constructor(
+    @Inject(PLATFORM_ID) private platformId: object,
+    private agentService: AgentService,
+    private propertyService: PropertyService
+  ) { }
 
   ngOnInit() {
     if (isPlatformBrowser(this.platformId)) {
       AOS.init({ duration: 800, easing: 'ease', once: true, mirror: false });
     }
+
+    this.propertyService.getAll().subscribe({
+      next: properties => {
+        const countsByAgentId = new Map<number, number>();
+        for (const property of properties) {
+          countsByAgentId.set(property.agentId, (countsByAgentId.get(property.agentId) ?? 0) + 1);
+        }
+
+        this.agentService.getAll().subscribe({
+          next: agents => {
+            this.agents = agents.map(a => ({
+              id: a.id,
+              name: a.name,
+              img: a.imageUrl || this.fallbackImage,
+              listing: countsByAgentId.get(a.id) ?? 0,
+              role: a.designation || 'Agent',
+              link: `/agent_details/${a.id}`
+            }));
+          }
+        });
+      }
+    });
   }
 }
