@@ -43,7 +43,6 @@ export class ListingDetails01Component implements OnInit {
     { icon: 'assets/images/icon/icon_47.svg', label: 'Sqft', value: '3,720' },
     { icon: 'assets/images/icon/icon_48.svg', label: 'Bed', value: '03' },
     { icon: 'assets/images/icon/icon_49.svg', label: 'Bath', value: '2' },
-    { icon: 'assets/images/icon/icon_50.svg', label: 'Kitchen', value: '01' },
     { icon: 'assets/images/icon/icon_51.svg', label: 'Type', value: 'Apartment' },
   ];
 
@@ -73,7 +72,6 @@ export class ListingDetails01Component implements OnInit {
             { icon: 'assets/images/icon/icon_47.svg', label: 'Sqft', value: p.squareFeet?.toString() ?? '—' },
             { icon: 'assets/images/icon/icon_48.svg', label: 'Bed', value: p.bedrooms?.toString() ?? '—' },
             { icon: 'assets/images/icon/icon_49.svg', label: 'Bath', value: p.bathrooms?.toString() ?? '—' },
-            { icon: 'assets/images/icon/icon_50.svg', label: 'Kitchen', value: '01' },
             { icon: 'assets/images/icon/icon_51.svg', label: 'Type', value: p.isForRent ? 'Rental' : 'For Sale' },
           ];
 
