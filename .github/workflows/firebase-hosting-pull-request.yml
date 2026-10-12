@@ -1,0 +1,57 @@
+name: Deploy to Firebase Hosting on PR
+
+on:
+  pull_request:
+    branches:
+      - main
+
+permissions:
+  contents: read
+  id-token: write
+  pull-requests: write
+
+jobs:
+  build_and_preview:
+    if: github.event.pull_request.head.repo.full_name == github.repository
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: Homy_Angular_v1.2.0/Landing
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+          cache-dependency-path: Homy_Angular_v1.2.0/Landing/package-lock.json
+      - run: npm ci
+      - run: npm run build
+      - name: Authenticate to Google Cloud (keyless, Workload Identity Federation)
+        uses: google-github-actions/auth@v2
+        with:
+          workload_identity_provider: ${{ secrets.WIF_PROVIDER }}
+          service_account: ${{ secrets.WIF_SERVICE_ACCOUNT }}
+      - name: Deploy to Firebase Hosting preview channel
+        id: deploy
+        run: |
+          npm install -g firebase-tools
+          firebase hosting:channel:deploy "pr-${{ github.event.pull_request.number }}" \
+            --project rthome-836d6 --expires 7d --non-interactive --json > deploy.json
+          echo "url=$(jq -r '.result | to_entries[0].value.url' deploy.json)" >> "$GITHUB_OUTPUT"
+      - name: Comment preview URL on the PR
+        uses: actions/github-script@v7
+        env:
+          PREVIEW_URL: ${{ steps.deploy.outputs.url }}
+        with:
+          script: |
+            const marker = '<!-- firebase-hosting-preview -->';
+            const body = `${marker}\nFirebase Hosting preview: ${process.env.PREVIEW_URL}\n\nExpires in 7 days.`;
+            const { owner, repo } = context.repo;
+            const issue_number = context.issue.number;
+            const comments = await github.paginate(github.rest.issues.listComments, { owner, repo, issue_number });
+            const existing = comments.find(c => c.body && c.body.includes(marker));
+            if (existing) {
+              await github.rest.issues.updateComment({ owner, repo, comment_id: existing.id, body });
+            } else {
+              await github.rest.issues.createComment({ owner, repo, issue_number, body });
+            }
