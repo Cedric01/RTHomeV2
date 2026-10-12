@@ -9,7 +9,7 @@
                     <li>/</li>
                     <li><a routerLink="/agent">Agent</a></li>
                     <li>/</li>
-                    <li>Mathews Firlo</li>
+                    <li>{{ agent?.name ?? 'Agent' }}</li>
                 </ul>
             </div>
             <div class="col-lg-6">
@@ -25,33 +25,35 @@
                 <div class="info-pack-one mb-80 xl-mb-50">
                     <div class="row">
                         <div class="col-xl-6 d-flex">
-                            <div class="media position-relative z-1 w-100 me-xl-4" style="background-image: url(assets/images/agent/img_10.jpg);">
-                                <div class="tag bg-white position-absolute text-uppercase">4 Listing</div>
+                            <div class="media position-relative z-1 w-100 me-xl-4" [style.background-image]="'url(' + (agent?.imageUrl || 'assets/images/agent/img_10.jpg') + ')'">
+                                <div class="tag bg-white position-absolute text-uppercase">{{ items.length }} Listing{{ items.length === 1 ? '' : 's' }}</div>
                             </div>
                         </div>
                         <div class="col-xl-6">
                             <div class="ps-xxl-3 pe-xxl-3 pe-xl-0 ps-xl-0 pe-3 ps-3 pt-40 lg-pt-30 pb-45 lg-pb-30">
-                                <h4>Mathews Firlo.</h4>
-                                <div class="designation fs-16">Sales & Broker</div>
+                                <h4>{{ agent?.name ?? 'Agent' }}</h4>
+                                <div class="designation fs-16">{{ agent?.designation ?? 'Agent' }}</div>
                                 <div class="table-responsive">
                                     <table class="table">
                                         <tbody>
-                                            <tr>
-                                                <td>Location: </td>
-                                                <td>Spain, Barcelona </td>
-                                            </tr>
-                                            <tr>
-                                                <td>Phone: </td>
-                                                <td>+21 456 987 330</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Email:</td>
-                                                <td>mathfir&#64;support.com</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Qualification:</td>
-                                                <td>Master Degree</td>
-                                            </tr>
+                                            @if (agent?.location) {
+                                                <tr>
+                                                    <td>Location: </td>
+                                                    <td>{{ agent?.location }}</td>
+                                                </tr>
+                                            }
+                                            @if (agent?.phone) {
+                                                <tr>
+                                                    <td>Phone: </td>
+                                                    <td>{{ agent?.phone }}</td>
+                                                </tr>
+                                            }
+                                            @if (agent?.email) {
+                                                <tr>
+                                                    <td>Email:</td>
+                                                    <td>{{ agent?.email }}</td>
+                                                </tr>
+                                            }
                                         </tbody>
                                     </table>
                                 </div>

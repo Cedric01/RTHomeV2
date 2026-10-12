@@ -5,70 +5,11 @@
     <li class="nav-item dashboard-menu">
         <a class="nav-link" routerLink="/dashboard-index" target="_blank">Dashboard</a>
     </li>
-    <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="javascript:void(0);" role="button" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false">Home
-        </a>
-        <ul class="dropdown-menu">
-            <li><a routerLink="/" class="dropdown-item" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }"><span>Home 01</span></a></li>
-            <li><a routerLink="/index-2" class="dropdown-item" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }"><span>Home 02</span></a></li>
-            <li><a routerLink="/index-3" class="dropdown-item" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }"><span>Home 03</span></a></li>
-            <li><a routerLink="/index-4" class="dropdown-item" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }"><span>Home 04</span></a></li>
-            <li><a routerLink="/index-5" class="dropdown-item" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }"><span>Home 05</span></a></li>
-            <li><a routerLink="/index-6" class="dropdown-item" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }"><span>Home 06</span></a></li>
-            <li><a routerLink="/index-7" class="dropdown-item" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }"><span>Home 07</span></a></li>
-        </ul>
+    <li class="nav-item">
+        <a class="nav-link" routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Home</a>
     </li>
-    <li class="nav-item dropdown mega-dropdown-sm">
-        <a class="nav-link dropdown-toggle" href="javascript:void(0);" role="button" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false">Listing
-        </a>
-        <ul class="dropdown-menu">
-            <li class="row gx-1">
-                <div class="col-lg-4">
-                    <div class="menu-column">
-                        <h6 class="mega-menu-title">Listing Type</h6>
-                        <ul class="style-none mega-dropdown-list">
-                            <li><a routerLink="/listing_01" class="dropdown-item" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }"><span>Grid Sidebar-1</span></a></li>
-                            <li><a routerLink="/listing_05" class="dropdown-item" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }"><span>Grid Sidebar-2</span></a></li>
-                            <li><a routerLink="/listing_02" class="dropdown-item" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }"><span>List Sidebar-1</span></a></li>
-                            <li><a routerLink="/listing_06" class="dropdown-item" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }"><span>List Sidebar-2</span></a></li>
-                            <li><a routerLink="/listing_03" class="dropdown-item" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }"><span>Grid Top Filter-1</span></a></li>
-                            <li><a routerLink="/listing_07" class="dropdown-item" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }"><span>Grid Top Filter-2</span></a></li>
-                            <li><a routerLink="/listing_04" class="dropdown-item" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }"><span>List Top Filter-1</span></a></li>
-                            <li><a routerLink="/listing_08" class="dropdown-item" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }"><span>List Top Filter-2</span></a></li>
-                            <li><a routerLink="/listing_09" class="dropdown-item" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }"><span>Grid Banner Filter-1</span></a></li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="col-lg-4">
-                    <div class="menu-column">
-                        <h6 class="mega-menu-title">Listing Type</h6>
-                        <ul class="style-none mega-dropdown-list">
-                            <li><a routerLink="/listing_11" class="dropdown-item" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }"><span>Grid Banner Filter-2</span></a></li>
-                            <li><a routerLink="/listing_10" class="dropdown-item" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }"><span>List Banner Filter-1</span></a></li>
-                            <li><a routerLink="/listing_12" class="dropdown-item" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }"><span>List Banner Filter-2</span></a></li>
-                            <li><a routerLink="/listing_13" class="dropdown-item" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }"><span>Grid Fullwidth</span></a></li>
-                            <li><a routerLink="/listing_14" class="dropdown-item" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }"><span>Grid Fullwidth Map-1</span></a></li>
-                            <li><a routerLink="/listing_16" class="dropdown-item" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }"><span>Grid Fullwidth Map-2</span></a></li>
-                            <li><a routerLink="/listing_15" class="dropdown-item" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }"><span>List Fullwidth Map-1</span></a></li>
-                            <li><a routerLink="/listing_17" class="dropdown-item" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }"><span>List Fullwidth Map-2</span></a></li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="col-lg-4">
-                    <div class="menu-column">
-                        <h6 class="mega-menu-title">Single Listing</h6>
-                        <ul class="style-none mega-dropdown-list">
-                            <li><a routerLink="/listing_details_01" class="dropdown-item" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }"><span>Listing Details-1</span></a></li>
-                            <li><a routerLink="/listing_details_02" class="dropdown-item" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }"><span>Listing Details-2</span></a></li>
-                            <li><a routerLink="/listing_details_03" class="dropdown-item" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }"><span>Listing Details-3</span></a></li>
-                            <li><a routerLink="/listing_details_04" class="dropdown-item" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }"><span>Listing Details-4</span></a></li>
-                            <li><a routerLink="/listing_details_05" class="dropdown-item" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }"><span>Listing Details-5</span></a></li>
-                            <li><a routerLink="/listing_details_06" class="dropdown-item" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }"><span>Listing Details-6</span></a></li>
-                        </ul>
-                    </div>
-                </div>
-            </li>
-        </ul>
+    <li class="nav-item">
+        <a class="nav-link" routerLink="/listing_04" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Listing</a>
     </li>
     <li class="nav-item dropdown mega-dropdown-sm">
         <a class="nav-link dropdown-toggle" href="javascript:void(0);" role="button" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false">Pages
@@ -79,12 +20,10 @@
                     <div class="menu-column">
                         <h6 class="mega-menu-title">Essential</h6>
                         <ul class="style-none mega-dropdown-list">
-                            <li><a routerLink="/about_us_01" class="dropdown-item" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }"><span>About us -1</span></a></li>
-                            <li><a routerLink="/about_us_02" class="dropdown-item" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }"><span>About us -2</span></a></li>
+                            <li><a routerLink="/about_us_01" class="dropdown-item" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }"><span>About Us</span></a></li>
                             <li><a routerLink="/agency" class="dropdown-item" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }"><span>Agency</span></a></li>
                             <li><a routerLink="/agency_details" class="dropdown-item" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }"><span>Agency Details</span></a></li>
                             <li><a routerLink="/agent" class="dropdown-item" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }"><span>Agent</span></a></li>
-                            <li><a routerLink="/agent_details" class="dropdown-item" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }"><span>Agent Details</span></a></li>
                         </ul>
                     </div>
                 </div>
@@ -92,13 +31,9 @@
                     <div class="menu-column">
                         <h6 class="mega-menu-title">Features</h6>
                         <ul class="style-none mega-dropdown-list">
-                            <li><a routerLink="/project_01" class="dropdown-item" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }"><span>Project -1</span></a></li>
-                            <li><a routerLink="/project_02" class="dropdown-item" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }"><span>Project -2</span></a></li>
-                            <li><a routerLink="/project_03" class="dropdown-item" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }"><span>Project -3</span></a></li>
-                            <li><a routerLink="/project_04" class="dropdown-item" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }"><span>Project -4</span></a></li>
+                            <li><a routerLink="/project_01" class="dropdown-item" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }"><span>Project</span></a></li>
                             <li><a routerLink="/project_details_01" class="dropdown-item" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }"><span>Project Details</span></a></li>
-                            <li><a routerLink="/service_01" class="dropdown-item" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }"><span>Services -1</span></a></li>
-                            <li><a routerLink="/service_02" class="dropdown-item" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }"><span>Services -2</span></a></li>
+                            <li><a routerLink="/service_01" class="dropdown-item" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }"><span>Services</span></a></li>
                             <li><a routerLink="/service_details" class="dropdown-item" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }"><span>Service Details</span></a></li>
                         </ul>
                     </div>
@@ -108,8 +43,7 @@
                         <h6 class="mega-menu-title">Others</h6>
                         <ul class="style-none mega-dropdown-list">
                             <li><a routerLink="/compare" class="dropdown-item" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }"><span>Property Compare</span></a></li>
-                            <li><a routerLink="/pricing_01" class="dropdown-item" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }"><span>Pricing -1</span></a></li>
-                            <li><a routerLink="/pricing_02" class="dropdown-item" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }"><span>Pricing -2</span></a></li>
+                            <li><a routerLink="/pricing_01" class="dropdown-item" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }"><span>Pricing</span></a></li>
                             <li><a routerLink="/contact" class="dropdown-item" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }"><span>Contact Us</span></a></li>
                             <li><a routerLink="/faq" class="dropdown-item" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }"><span>FAQ's</span></a></li>
                             <li><a routerLink="/404" class="dropdown-item" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }"><span>404-Error</span></a></li>
@@ -123,9 +57,7 @@
         <a class="nav-link dropdown-toggle" href="javascript:void(0);" role="button" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false">Blog
         </a>
         <ul class="dropdown-menu">
-            <li><a routerLink="/blog_01" class="dropdown-item" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }"><span>Blog Grid</span></a></li>
-            <li><a routerLink="/blog_02" class="dropdown-item" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }"><span>Blog List</span></a></li>
-            <li><a routerLink="/blog_03" class="dropdown-item" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }"><span>Blog 2 column</span></a></li>
+            <li><a routerLink="/blog_01" class="dropdown-item" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }"><span>Blog</span></a></li>
             <li><a routerLink="/blog_details" class="dropdown-item" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }"><span>Blog Details</span></a></li>
         </ul>
     </li>

@@ -5,7 +5,7 @@ import { NgSelectModule } from '@ng-select/ng-select';
 import AOS from 'aos';
 import Swiper from 'swiper';
 import { FormsModule } from '@angular/forms';
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { Footer1Component } from '../../../../layout/footer-1/footer-1.component';
 import { Navbar1Component } from '../../../../layout/navbar-1/navbar-1.component';
 import { FeedbackSectionOneComponent } from '../../../../components/feedback-section-one/feedback-section-one.component';
@@ -51,6 +51,11 @@ priceRanges: { value: string; label: string }[] = [];
   // dropdown doesn't flash stale placeholder options before the real ones load.
   options: { value: string; label: string }[] = [];
 
+  // Bound to the hero search form's dropdowns via ngModel.
+  selectedListingType: string | null = null;
+  selectedLocationId: string | null = null;
+  selectedPriceRangeId: string | null = null;
+
   agents: Agent[] = [
     { id: 0, name: 'Mark Filo', imageUrl: 'assets/images/agent/img_01.jpg', designation: 'CEO & Founder', link: '/agent_details' },
     { id: 0, name: 'Chris Matial', imageUrl: 'assets/images/agent/img_02.jpg', designation: 'Retailer', link: '/agent_details' },
@@ -95,7 +100,8 @@ priceRanges: { value: string; label: string }[] = [];
   private agentService: AgentService,
   private priceRangeService: PriceRangeService,
   private estimateRequestService: EstimateRequestService,
-  private listingTypeService: ListingTypeService
+  private listingTypeService: ListingTypeService,
+  private router: Router
 ) { }
 
   ngOnInit() : void {
@@ -223,6 +229,15 @@ this.listingTypeService.getListingTypes().subscribe({
 
   openModal(): void {
     this.modalService.openModal();
+  }
+
+  searchListings(): void {
+    const queryParams: Record<string, string> = {};
+    if (this.selectedListingType) queryParams['type'] = this.selectedListingType;
+    if (this.selectedLocationId) queryParams['location'] = this.selectedLocationId;
+    if (this.selectedPriceRangeId) queryParams['priceRange'] = this.selectedPriceRangeId;
+
+    this.router.navigate(['/listing_04'], { queryParams });
   }
 
   submitEstimateRequest(): void {
