@@ -24,7 +24,7 @@ jobs:
           node-version: 20
           cache: npm
           cache-dependency-path: Homy_Angular_v1.2.0/Landing/package-lock.json
-      - run: npm ci
+      - run: npm ci --legacy-peer-deps
       - run: npm run build
       - name: Authenticate to Google Cloud (keyless, Workload Identity Federation)
         uses: google-github-actions/auth@v2
