@@ -50,3 +50,11 @@ export interface Property {
   createdAt?: string;
   imageUrls?: string[];
 }
+
+// Counts of the signed-in user's own properties, shown on the dashboard home.
+export interface PropertySummary {
+  total: number;
+  active: number;
+  sold: number;
+  rented: number;
+}

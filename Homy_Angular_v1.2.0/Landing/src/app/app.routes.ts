@@ -46,6 +46,12 @@ export const routes: Routes = [
         children: [{ path: '', component: AddPropertyComponent, outlet: 'dashboard' }],
     },
     {
+        path: 'edit-property/:id',
+        component: DashboardLayoutComponent,
+        canActivate: [agentGuard],
+        children: [{ path: '', component: AddPropertyComponent, outlet: 'dashboard' }],
+    },
+    {
         path: 'favourites',
         component: DashboardLayoutComponent,
         canActivate: [authGuard],

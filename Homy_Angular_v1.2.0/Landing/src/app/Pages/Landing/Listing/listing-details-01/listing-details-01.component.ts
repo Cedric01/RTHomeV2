@@ -27,18 +27,8 @@ export class ListingDetails01Component implements OnInit {
   relatedListings: { id: number; tag: string; imageUrl: string; price: string; address: string; link: string }[] = [];
   loadError = false;
 
-  carouselImages: string[] = [
-    'assets/images/listing/img_43.jpg',
-    'assets/images/listing/img_44.jpg',
-    'assets/images/listing/img_45.jpg',
-    'assets/images/listing/img_46.jpg'
-  ];
-  carouselThumbnails = [
-    { src: 'assets/images/listing/img_43_s.jpg', label: 'Slide 1' },
-    { src: 'assets/images/listing/img_44_s.jpg', label: 'Slide 2' },
-    { src: 'assets/images/listing/img_45_s.jpg', label: 'Slide 3' },
-    { src: 'assets/images/listing/img_46_s.jpg', label: 'Slide 4' },
-  ];
+  carouselImages: string[] = [];
+  carouselThumbnails: { src: string; label: string }[] = [];
   propertyDetails = [
     { icon: 'assets/images/icon/icon_47.svg', label: 'Sqft', value: '3,720' },
     { icon: 'assets/images/icon/icon_48.svg', label: 'Bed', value: '03' },
