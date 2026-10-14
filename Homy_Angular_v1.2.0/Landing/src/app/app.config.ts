@@ -7,6 +7,8 @@ import { routes } from './app.routes';
 import { provideClientHydration } from '@angular/platform-browser';
 import { environment } from '../environtment';
 
+const tokenOptions = { authorizationParams: { audience: 'https://homy-api' } };
+
 export const appConfig: ApplicationConfig = {
   providers: [
     provideZoneChangeDetection({ eventCoalescing: true }),
@@ -21,25 +23,15 @@ export const appConfig: ApplicationConfig = {
       },
       httpInterceptor: {
         allowedList: [
-          // Protected endpoints — attach token, fail if not authenticated.
-          // Only the property-mutation endpoints need a token: reads stay public,
-          // and the API itself independently enforces the "agent" role on these,
-          // this list just controls whether Angular bothers attaching a token.
-          {
-            uri: `${environment.apiUrl}/properties`,
-            httpMethod: 'POST',
-            tokenOptions: { authorizationParams: { audience: 'https://homy-api' } }
-          },
-          {
-            uri: `${environment.apiUrl}/properties/*`,
-            httpMethod: 'PUT',
-            tokenOptions: { authorizationParams: { audience: 'https://homy-api' } }
-          },
-          {
-            uri: `${environment.apiUrl}/properties/*`,
-            httpMethod: 'DELETE',
-            tokenOptions: { authorizationParams: { audience: 'https://homy-api' } }
-          }
+          // Reads stay public, except the signed-in user's own listings.
+          { uriMatcher: uri => uri.startsWith(`${environment.apiUrl}/properties/mine`), httpMethod: 'GET', tokenOptions },
+          // Everything that changes a property or its photos needs a token:
+          // POST /properties, PUT|DELETE /properties/{id}, POST|DELETE /properties/{id}/images.
+          // The API independently enforces the agent role and ownership; this just
+          // controls whether Angular attaches a token.
+          { uriMatcher: uri => uri.startsWith(`${environment.apiUrl}/properties`), httpMethod: 'POST', tokenOptions },
+          { uriMatcher: uri => uri.startsWith(`${environment.apiUrl}/properties`), httpMethod: 'PUT', tokenOptions },
+          { uriMatcher: uri => uri.startsWith(`${environment.apiUrl}/properties`), httpMethod: 'DELETE', tokenOptions }
         ]
       }
     }),

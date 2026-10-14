@@ -1,45 +1,64 @@
-<app-dashboard-navbar [Title]="'Add New Property'"></app-dashboard-navbar>
+<app-dashboard-navbar [Title]="isEdit ? 'Edit Property' : 'Add New Property'"></app-dashboard-navbar>
 
-<h2 class="main-title d-block d-lg-none">Add New Property</h2>
+<h2 class="main-title d-block d-lg-none">{{ isEdit ? 'Edit Property' : 'Add New Property' }}</h2>
+
+<div *ngIf="lookupError" class="alert alert-warning mb-30">{{ lookupError }}</div>
+<div *ngIf="errorSummary.length" class="alert alert-danger mb-30">
+    <div *ngFor="let message of errorSummary">{{ message }}</div>
+</div>
 
 <div class="bg-white card-box border-20">
     <h4 class="dash-title-three">Overview</h4>
     <div class="dash-input-wrapper mb-30">
         <label for="">Property Title*</label>
-        <input type="text" placeholder="Your Property Name">
+        <input type="text" placeholder="Your Property Name" maxlength="255" [(ngModel)]="form.title" (ngModelChange)="clearError('title')" [class.is-invalid]="errorsFor('title').length">
+        <div *ngIf="errorsFor('title').length" class="invalid-feedback d-block">{{ errorsFor('title')[0] }}</div>
     </div>
 
     <div class="dash-input-wrapper mb-30">
-        <label for="">Description*</label>
-        <textarea class="size-lg" placeholder="Write about property..."></textarea>
+        <label for="">Description</label>
+        <textarea class="size-lg" placeholder="Write about property..." [(ngModel)]="form.description" (ngModelChange)="clearError('description')" [class.is-invalid]="errorsFor('description').length"></textarea>
+        <div *ngIf="errorsFor('description').length" class="invalid-feedback d-block">{{ errorsFor('description')[0] }}</div>
     </div>
 
     <div class="row align-items-end">
         <div class="col-md-6">
             <div class="dash-input-wrapper mb-30">
                 <label for="">Category*</label>
-                <ng-select [items]="options" bindLabel="label" bindValue="value" [placeholder]="'Apartments'" class="dashboard-ng-select">
-                    <ng-option *ngFor="let option of options" [value]="option.value">{{ option.label }}</ng-option>
+                <ng-select [items]="listingTypes" bindLabel="label" bindValue="value" placeholder="Select Category" [(ngModel)]="form.listingTypeId" (ngModelChange)="clearError('listingTypeId')" class="dashboard-ng-select">
                 </ng-select>
+                <div *ngIf="errorsFor('listingTypeId').length" class="invalid-feedback d-block">{{ errorsFor('listingTypeId')[0] }}</div>
             </div>
         </div>
         <div class="col-md-6">
             <div class="dash-input-wrapper mb-30">
                 <label for="">Listed in*</label>
-                <ng-select [items]="listed" bindLabel="label" bindValue="value" [placeholder]="'All Listing'" [(ngModel)]="selectedOption" class="dashboard-ng-select">
+                <ng-select [items]="listingModes" bindLabel="label" bindValue="value" placeholder="For Sale or For Rent" [(ngModel)]="form.listingMode" (ngModelChange)="clearError('listingMode')" class="dashboard-ng-select">
                 </ng-select>
+                <div *ngIf="errorsFor('listingMode').length" class="invalid-feedback d-block">{{ errorsFor('listingMode')[0] }}</div>
             </div>
         </div>
         <div class="col-md-6">
             <div class="dash-input-wrapper mb-30">
                 <label for="">Price*</label>
-                <input type="text" placeholder="Your Price">
+                <input type="number" min="0" step="any" placeholder="Your Price" [(ngModel)]="form.price" (ngModelChange)="clearError('price')" [class.is-invalid]="errorsFor('price').length">
+                <div *ngIf="errorsFor('price').length" class="invalid-feedback d-block">{{ errorsFor('price')[0] }}</div>
             </div>
         </div>
         <div class="col-md-6">
             <div class="dash-input-wrapper mb-30">
-                <label for="">Yearly Tax Rate*</label>
-                <input type="text" placeholder="Tax Rate">
+                <label for="">Price Range</label>
+                <ng-select [items]="priceRanges" bindLabel="displayLabel" bindValue="id" placeholder="Select Price Range" [(ngModel)]="form.priceRangeId" (ngModelChange)="clearError('priceRangeId')" class="dashboard-ng-select">
+                </ng-select>
+                <div *ngIf="errorsFor('priceRangeId').length" class="invalid-feedback d-block">{{ errorsFor('priceRangeId')[0] }}</div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="dash-input-wrapper mb-30">
+                <label for="">Agent*</label>
+                <ng-select [items]="agents" bindLabel="name" bindValue="id" placeholder="Select Agent" [(ngModel)]="form.agentId" (ngModelChange)="clearError('agentId')" class="dashboard-ng-select">
+                </ng-select>
+                <div *ngIf="errorsFor('agentId').length" class="invalid-feedback d-block">{{ errorsFor('agentId')[0] }}</div>
             </div>
         </div>
     </div>
@@ -49,97 +68,58 @@
     <div class="row align-items-end">
         <div class="col-md-6">
             <div class="dash-input-wrapper mb-30">
-                <label for="">Size in ft*</label>
-                <input type="text" placeholder="Ex: 3,210 sqft">
+                <label for="">Size in ft</label>
+                <input type="number" min="0" placeholder="Ex: 3210" [(ngModel)]="form.squareFeet" (ngModelChange)="clearError('squareFeet')" [class.is-invalid]="errorsFor('squareFeet').length">
+                <div *ngIf="errorsFor('squareFeet').length" class="invalid-feedback d-block">{{ errorsFor('squareFeet')[0] }}</div>
             </div>
         </div>
         <div class="col-md-6">
             <div class="dash-input-wrapper mb-30">
-                <label for="">Bedrooms*</label>
-                <select class="nice-select">
-                    <option value="0">0</option>
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                </select>
-            </div>
-        </div>
-        <div class="col-md-6">
-            <div class="dash-input-wrapper mb-30">
-                <label for="">Bathrooms*</label>
-                <ng-select [items]="bathroomOptions" bindLabel="label" bindValue="value" [(ngModel)]="selectedBathrooms" class="dashboard-ng-select">
+                <label for="">Bedrooms</label>
+                <ng-select [items]="countOptions" [(ngModel)]="form.bedrooms" (ngModelChange)="clearError('bedrooms')" class="dashboard-ng-select">
                 </ng-select>
+                <div *ngIf="errorsFor('bedrooms').length" class="invalid-feedback d-block">{{ errorsFor('bedrooms')[0] }}</div>
             </div>
         </div>
         <div class="col-md-6">
             <div class="dash-input-wrapper mb-30">
-                <label for="">Kitchens*</label>
-                <ng-select [items]="kitchenOptions" bindLabel="label" bindValue="value" [(ngModel)]="selectedKitchens" class="dashboard-ng-select">
+                <label for="">Bathrooms</label>
+                <ng-select [items]="countOptions" [(ngModel)]="form.bathrooms" (ngModelChange)="clearError('bathrooms')" class="dashboard-ng-select">
                 </ng-select>
+                <div *ngIf="errorsFor('bathrooms').length" class="invalid-feedback d-block">{{ errorsFor('bathrooms')[0] }}</div>
             </div>
         </div>
         <div class="col-md-6">
             <div class="dash-input-wrapper mb-30">
                 <label for="">Garages</label>
-                <ng-select [items]="garageOptions" bindLabel="label" bindValue="value" [(ngModel)]="selectedGarage" class="dashboard-ng-select">
+                <ng-select [items]="countOptions" [(ngModel)]="form.garage" (ngModelChange)="clearError('garage')" class="dashboard-ng-select">
                 </ng-select>
+                <div *ngIf="errorsFor('garage').length" class="invalid-feedback d-block">{{ errorsFor('garage')[0] }}</div>
             </div>
         </div>
         <div class="col-md-6">
             <div class="dash-input-wrapper mb-30">
-                <label for="">Garage Size</label>
-                <input type="text" placeholder="Ex: 1,230 sqft">
+                <label for="">Year Built</label>
+                <input type="number" min="1600" max="2100" placeholder="Type Year" [(ngModel)]="form.yearBuilt" (ngModelChange)="clearError('yearBuilt')" [class.is-invalid]="errorsFor('yearBuilt').length">
+                <div *ngIf="errorsFor('yearBuilt').length" class="invalid-feedback d-block">{{ errorsFor('yearBuilt')[0] }}</div>
             </div>
         </div>
         <div class="col-md-6">
             <div class="dash-input-wrapper mb-30">
-                <label for="">Year Built*</label>
-                <input type="text" placeholder="Type Year">
-            </div>
-        </div>
-        <div class="col-md-6">
-            <div class="dash-input-wrapper mb-30">
-                <label for="">Floors No*</label>
-                <ng-select [items]="floorsOptions" bindLabel="label" bindValue="value" [(ngModel)]="selectedFloor" class="dashboard-ng-select">
+                <label for="">Floors No</label>
+                <ng-select [items]="floorOptions" [(ngModel)]="form.floor" (ngModelChange)="clearError('floor')" class="dashboard-ng-select">
                 </ng-select>
-            </div>
-        </div>
-        <div class="col-12">
-            <div class="dash-input-wrapper">
-                <label for="">Description*</label>
-                <textarea class="size-lg" placeholder="Write about property..."></textarea>
+                <div *ngIf="errorsFor('floor').length" class="invalid-feedback d-block">{{ errorsFor('floor')[0] }}</div>
             </div>
         </div>
     </div>
-</div>
-
-<div class="bg-white card-box border-20 mt-40">
-    <h4 class="dash-title-three">Photo & Video Attachment</h4>
-    <div class="dash-input-wrapper mb-20">
-        <label for="">File Attachment*</label>
-
-
-        <div *ngFor="let file of uploadedFiles" class="attached-file d-flex align-items-center justify-content-between mb-15">
-            <span>{{ file.name }}</span>
-            <a href="javascript:void(0);" class="remove-btn" (click)="removeFile(file)">
-                <i class="bi bi-x"></i>
-            </a>
-        </div>
-    </div>
-
-    <div class="dash-btn-one d-inline-block position-relative me-3">
-        <i class="bi bi-plus"></i>
-        Upload File
-        <input type="file" id="uploadCV" name="uploadCV" (change)="onFileChange($event)" multiple />
-    </div>
-    <small>Upload file .jpg, .png, .mp4</small>
 </div>
 
 <div class="bg-white card-box border-20 mt-40">
     <h4 class="dash-title-three m0 pb-5">Select Amenities</h4>
     <ul class="style-none d-flex flex-wrap filter-input">
         <li *ngFor="let amenity of amenities">
-            <input type="checkbox" name="Amenities" [value]="amenity.value" [(ngModel)]="amenity.selected">
+            <input type="checkbox" name="Amenities" [value]="amenity.key" [(ngModel)]="amenity.selected">
             <label>{{ amenity.label }}</label>
         </li>
     </ul>
@@ -151,49 +131,41 @@
         <div class="col-12">
             <div class="dash-input-wrapper mb-25">
                 <label for="">Address*</label>
-                <input type="text" placeholder="145/A, Ranchview">
-            </div>
-        </div>
-        <div class="col-lg-4">
-            <div class="dash-input-wrapper mb-25">
-                <label for="">Country*</label>
-                <ng-select [items]="countries" bindLabel="label" bindValue="value" [(ngModel)]="selectedCuntry" placeholder="Select Country" class="dashboard-ng-select">
-                </ng-select>
-
-            </div>
-        </div>
-        <div class="col-lg-4">
-            <div class="dash-input-wrapper mb-25">
-                <label for="">City*</label>
-                <ng-select [items]="cities" bindLabel="name" bindValue="value" [(ngModel)]="selectedCty" placeholder="Select City" class="dashboard-ng-select">
-                </ng-select>
-
-            </div>
-        </div>
-        <div class="col-lg-4">
-            <div class="dash-input-wrapper mb-25">
-                <label for="">State*</label>
-                <ng-select [items]="states" bindLabel="name" bindValue="value" [(ngModel)]="selectedState" placeholder="Select State" class="dashboard-ng-select">
-                </ng-select>
+                <input type="text" placeholder="145/A, Ranchview" [(ngModel)]="form.address" (ngModelChange)="clearError('address')" [class.is-invalid]="errorsFor('address').length">
+                <div *ngIf="errorsFor('address').length" class="invalid-feedback d-block">{{ errorsFor('address')[0] }}</div>
             </div>
         </div>
         <div class="col-12">
             <div class="dash-input-wrapper mb-25">
-                <label for="">Map Location*</label>
-                <div class="position-relative">
-                    <input type="text" placeholder="XC23+6XC, Moiran, N105">
-                    <button class="location-pin tran3s"><img src="assets/dashboard-images/icon/icon_16.svg" alt="" class="lazy-img m-auto"></button>
-                </div>
-                <div class="map-frame mt-30">
-                    <div class="gmap_canvas h-100 w-100">
-                        <iframe class="gmap_iframe h-100 w-100" src="https://maps.google.com/maps?width=600&amp;height=400&amp;hl=en&amp;q=dhaka collage&amp;t=&amp;z=12&amp;ie=UTF8&amp;iwloc=B&amp;output=embed"></iframe>
-                    </div>
-                </div>
+                <label for="">Location*</label>
+                <ng-select [items]="locations" bindLabel="displayName" bindValue="id" placeholder="Select Location" [(ngModel)]="form.locationId" (ngModelChange)="clearError('locationId')" class="dashboard-ng-select">
+                </ng-select>
+                <div *ngIf="errorsFor('locationId').length" class="invalid-feedback d-block">{{ errorsFor('locationId')[0] }}</div>
             </div>
         </div>
     </div>
 </div>
+<div class="bg-white card-box border-20 mt-40">
+    <h4 class="dash-title-three">Photos</h4>
+    <p class="mb-20">JPEG, PNG or WebP, up to {{ maxImageBytes / 1048576 }} MB each, {{ maxImages }} photos at most.</p>
+    <div *ngIf="imageErrors.length" class="alert alert-warning">
+        <div *ngFor="let message of imageErrors">{{ message }}</div>
+    </div>
+    <div class="d-flex flex-wrap gap-3 mb-25" *ngIf="existingImages.length || newImages.length">
+        <div *ngFor="let url of existingImages" class="position-relative" style="width: 120px; height: 120px;">
+            <img [src]="url" alt="Property photo" style="width: 100%; height: 100%; object-fit: cover; border-radius: 12px;">
+            <button type="button" class="btn-close position-absolute top-0 end-0 m-1 bg-white p-1" aria-label="Remove photo" (click)="removeExistingImage(url)"></button>
+        </div>
+        <div *ngFor="let image of newImages; let i = index" class="position-relative" style="width: 120px; height: 120px;">
+            <img [src]="image.preview" [alt]="image.file.name" style="width: 100%; height: 100%; object-fit: cover; border-radius: 12px;">
+            <button type="button" class="btn-close position-absolute top-0 end-0 m-1 bg-white p-1" aria-label="Remove photo" (click)="removeNewImage(i)"></button>
+        </div>
+    </div>
+    <input #photoInput type="file" accept="image/jpeg,image/png,image/webp" multiple hidden (change)="onFilesSelected($event)">
+    <a href="javascript:void(0);" class="dash-btn-two tran3s d-inline-block" (click)="photoInput.click()">Choose photos</a>
+    <div *ngIf="uploadStatus" class="mt-20">{{ uploadStatus }}</div>
+</div>
 <div class="button-group d-inline-flex align-items-center mt-30">
-    <a href="javascript:void(0);" class="dash-btn-two tran3s me-3">Submit Property</a>
-    <a href="javascript:void(0);" class="dash-cancel-btn tran3s">Cancel</a>
+    <a href="javascript:void(0);" class="dash-btn-two tran3s me-3" [class.disabled]="submitting || loadingProperty" [attr.aria-disabled]="submitting || loadingProperty" (click)="submit()">{{ submitting ? 'Saving...' : (isEdit ? 'Save Changes' : 'Submit Property') }}</a>
+    <a href="javascript:void(0);" class="dash-cancel-btn tran3s" (click)="cancel()">Cancel</a>
 </div>

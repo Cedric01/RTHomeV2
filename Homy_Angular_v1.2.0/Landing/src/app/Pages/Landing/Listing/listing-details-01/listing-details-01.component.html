@@ -22,7 +22,7 @@
                 </div>
             </div>
         </div>
-        <div class="media-gallery mt-100 xl-mt-80 lg-mt-60">
+        <div class="media-gallery mt-100 xl-mt-80 lg-mt-60" *ngIf="carouselImages.length > 0; else noPhotos">
             <div id="media_slider" class="carousel slide row">
                 <div class="col-lg-10">
                     <div class="bg-white shadow4 border-20 p-30 md-mb-20">
@@ -56,6 +56,13 @@
                 </div>
             </div>
         </div>
+        <ng-template #noPhotos>
+            <div class="media-gallery mt-100 xl-mt-80 lg-mt-60" *ngIf="property">
+                <div class="bg-white shadow4 border-20 p-30 text-center">
+                    <p class="fs-20 m-0 py-5">No photos available for this property yet.</p>
+                </div>
+            </div>
+        </ng-template>
         <div class="property-feature-list bg-white shadow4 border-20 p-40 mt-50 mb-60">
             <h4 class="sub-title-one mb-40 lg-mb-20">Property Overview</h4>
             <ul class="style-none d-flex flex-wrap align-items-center justify-content-between">
