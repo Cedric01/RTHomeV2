@@ -1,7 +1,7 @@
 <aside class="dash-aside-navbar">
     <div class="position-relative">
         <div class="logo d-md-block d-flex align-items-center justify-content-between plr bottom-line pb-30">
-            <a routerLink="/dashboard-index">
+            <a routerLink="/">
                 <img src="assets/images/logo/logo_01.svg" alt="">
             </a>
             <button class="close-btn d-block d-md-none"><i class="fa-light fa-circle-xmark"></i></button>
@@ -90,7 +90,7 @@
 
 
         <div class="plr">
-            <a href="javascript:void(0);" class="d-flex w-100 align-items-center logout-btn">
+            <a href="javascript:void(0);" class="d-flex w-100 align-items-center logout-btn" (click)="authService.logout()">
                 <div class="icon tran3s d-flex align-items-center justify-content-center rounded-circle"><img src="assets/dashboard-images/icon/icon_41.svg" alt=""></div>
                 <span>Logout</span>
             </a>
