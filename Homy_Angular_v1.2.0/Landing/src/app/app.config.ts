@@ -21,6 +21,15 @@ export const appConfig: ApplicationConfig = {
         redirect_uri: typeof window !== 'undefined' ? window.location.origin : 'http://localhost:4200',
         audience: 'https://homy-api'
       },
+      // Keep the session across page reloads without relying on Auth0's hidden iframe,
+      // which browsers block when third-party cookies are off (incognito, Safari, newer Chrome).
+      // Tokens live in localStorage and are renewed with a refresh token; if no refresh
+      // token was issued, the SDK falls back to the iframe. The shorter timeout stops the
+      // header spinner hanging for a minute when that iframe is blocked.
+      cacheLocation: 'localstorage',
+      useRefreshTokens: true,
+      useRefreshTokensFallback: true,
+      authorizeTimeoutInSeconds: 10,
       httpInterceptor: {
         allowedList: [
           // Reads stay public, except the signed-in user's own listings.
