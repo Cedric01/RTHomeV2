@@ -46,8 +46,8 @@ export class DashboardIndexComponent implements OnInit {
     return [
       { icon: 'assets/dashboard-images/icon/icon_12.svg', title: 'All Properties', value: show(s?.total) },
       { icon: 'assets/dashboard-images/icon/icon_13.svg', title: 'Active', value: show(s?.active) },
-      { icon: 'assets/dashboard-images/icon/icon_14.svg', title: 'Sold', value: show(s?.sold) },
-      { icon: 'assets/dashboard-images/icon/icon_15.svg', title: 'Rented', value: show(s?.rented) }
+      { icon: 'assets/dashboard-images/icon/icon_sold.svg', title: 'Sold', value: show(s?.sold) },
+      { icon: 'assets/dashboard-images/icon/icon_key.svg', title: 'Rented', value: show(s?.rented) }
     ];
   }
 }

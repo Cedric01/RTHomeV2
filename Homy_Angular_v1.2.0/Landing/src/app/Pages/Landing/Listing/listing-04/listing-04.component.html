@@ -5,38 +5,39 @@
             <div class="bg-wrapper border-layout">
                 <form action="javascript:void(0);">
                     <div class="row gx-0 align-items-center">
-                        <div class="col-xl-3 col-lg-4">
+                        <div class="col-xl-2 col-lg-4 col-md-6">
                             <div class="input-box-one border-left">
                                 <div class="label">I’m looking to...</div>
-                                <ng-select [items]="options" bindLabel="label" bindValue="value" [placeholder]="'Buy Apartments'">
-                                    <ng-option *ngFor="let option of options" [value]="option.value">{{ option.label }}</ng-option>
-                                </ng-select>
+                                <ng-select [items]="modeOptions" bindLabel="label" bindValue="value" [placeholder]="'Buy or Rent'" [(ngModel)]="mode" name="mode"></ng-select>
                             </div>
                         </div>
-                        <div class="col-xl-3 col-lg-4">
+                        <div class="col-xl-2 col-lg-4 col-md-6">
+                            <div class="input-box-one border-left">
+                                <div class="label">Category</div>
+                                <ng-select [items]="options" bindLabel="label" bindValue="value" [placeholder]="'Any category'" [(ngModel)]="typeId" name="type"></ng-select>
+                            </div>
+                        </div>
+                        <div class="col-xl-2 col-lg-4 col-md-6">
                             <div class="input-box-one border-left">
                                 <div class="label">Location</div>
-                                <ng-select class="" [items]="locations" bindLabel="label" bindValue="value" [placeholder]="'Dhanmondi, Dhaka'">
-                                    <ng-option *ngFor="let location of locations" [value]="location.value">{{ location.label }}</ng-option>
-                                </ng-select>
+                                <ng-select [items]="locations" bindLabel="label" bindValue="value" [placeholder]="'Any location'" [(ngModel)]="locationId" name="location"></ng-select>
                             </div>
                         </div>
-                        <div class="col-xl-3 col-lg-4">
-                            <div class="input-box-one border-left border-lg-0">
+                        <div class="col-xl-2 col-lg-4 col-md-6">
+                            <div class="input-box-one border-left">
                                 <div class="label">Price Range</div>
-                                <ng-select [items]="priceRanges" bindLabel="label" bindValue="value" [placeholder]="'$10,000 - $200,000'">
-                                    <ng-option *ngFor="let range of priceRanges" [value]="range.value">{{ range.label }}</ng-option>
-                                </ng-select>
+                                <ng-select [items]="priceRanges" bindLabel="label" bindValue="value" [placeholder]="'Any price'" [(ngModel)]="priceRangeId" name="priceRange"></ng-select>
                             </div>
                         </div>
-                        <div class="col-xl-3">
+                        <div class="col-xl-2 col-lg-4 col-md-6">
+                            <div class="input-box-one border-left border-lg-0">
+                                <div class="label">Bedrooms</div>
+                                <ng-select [items]="bedOptions" bindLabel="label" bindValue="value" [placeholder]="'Any'" [(ngModel)]="bedrooms" name="beds"></ng-select>
+                            </div>
+                        </div>
+                        <div class="col-xl-2 col-lg-4 col-md-6">
                             <div class="input-box-one lg-mt-20">
-                                <div class="d-flex align-items-center">
-                                    <a href="javascript:void(0);" data-bs-toggle="modal" data-bs-target="#advanceFilterModal" class="search-modal-btn sm tran3s text-uppercase fw-500 d-inline-flex align-items-center me-3">
-                                        <i class="fa-light fa-sliders-up"></i>
-                                    </a>
-                                    <button class="fw-500 text-uppercase tran3s search-btn">Search</button>
-                                </div>
+                                <button type="button" class="fw-500 text-uppercase tran3s search-btn" (click)="applyFilters()">Search</button>
                             </div>
                         </div>
                     </div>
@@ -44,18 +45,39 @@
             </div>
         </div>
         <div class="listing-header-filter d-sm-flex justify-content-between align-items-center mb-40 lg-mb-30">
-            <div>Showing <span class="color-dark fw-500">1–{{ totalResults }}</span> of <span class="color-dark fw-500">{{ totalResults }}</span> results</div>
+            <div>
+                @if (totalResults > 0) {
+                    Showing <span class="color-dark fw-500">{{ showingFrom }}–{{ showingTo }}</span> of <span class="color-dark fw-500">{{ totalResults }}</span> results
+                } @else if (!loading && !loadError) {
+                    No results
+                }
+                @if (hasFilters) {
+                    <a href="javascript:void(0);" class="ms-3 text-decoration-underline" (click)="clearFilters()">Clear filters</a>
+                }
+            </div>
             <div class="d-flex align-items-center xs-mt-20">
                 <div class="short-filter d-flex align-items-center">
-                    <div class="fs-16 me-2">Short by:</div>
-                    <ng-select [items]="short" bindLabel="label" bindValue="value" [placeholder]="'Newest'">
-                        <ng-option *ngFor="let range of short" [value]="range.value">{{ range.label }}</ng-option>
-                    </ng-select>
+                    <div class="fs-16 me-2">Sort by:</div>
+                    <ng-select [items]="short" bindLabel="label" bindValue="value" [clearable]="false" [ngModel]="sort" (ngModelChange)="onSortChange($event)" name="sort"></ng-select>
                 </div>
             </div>
         </div>
         @if (loading) {
             <div class="text-center py-5">Loading listings…</div>
+        }
+        @if (loadError) {
+            <div class="alert alert-danger text-center mb-50">
+                We couldn’t load the listings.
+                <a href="javascript:void(0);" class="text-decoration-underline ms-2" (click)="retry()">Try again</a>
+            </div>
+        }
+        @if (!loading && !loadError && listings.length === 0) {
+            <div class="text-center py-5 mb-50">
+                <h4 class="mb-15">No properties match your filters</h4>
+                @if (hasFilters) {
+                    <a href="javascript:void(0);" class="btn-two" (click)="clearFilters()"><span>Clear filters</span></a>
+                }
+            </div>
         }
         <div *ngFor="let listing of listings" class="listing-card-seven border-20 p-20 mb-50 fadeInUp" data-aos="fade-up">
             <div class="d-flex flex-wrap layout-one">
@@ -90,13 +112,25 @@
                 </div>
             </div>
         </div>
-        <div class="pt-50 md-pt-20 text-center">
-            <ul class="pagination-two d-inline-flex align-items-center justify-content-center style-none">
-                <li><a href="javascript:void(0);"><i class="fa-regular fa-chevron-left"></i></a></li>
-                <li class="active"><a href="javascript:void(0);">1</a></li>
-                <li><a href="javascript:void(0);"><i class="fa-regular fa-chevron-right"></i></a></li>
-            </ul>
-        </div>
+        @if (totalPages > 1) {
+            <div class="pt-50 md-pt-20 text-center">
+                <ul class="pagination-two d-inline-flex align-items-center justify-content-center style-none">
+                    @if (page > 1) {
+                        <li><a [routerLink]="[]" [queryParams]="{ page: page - 1 === 1 ? null : page - 1 }" queryParamsHandling="merge" aria-label="Previous page"><i class="fa-regular fa-chevron-left"></i></a></li>
+                    }
+                    @for (p of pageNumbers; track $index) {
+                        @if (p === '…') {
+                            <li><span class="px-2">…</span></li>
+                        } @else {
+                            <li [class.active]="p === page"><a [routerLink]="[]" [queryParams]="{ page: p === 1 ? null : p }" queryParamsHandling="merge">{{ p }}</a></li>
+                        }
+                    }
+                    @if (page < totalPages) {
+                        <li><a [routerLink]="[]" [queryParams]="{ page: page + 1 }" queryParamsHandling="merge" aria-label="Next page"><i class="fa-regular fa-chevron-right"></i></a></li>
+                    }
+                </ul>
+            </div>
+        }
     </div>
 </div>
 <app-fancy-banner-two></app-fancy-banner-two>
