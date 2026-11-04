@@ -1,7 +1,7 @@
 import { HttpClient, HttpParams } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Observable, map } from "rxjs";
-import { Property, PropertySummary } from "../models/property";
+import { Property, PropertySearch, PropertySummary } from "../models/property";
 import { environment } from "../../environtment";
 
 @Injectable({ providedIn: 'root' })
@@ -17,6 +17,15 @@ export class PropertyService {
   /** One page of properties plus the total row count the API reports in X-Total-Count. */
   getPage(page: number, pageSize: number): Observable<{ items: Property[]; total: number }> {
     return this.fetchPage(this.baseUrl, page, pageSize);
+  }
+
+  /** One page of the public listing, narrowed by the given filters. */
+  search(filters: PropertySearch, page: number, pageSize: number): Observable<{ items: Property[]; total: number }> {
+    let params = new HttpParams();
+    for (const [key, value] of Object.entries(filters)) {
+      if (value !== undefined && value !== null) params = params.set(key, String(value));
+    }
+    return this.fetchPage(this.baseUrl, page, pageSize, params);
   }
 
   /** Like getPage, but only the signed-in user's own properties. */
@@ -40,8 +49,8 @@ export class PropertyService {
     return this.http.delete<void>(`${this.baseUrl}/${id}/images`, { params });
   }
 
-  private fetchPage(url: string, page: number, pageSize: number): Observable<{ items: Property[]; total: number }> {
-    const params = new HttpParams().set('page', page).set('pageSize', pageSize);
+  private fetchPage(url: string, page: number, pageSize: number, filters = new HttpParams()): Observable<{ items: Property[]; total: number }> {
+    const params = filters.set('page', page).set('pageSize', pageSize);
     return this.http.get<Property[]>(url, { params, observe: 'response' }).pipe(
       map(res => {
         const items = res.body ?? [];

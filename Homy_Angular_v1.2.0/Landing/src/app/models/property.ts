@@ -58,3 +58,14 @@ export interface PropertySummary {
   sold: number;
   rented: number;
 }
+
+// Filters the public listing page can send to GET /properties.
+export interface PropertySearch {
+  isForRent?: boolean;
+  listingTypeId?: number;
+  locationId?: number;
+  minPrice?: number;
+  maxPrice?: number;
+  minBedrooms?: number;
+  sort?: 'price_asc' | 'price_desc';
+}
